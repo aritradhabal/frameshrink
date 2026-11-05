@@ -1,0 +1,78 @@
+{
+  "name": "frameshrink",
+  "version": "0.1.4",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": "^22.13.0 || >=24"
+  },
+  "scripts": {
+    "bootstrap": "node scripts/bootstrap.mjs",
+    "runtime:up": "node scripts/runtime.mjs up",
+    "runtime:down": "node scripts/runtime.mjs down",
+    "build": "npm run typecheck && node scripts/build.mjs",
+    "test": "tsx --test test/*.test.ts",
+    "test:integration": "tsx --test --test-concurrency=1 test/integration/*.test.ts",
+    "cli": "node bin/frameshrink.mjs",
+    "start": "tsx src/server.ts",
+    "fixtures": "tsx scripts/fixtures.ts",
+    "verify": "npm run build && npm test && npm run test:integration",
+    "proof:public": "tsx scripts/public-proof.ts",
+    "test:browser": "playwright test",
+    "format": "prettier --write src scripts bin test playwright.config.ts",
+    "format:check": "prettier --check src scripts bin test playwright.config.ts",
+    "typecheck": "tsc --noEmit",
+    "prepack": "npm run build",
+    "prepublishOnly": "node -e \"throw new Error('Publishing is disabled for this local tarball release')\"",
+    "test:package": "node scripts/test-package.mjs",
+    "test:portable": "tsx --test test/browser.test.ts test/lock.test.ts",
+    "test:portability": "node scripts/test-portability.mjs",
+    "release:local": "node scripts/release.mjs"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "8.7.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.0",
+    "@types/node": "22.13.10",
+    "esbuild": "0.28.2",
+    "prettier": "3.6.2",
+    "solc": "0.8.29",
+    "typescript": "5.8.2",
+    "tsx": "4.23.15",
+    "viem": "2.57.16",
+    "zod": "4.6.7"
+  },
+  "overrides": {
+    "tmp": "0.2.7"
+  },
+  "bin": {
+    "frameshrink": "bin/frameshrink.mjs"
+  },
+  "description": "Reduce failing Ethereum frame transactions into reproducible test cases.",
+  "keywords": [
+    "ethereum",
+    "eip-8141",
+    "debugger",
+    "cli",
+    "transaction",
+    "reducer"
+  ],
+  "files": [
+    "bin/frameshrink.mjs",
+    "dist/",
+    "fixtures/",
+    "contracts/",
+    "src/ui.html",
+    "scripts/runtime.mjs",
+    "examples/",
+    "docs/ATTRIBUTION.md",
+    "docs/UPSTREAM-LICENSE.txt",
+    "docs/PACKAGING.md",
+    "CHANGELOG.md",
+    "evidence/cli-demo.png",
+    "scripts/runtime-lock.mjs",
+    "docs/HISTORY-RECONSTRUCTION.md"
+  ]
+}
