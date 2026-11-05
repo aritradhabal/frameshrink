@@ -1,0 +1,17 @@
+node_modules/
+.tools/
+.vendor/
+.runs/
+dist/
+playwright-report/
+test-results/
+*.log
+
+artifacts/
+*.tgz
+*.bundle
+.env
+.env.*
+*.key
+*.pem
+.DS_Store
