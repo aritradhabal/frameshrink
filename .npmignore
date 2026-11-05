@@ -1,0 +1,12 @@
+.runs/
+.vendor/
+.tools/
+.git/
+.env
+.env.*
+*.key
+*.pem
+test/
+test-results/
+playwright-report/
+artifacts/
