@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "purpose": "separate corrected EOA self-relay on sponsor testnet",
+  "address": "0xE2c9b352267973291661FED6DdEe4E8a544e5fDB",
+  "startedAt": "2026-11-06T13:06:44.714Z",
+  "gateway": "https://altmempoolgateway.forshtat.com/rpc",
+  "execution": "https://altmempool.forshtat.com/rpc",
+  "publicClientCommit": "not reported by gateway",
+  "candidateSubmissions": 1,
+  "chainId": "0x539",
+  "gatewayInfo": {
+    "protocolVersion": 1,
+    "chainId": 1337,
+    "version": "v4.1.1",
+    "commit": "",
+    "bundlingMode": "manual",
+    "p2pEnabled": true,
+    "latestSeq": 66,
+    "oldestSeq": 1,
+    "historyCapacity": 10000,
+    "bootId": "1297de401113fb04",
+    "minInclusionDenominator": 10,
+    "throttlingSlack": 10,
+    "banSlack": 50,
+    "faucetEnabled": true
+  },
+  "executionInfo": {
+    "protocolVersion": 1,
+    "chainId": 1337,
+    "version": "v4.1.1",
+    "commit": "",
+    "bundlingMode": "auto",
+    "p2pEnabled": true,
+    "latestSeq": 176,
+    "oldestSeq": 1,
+    "historyCapacity": 10000,
+    "bootId": "6ba711bc5014aeb0",
+    "minInclusionDenominator": 10,
+    "throttlingSlack": 10,
+    "banSlack": 50
+  },
+  "faucet": {
+    "txHash": "0xfb22ee35a85a86a41e50d6fb286fbfc10f3e7043796e593bb14e7cca0306ed58",
+    "amount": "1000000000000000000"
+  },
+  "balanceBefore": "0xde0b6b3a7640000",
+  "transaction": {
+    "chainId": "0x539",
+    "nonceKeys": [
+      "0x0"
+    ],
+    "nonceSeq": "0x0",
+    "sender": "0xE2c9b352267973291661FED6DdEe4E8a544e5fDB",
+    "frames": [
+      {
+        "mode": 1,
+        "flags": 3,
+        "target": null,
+        "limits": {
+          "execution": "0x7530",
+          "state": "0x0"
+        },
+        "value": "0x0",
+        "data": "0x"
+      },
+      {
+        "mode": 2,
+        "flags": 0,
+        "target": "0xE2c9b352267973291661FED6DdEe4E8a544e5fDB",
+        "limits": {
+          "execution": "0xc350",
+          "state": "0x0"
+        },
+        "value": "0x0",
+        "data": "0x"
+      }
+    ],
+    "signatures": [
+      {
+        "scheme": 1,
+        "signer": "0x",
+        "msg": "0x",
+        "signature": "0x00378e53a172052de232789dad4e59cccc9e7d80b5c5402cf849071e5738eac62774735c258ff8d403237087a16b039a73087206141479b789ef6f5f3cd7a57d5d"
+      }
+    ],
+    "fees": {
+      "maxPriorityFeePerGas": "0x3b9aca00",
+      "maxFeePerGas": "0x3b9aca0e",
+      "maxFeePerBlobGas": "0x0"
+    },
+    "blobVersionedHashes": [],
+    "recentRootReferences": []
+  },
+  "headBefore": {
+    "number": "0xf8b",
+    "hash": "0x2ee32a4a3752dba8c83a07e3128c0451992909a532371cf19f0115d1ac51fbcd"
+  },
+  "submissionAttempted": true,
+  "submittedAt": "2026-11-06T13:06:50.021Z",
+  "txHash": "0x941622177fa644968fbebdb74112b2b4638b575e98c18a36ead9136a96921141",
+  "admission": "send RPC accepted",
+  "admissionRecord": {
+    "hash": "0x941622177fa644968fbebdb74112b2b4638b575e98c18a36ead9136a96921141",
+    "entry": {
+      "txHash": "0x941622177fa644968fbebdb74112b2b4638b575e98c18a36ead9136a96921141",
+      "sender": "0xE2c9b352267973291661FED6DdEe4E8a544e5fDB",
+      "payer": "0xE2c9b352267973291661FED6DdEe4E8a544e5fDB",
+      "nonce": "0x0",
+      "nonceKeys": [
+        "0x0"
+      ],
+      "status": "New",
+      "frames": 2,
+      "maxFeePerGas": "0x3b9aca0e",
+      "submittedTime": 1793970410279,
+      "lastUpdatedTime": 1793970410421,
+      "source": "rpc",
+      "tx": {
+        "chainId": "0x539",
+        "nonceKeys": [
+          "0x0"
+        ],
+        "nonceSeq": "0x0",
+        "sender": "0xE2c9b352267973291661FED6DdEe4E8a544e5fDB",
+        "frames": [
+          {
+            "mode": 1,
+            "flags": 3,
+            "target": null,
+            "limits": {
+              "execution": "0x7530",
+              "state": "0x0"
+            },
+            "value": "0x0",
+            "data": "0x"
+          },
+          {
+            "mode": 2,
+            "flags": 0,
+            "target": "0xE2c9b352267973291661FED6DdEe4E8a544e5fDB",
+            "limits": {
+              "execution": "0xc350",
+              "state": "0x0"
+            },
+            "value": "0x0",
+            "data": "0x"
+          }
+        ],
+        "signatures": [
+          {
+            "scheme": 1,
+            "signer": "0x",
+            "msg": "0x",
+            "signature": "0x00378e53a172052de232789dad4e59cccc9e7d80b5c5402cf849071e5738eac62774735c258ff8d403237087a16b039a73087206141479b789ef6f5f3cd7a57d5d"
+          }
+        ],
+        "fees": {
+          "maxPriorityFeePerGas": "0x3b9aca00",
+          "maxFeePerGas": "0x3b9aca0e",
+          "maxFeePerBlobGas": "0x0"
+        },
+        "blobVersionedHashes": [],
+        "recentRootReferences": []
+      }
+    },
+    "admission": {
+      "id": 20,
+      "txHash": "0x941622177fa644968fbebdb74112b2b4638b575e98c18a36ead9136a96921141",
+      "sender": "0xE2c9b352267973291661FED6DdEe4E8a544e5fDB",
+      "nonce": "0x0",
+      "nonceKeys": [
+        "0x0"
+      ],
+      "at": 1793970410253,
+      "source": "rpc",
+      "outcome": "accepted",
+      "checks": [
+        {
+          "rule": "gas-limit",
+          "verdict": "pass"
+        },
+        {
+          "rule": "recent-root",
+          "verdict": "pass"
+        },
+        {
+          "rule": "prefix",
+          "verdict": "pass"
+        },
+        {
+          "rule": "structure",
+          "verdict": "pass"
+        },
+        {
+          "rule": "signature",
+          "verdict": "pass"
+        },
+        {
+          "rule": "simulation",
+          "verdict": "pass"
+        },
+        {
+          "rule": "trace-alignment",
+          "verdict": "pass"
+        },
+        {
+          "rule": "OP-061",
+          "verdict": "pass"
+        },
+        {
+          "rule": "execution",
+          "verdict": "pass"
+        },
+        {
+          "rule": "trace-alignment",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "out-of-gas",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "OP-011",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "create",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "storage",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "COD-010",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "entrypoint-access",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "mempool",
+          "verdict": "pass"
+        }
+      ],
+      "frames": [
+        {
+          "mode": 1,
+          "flags": 3,
+          "target": null,
+          "limits": {
+            "execution": "0x7530",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x"
+        },
+        {
+          "mode": 2,
+          "flags": 0,
+          "target": "0xE2c9b352267973291661FED6DdEe4E8a544e5fDB",
+          "limits": {
+            "execution": "0xc350",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x"
+        }
+      ],
+      "frameStatuses": [
+        "success",
+        "success"
+      ]
+    },
+    "events": [
+      {
+        "seq": 61,
+        "txHash": "0x941622177fa644968fbebdb74112b2b4638b575e98c18a36ead9136a96921141",
+        "at": 1793970410438,
+        "kind": "admitted",
+        "status": "New"
+      }
+    ]
+  },
+  "status": {
+    "tx": {
+      "chainId": "0x539",
+      "nonceKeys": [
+        "0x0"
+      ],
+      "nonceSeq": "0x0",
+      "sender": "0xE2c9b352267973291661FED6DdEe4E8a544e5fDB",
+      "frames": [
+        {
+          "mode": "0x1",
+          "flags": "0x3",
+          "target": null,
+          "limits": {
+            "execution": "0x7530",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x"
+        },
+        {
+          "mode": "0x2",
+          "flags": "0x0",
+          "target": "0xE2c9b352267973291661FED6DdEe4E8a544e5fDB",
+          "limits": {
+            "execution": "0xc350",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x"
+        }
+      ],
+      "signatures": [
+        {
+          "scheme": "0x1",
+          "signer": "0x",
+          "msg": "0x",
+          "signature": "0x00378e53a172052de232789dad4e59cccc9e7d80b5c5402cf849071e5738eac62774735c258ff8d403237087a16b039a73087206141479b789ef6f5f3cd7a57d5d"
+        }
+      ],
+      "fees": {
+        "maxPriorityFeePerGas": "0x3b9aca00",
+        "maxFeePerGas": "0x3b9aca0e",
+        "maxFeePerBlobGas": "0x0"
+      },
+      "blobVersionedHashes": [],
+      "recentRootReferences": []
+    },
+    "sender": "0xE2c9b352267973291661FED6DdEe4E8a544e5fDB",
+    "payer": "0xE2c9b352267973291661FED6DdEe4E8a544e5fDB",
+    "status": "Submitted",
+    "transaction": "0x941622177fa644968fbebdb74112b2b4638b575e98c18a36ead9136a96921141"
+  },
+  "receiptReadError": "{\"message\":\"transaction receipt not found for 0x941622177fa644968fbebdb74112b2b4638b575e98c18a36ead9136a96921141\",\"code\":-32000}",
+  "checkedAt": "2026-11-06T13:09:50.549Z",
+  "primaryRelayAttempted": true,
+  "primaryRelayAt": "2026-11-06T13:09:37.648Z",
+  "primaryRelayHash": "0x941622177fa644968fbebdb74112b2b4638b575e98c18a36ead9136a96921141",
+  "receipt": {
+    "cumulativeGasUsed": "0x4e86",
+    "payer": "0xe2c9b352267973291661fed6ddee4e8a544e5fdb",
+    "blockNumber": "0xfa9",
+    "status": "success",
+    "frameReceipts": [
+      {
+        "status": "success",
+        "gasUsed": {
+          "execution": "0x64",
+          "state": "0x0"
+        },
+        "logs": []
+      },
+      {
+        "status": "success",
+        "gasUsed": {
+          "execution": "0x64",
+          "state": "0x0"
+        },
+        "logs": []
+      }
+    ]
+  },
+  "explorer": "https://explorer.altmempool.wtf/tx/0x941622177fa644968fbebdb74112b2b4638b575e98c18a36ead9136a96921141?node=https%3A%2F%2Faltmempool.forshtat.com%2Frpc"
+}

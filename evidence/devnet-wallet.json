@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "address": "0xebF00143AC1A763922A65b887e2d1B66233eFDaB",
+  "chainId": 1337,
+  "network": "Frame transaction sponsor devnet",
+  "createdAt": "2026-11-06T14:20:05.902Z",
+  "custody": "local development key; mode 0600",
+  "scope": "sponsor devnet only; no website authentication",
+  "faucet": {
+    "schemaVersion": 1,
+    "address": "0xebF00143AC1A763922A65b887e2d1B66233eFDaB",
+    "endpoint": "https://altmempoolgateway.forshtat.com/rpc",
+    "requestedAt": "2026-11-06T14:21:22.240Z",
+    "state": "confirmed",
+    "txHash": "0x84f3c98634786265ee60f83760c65d3e2961c819f1e4a86268433d01b567a8df",
+    "amountWei": "1000000000000000000",
+    "balanceBeforeWei": "0",
+    "error": null,
+    "receipt": {
+      "blockHash": "0xc1e0f3ae2e5474a4ca9077527162a26ad44e46effb6ee2113c6785d18222c59c",
+      "blockNumber": "0x1275",
+      "contractAddress": null,
+      "cumulativeGasUsed": "0x70014",
+      "effectiveGasPrice": "0x1e847f",
+      "from": "0x2ea2012356c4a5d72fc91be7b9fee632eff24c9e",
+      "gasUsed": "0x31f38",
+      "logs": [
+        {
+          "address": "0xfffffffffffffffffffffffffffffffffffffffe",
+          "blockHash": "0xc1e0f3ae2e5474a4ca9077527162a26ad44e46effb6ee2113c6785d18222c59c",
+          "blockNumber": "0x1275",
+          "blockTimestamp": "0x6aede264",
+          "data": "0x0000000000000000000000000000000000000000000000000de0b6b3a7640000",
+          "logIndex": "0x1",
+          "removed": false,
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000002ea2012356c4a5d72fc91be7b9fee632eff24c9e",
+            "0x000000000000000000000000ebf00143ac1a763922a65b887e2d1b66233efdab"
+          ],
+          "transactionHash": "0x84f3c98634786265ee60f83760c65d3e2961c819f1e4a86268433d01b567a8df",
+          "transactionIndex": "0x1"
+        }
+      ],
+      "logsBloom": "0x00000000400000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000002000000000009000000000000000000000000000080000000000000400000000000000000000000000000000000000000000000000000010000000000",
+      "status": "0x1",
+      "to": "0xebf00143ac1a763922a65b887e2d1b66233efdab",
+      "transactionHash": "0x84f3c98634786265ee60f83760c65d3e2961c819f1e4a86268433d01b567a8df",
+      "transactionIndex": "0x1",
+      "type": "0x2"
+    }
+  },
+  "networkChecked": true,
+  "balanceWei": "1000000000000000000",
+  "balanceEth": "1"
+}
