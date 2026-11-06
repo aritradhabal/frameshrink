@@ -1,0 +1,700 @@
+[
+  {
+    "endpoint": "https://altmempool.forshtat.com/rpc",
+    "transactionHash": "0x4b2f4d82b298188c20fe178204d430192470f64bb3780dcdc2dd223abddc5cfd",
+    "record": {
+      "id": 35,
+      "txHash": "0x4b2f4d82b298188c20fe178204d430192470f64bb3780dcdc2dd223abddc5cfd",
+      "sender": "0x5Ec8F5Cc274A65FDA9dFEEdf26d9C6171CD14931",
+      "nonce": "0x8",
+      "nonceKeys": [
+        "0x0"
+      ],
+      "at": 1793970019563,
+      "source": "rpc",
+      "outcome": "rejected",
+      "errorCode": -32502,
+      "checks": [
+        {
+          "rule": "gas-limit",
+          "verdict": "pass"
+        },
+        {
+          "rule": "recent-root",
+          "verdict": "pass"
+        },
+        {
+          "rule": "prefix",
+          "verdict": "pass"
+        },
+        {
+          "rule": "structure",
+          "verdict": "pass"
+        },
+        {
+          "rule": "signature",
+          "verdict": "pass"
+        },
+        {
+          "rule": "simulation",
+          "verdict": "pass"
+        },
+        {
+          "rule": "trace-alignment",
+          "verdict": "pass"
+        },
+        {
+          "rule": "OP-061",
+          "verdict": "pass"
+        },
+        {
+          "rule": "execution",
+          "verdict": "pass"
+        },
+        {
+          "rule": "trace-alignment",
+          "frameIndex": 0,
+          "entity": "sender",
+          "verdict": "pass"
+        },
+        {
+          "rule": "out-of-gas",
+          "frameIndex": 0,
+          "entity": "sender",
+          "verdict": "pass"
+        },
+        {
+          "rule": "OP-011",
+          "frameIndex": 0,
+          "entity": "sender",
+          "verdict": "pass"
+        },
+        {
+          "rule": "create",
+          "frameIndex": 0,
+          "entity": "sender",
+          "verdict": "pass"
+        },
+        {
+          "rule": "storage",
+          "frameIndex": 0,
+          "entity": "sender",
+          "verdict": "pass"
+        },
+        {
+          "rule": "COD-010",
+          "frameIndex": 0,
+          "entity": "sender",
+          "verdict": "pass"
+        },
+        {
+          "rule": "entrypoint-access",
+          "frameIndex": 0,
+          "entity": "sender",
+          "verdict": "pass"
+        },
+        {
+          "rule": "trace-alignment",
+          "frameIndex": 1,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "out-of-gas",
+          "frameIndex": 1,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "OP-011",
+          "frameIndex": 1,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "create",
+          "frameIndex": 1,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "storage",
+          "frameIndex": 1,
+          "entity": "payer",
+          "verdict": "fail",
+          "detail": "unstaked payer accessed payer slot 0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "rule": "COD-010",
+          "frameIndex": 1,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "entrypoint-access",
+          "frameIndex": 1,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "mempool",
+          "verdict": "skipped"
+        }
+      ],
+      "frames": [
+        {
+          "mode": 1,
+          "flags": 2,
+          "target": null,
+          "limits": {
+            "execution": "0xb3b0",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x"
+        },
+        {
+          "mode": 0,
+          "flags": 0,
+          "target": "0x7d7EC6E60F24595530bf7E7521B1ab3E10A1fc17",
+          "limits": {
+            "execution": "0x84d0",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x1dedc6f7"
+        },
+        {
+          "mode": 1,
+          "flags": 1,
+          "target": "0x7d7EC6E60F24595530bf7E7521B1ab3E10A1fc17",
+          "limits": {
+            "execution": "0x36b0",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x"
+        },
+        {
+          "mode": 2,
+          "flags": 0,
+          "target": null,
+          "limits": {
+            "execution": "0xdbba0",
+            "state": "0x6ddd0"
+          },
+          "value": "0x0",
+          "data": "0x003578250000000000000000000000008ecb4bd77477ea799ab4b555b5915d370195cba800000000000000000000000095db61548865f4a1a0c0554afe3295b9f7f85a1c00000000000000000000000000000000000000000000000000000000004c4b40000000000000000000000000000000000000000000000000000000006aedd08e00000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000001600000000000000000000000000000000000000000000000000000000000000080543f52fb4b2988bdac37291c5a1472eb5bda2136281d77be0620aa0b12e0d3defda5b90adfa47a95a7825b7d20620ef502557dc67c8841202a6586ced59fe958b8f4bc0422c050e050d6a5ec749babc6770351fe9a229e419f85571e396c7cb05664b93abdea2bf46861feed8a607ee61624d55efb22b440f1a4d53825a1a0c000000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000000170000000000000000000000000000000000000000000000000000000000000001418b740256cc0bf4b0b14fa956ba99e939b3c34bf5314f8a8de3f479c44d251c719a706bae59bbef3b72baeab910639047c44f5b16eaaa459c2b9be40640707a0000000000000000000000000000000000000000000000000000000000000025e3cb8a8ccc4bdeba7cf6cb4d6dc14d2fecb69434e1f11e7e8d6ae6c5af745fc4050000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000867b2274797065223a22776562617574686e2e676574222c226368616c6c656e6765223a22733132726d564b66714e544d57763164536a6a614530644c6d655447513831654856554433566d762d544d222c226f726967696e223a2268747470733a2f2f746170326574682e6c6f63616c222c2263726f73734f726967696e223a66616c73657d0000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "frameStatuses": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ]
+    },
+    "observedAt": "2026-11-06T13:27:04.449200+00:00",
+    "classification": "public sponsor-devnet admission rejection, not mainnet transaction failure",
+    "portableReplay": "not established; signed payload and historical environment not captured",
+    "explorer": "https://explorer.altmempool.wtf/tx/0x4b2f4d82b298188c20fe178204d430192470f64bb3780dcdc2dd223abddc5cfd?node=https%3A%2F%2Faltmempool.forshtat.com%2Frpc",
+    "detailResponse": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "hash": "0x4b2f4d82b298188c20fe178204d430192470f64bb3780dcdc2dd223abddc5cfd",
+        "entry": null,
+        "admission": {
+          "id": 35,
+          "txHash": "0x4b2f4d82b298188c20fe178204d430192470f64bb3780dcdc2dd223abddc5cfd",
+          "sender": "0x5Ec8F5Cc274A65FDA9dFEEdf26d9C6171CD14931",
+          "nonce": "0x8",
+          "nonceKeys": [
+            "0x0"
+          ],
+          "at": 1793970019563,
+          "source": "rpc",
+          "outcome": "rejected",
+          "errorCode": -32502,
+          "checks": [
+            {
+              "rule": "gas-limit",
+              "verdict": "pass"
+            },
+            {
+              "rule": "recent-root",
+              "verdict": "pass"
+            },
+            {
+              "rule": "prefix",
+              "verdict": "pass"
+            },
+            {
+              "rule": "structure",
+              "verdict": "pass"
+            },
+            {
+              "rule": "signature",
+              "verdict": "pass"
+            },
+            {
+              "rule": "simulation",
+              "verdict": "pass"
+            },
+            {
+              "rule": "trace-alignment",
+              "verdict": "pass"
+            },
+            {
+              "rule": "OP-061",
+              "verdict": "pass"
+            },
+            {
+              "rule": "execution",
+              "verdict": "pass"
+            },
+            {
+              "rule": "trace-alignment",
+              "frameIndex": 0,
+              "entity": "sender",
+              "verdict": "pass"
+            },
+            {
+              "rule": "out-of-gas",
+              "frameIndex": 0,
+              "entity": "sender",
+              "verdict": "pass"
+            },
+            {
+              "rule": "OP-011",
+              "frameIndex": 0,
+              "entity": "sender",
+              "verdict": "pass"
+            },
+            {
+              "rule": "create",
+              "frameIndex": 0,
+              "entity": "sender",
+              "verdict": "pass"
+            },
+            {
+              "rule": "storage",
+              "frameIndex": 0,
+              "entity": "sender",
+              "verdict": "pass"
+            },
+            {
+              "rule": "COD-010",
+              "frameIndex": 0,
+              "entity": "sender",
+              "verdict": "pass"
+            },
+            {
+              "rule": "entrypoint-access",
+              "frameIndex": 0,
+              "entity": "sender",
+              "verdict": "pass"
+            },
+            {
+              "rule": "trace-alignment",
+              "frameIndex": 1,
+              "entity": "payer",
+              "verdict": "pass"
+            },
+            {
+              "rule": "out-of-gas",
+              "frameIndex": 1,
+              "entity": "payer",
+              "verdict": "pass"
+            },
+            {
+              "rule": "OP-011",
+              "frameIndex": 1,
+              "entity": "payer",
+              "verdict": "pass"
+            },
+            {
+              "rule": "create",
+              "frameIndex": 1,
+              "entity": "payer",
+              "verdict": "pass"
+            },
+            {
+              "rule": "storage",
+              "frameIndex": 1,
+              "entity": "payer",
+              "verdict": "fail",
+              "detail": "unstaked payer accessed payer slot 0x0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            {
+              "rule": "COD-010",
+              "frameIndex": 1,
+              "entity": "payer",
+              "verdict": "pass"
+            },
+            {
+              "rule": "entrypoint-access",
+              "frameIndex": 1,
+              "entity": "payer",
+              "verdict": "pass"
+            },
+            {
+              "rule": "mempool",
+              "verdict": "skipped"
+            }
+          ],
+          "frames": [
+            {
+              "mode": 1,
+              "flags": 2,
+              "target": null,
+              "limits": {
+                "execution": "0xb3b0",
+                "state": "0x0"
+              },
+              "value": "0x0",
+              "data": "0x"
+            },
+            {
+              "mode": 0,
+              "flags": 0,
+              "target": "0x7d7EC6E60F24595530bf7E7521B1ab3E10A1fc17",
+              "limits": {
+                "execution": "0x84d0",
+                "state": "0x0"
+              },
+              "value": "0x0",
+              "data": "0x1dedc6f7"
+            },
+            {
+              "mode": 1,
+              "flags": 1,
+              "target": "0x7d7EC6E60F24595530bf7E7521B1ab3E10A1fc17",
+              "limits": {
+                "execution": "0x36b0",
+                "state": "0x0"
+              },
+              "value": "0x0",
+              "data": "0x"
+            },
+            {
+              "mode": 2,
+              "flags": 0,
+              "target": null,
+              "limits": {
+                "execution": "0xdbba0",
+                "state": "0x6ddd0"
+              },
+              "value": "0x0",
+              "data": "0x003578250000000000000000000000008ecb4bd77477ea799ab4b555b5915d370195cba800000000000000000000000095db61548865f4a1a0c0554afe3295b9f7f85a1c00000000000000000000000000000000000000000000000000000000004c4b40000000000000000000000000000000000000000000000000000000006aedd08e00000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000001600000000000000000000000000000000000000000000000000000000000000080543f52fb4b2988bdac37291c5a1472eb5bda2136281d77be0620aa0b12e0d3defda5b90adfa47a95a7825b7d20620ef502557dc67c8841202a6586ced59fe958b8f4bc0422c050e050d6a5ec749babc6770351fe9a229e419f85571e396c7cb05664b93abdea2bf46861feed8a607ee61624d55efb22b440f1a4d53825a1a0c000000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000000170000000000000000000000000000000000000000000000000000000000000001418b740256cc0bf4b0b14fa956ba99e939b3c34bf5314f8a8de3f479c44d251c719a706bae59bbef3b72baeab910639047c44f5b16eaaa459c2b9be40640707a0000000000000000000000000000000000000000000000000000000000000025e3cb8a8ccc4bdeba7cf6cb4d6dc14d2fecb69434e1f11e7e8d6ae6c5af745fc4050000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000867b2274797065223a22776562617574686e2e676574222c226368616c6c656e6765223a22733132726d564b66714e544d57763164536a6a614530644c6d655447513831654856554433566d762d544d222c226f726967696e223a2268747470733a2f2f746170326574682e6c6f63616c222c2263726f73734f726967696e223a66616c73657d0000000000000000000000000000000000000000000000000000"
+            }
+          ],
+          "frameStatuses": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ]
+        },
+        "events": [
+          {
+            "seq": 122,
+            "txHash": "0x4b2f4d82b298188c20fe178204d430192470f64bb3780dcdc2dd223abddc5cfd",
+            "at": 1793970019609,
+            "kind": "rejected",
+            "reason": "unstaked payer accessed payer slot 0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "endpoint": "https://altmempoolgateway.forshtat.com/rpc",
+    "transactionHash": "0xb13027388242d52c475f4f505d017d2450acde4369299e1888b5d7b16b0a15ae",
+    "record": {
+      "id": 27,
+      "txHash": "0xb13027388242d52c475f4f505d017d2450acde4369299e1888b5d7b16b0a15ae",
+      "sender": "0xf7df2dba12b7915fe8690c3048f89c73f32b7db6",
+      "nonce": "0x0",
+      "nonceKeys": [
+        "0x224bbbf0a57931f49b20a47e14d93db4d12294946bce5d8a34120a3aa26c4304"
+      ],
+      "at": 1793971251249,
+      "source": "rpc",
+      "outcome": "rejected",
+      "errorCode": -32500,
+      "checks": [
+        {
+          "rule": "gas-limit",
+          "verdict": "pass"
+        },
+        {
+          "rule": "prefix",
+          "verdict": "pass"
+        },
+        {
+          "rule": "structure",
+          "verdict": "pass"
+        },
+        {
+          "rule": "signature",
+          "verdict": "pass"
+        },
+        {
+          "rule": "simulation",
+          "verdict": "fail",
+          "detail": "prefix gas budget exceeded: 540100 > 100000 (MAX_VERIFY_GAS)"
+        },
+        {
+          "rule": "recent-root",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "trace-alignment",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "OP-061",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "execution",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "mempool",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "out-of-gas",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "OP-011",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "create",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "storage",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "COD-010",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "entrypoint-access",
+          "verdict": "skipped"
+        }
+      ],
+      "frames": [
+        {
+          "mode": 1,
+          "flags": 2,
+          "target": null,
+          "limits": {
+            "execution": "0x61a80",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000002000000000000000000000000001b7d32025f7ca633943bbcc9ec61a98ef66187b6a9059cbb000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002386f26fc10000000000000000000000000000000000000000000000000000000000000000000a2a44e075ce546475742ab882e39145d40864746c9e93e2d039db71380294f575224bbbf0a57931f49b20a47e14d93db4d12294946bce5d8a34120a3aa26c430400000000000000000000000000000000000000000000000000000000000000021dc0b8a38907b3d4a6283dad77ad8e846a7c51cd073391af41f0dd57dd30a04b238ffd4c23dcea405c9733068027cd14ab1e4adae637716f2406e53da8aaa28124d16c1902a1162cd5c70a4d65b7c903d002d2ac4f653adc418a154f4e21255127183647da03e898822bc2bb791b513b43cfb7edeeed324a74a74d80b15b83be1b7f6b85bb5b490fd880eb4da6319cea8302c72fbda026a0f21ca698a263f9cf1a0b8aa18892a20fd770c6c69080b528e3203f351d0e127c65fc1158c2c0676e1250815cfd57677dc41fd50de3c54e7383275792a8356c1bb5cd98d697910afb04d34f0bdfb8ec6c500c77a6df12e43efe00b7c2996951b58dbe94f1978b79bb"
+        },
+        {
+          "mode": 0,
+          "flags": 0,
+          "target": "0x7a628728ed1fab9dec56e23ebfd60156f4eac1c1",
+          "limits": {
+            "execution": "0x13880",
+            "state": "0x186a0"
+          },
+          "value": "0x0",
+          "data": "0x6e6774474fd069a4c766cd7c82c827f8375b4932240750e49344743fd4d903fd"
+        },
+        {
+          "mode": 1,
+          "flags": 1,
+          "target": "0x7a628728ed1fab9dec56e23ebfd60156f4eac1c1",
+          "limits": {
+            "execution": "0xea60",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x"
+        },
+        {
+          "mode": 2,
+          "flags": 0,
+          "target": "0x1b7d32025F7cA633943BbCC9Ec61a98ef66187b6",
+          "limits": {
+            "execution": "0x1d4c0",
+            "state": "0x30d40"
+          },
+          "value": "0x0",
+          "data": "0xa9059cbb0000000000000000000000008943545177806ed17b9f23f0a21ee5948ecaa77600000000000000000000000000000000000000000000000000038d7ea4c68000"
+        }
+      ],
+      "frameStatuses": [
+        "not-run",
+        "not-run",
+        "not-run",
+        "not-run"
+      ]
+    },
+    "observedAt": "2026-11-06T13:27:04.449200+00:00",
+    "classification": "public sponsor-devnet admission rejection, not mainnet transaction failure",
+    "portableReplay": "not established; signed payload and historical environment not captured",
+    "explorer": "https://explorer.altmempool.wtf/tx/0xb13027388242d52c475f4f505d017d2450acde4369299e1888b5d7b16b0a15ae?node=https%3A%2F%2Faltmempoolgateway.forshtat.com%2Frpc",
+    "detailResponse": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "hash": "0xb13027388242d52c475f4f505d017d2450acde4369299e1888b5d7b16b0a15ae",
+        "entry": null,
+        "admission": {
+          "id": 27,
+          "txHash": "0xb13027388242d52c475f4f505d017d2450acde4369299e1888b5d7b16b0a15ae",
+          "sender": "0xf7df2dba12b7915fe8690c3048f89c73f32b7db6",
+          "nonce": "0x0",
+          "nonceKeys": [
+            "0x224bbbf0a57931f49b20a47e14d93db4d12294946bce5d8a34120a3aa26c4304"
+          ],
+          "at": 1793971251249,
+          "source": "rpc",
+          "outcome": "rejected",
+          "errorCode": -32500,
+          "checks": [
+            {
+              "rule": "gas-limit",
+              "verdict": "pass"
+            },
+            {
+              "rule": "prefix",
+              "verdict": "pass"
+            },
+            {
+              "rule": "structure",
+              "verdict": "pass"
+            },
+            {
+              "rule": "signature",
+              "verdict": "pass"
+            },
+            {
+              "rule": "simulation",
+              "verdict": "fail",
+              "detail": "prefix gas budget exceeded: 540100 > 100000 (MAX_VERIFY_GAS)"
+            },
+            {
+              "rule": "recent-root",
+              "verdict": "skipped"
+            },
+            {
+              "rule": "trace-alignment",
+              "verdict": "skipped"
+            },
+            {
+              "rule": "OP-061",
+              "verdict": "skipped"
+            },
+            {
+              "rule": "execution",
+              "verdict": "skipped"
+            },
+            {
+              "rule": "mempool",
+              "verdict": "skipped"
+            },
+            {
+              "rule": "out-of-gas",
+              "verdict": "skipped"
+            },
+            {
+              "rule": "OP-011",
+              "verdict": "skipped"
+            },
+            {
+              "rule": "create",
+              "verdict": "skipped"
+            },
+            {
+              "rule": "storage",
+              "verdict": "skipped"
+            },
+            {
+              "rule": "COD-010",
+              "verdict": "skipped"
+            },
+            {
+              "rule": "entrypoint-access",
+              "verdict": "skipped"
+            }
+          ],
+          "frames": [
+            {
+              "mode": 1,
+              "flags": 2,
+              "target": null,
+              "limits": {
+                "execution": "0x61a80",
+                "state": "0x0"
+              },
+              "value": "0x0",
+              "data": "0x0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000002000000000000000000000000001b7d32025f7ca633943bbcc9ec61a98ef66187b6a9059cbb000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002386f26fc10000000000000000000000000000000000000000000000000000000000000000000a2a44e075ce546475742ab882e39145d40864746c9e93e2d039db71380294f575224bbbf0a57931f49b20a47e14d93db4d12294946bce5d8a34120a3aa26c430400000000000000000000000000000000000000000000000000000000000000021dc0b8a38907b3d4a6283dad77ad8e846a7c51cd073391af41f0dd57dd30a04b238ffd4c23dcea405c9733068027cd14ab1e4adae637716f2406e53da8aaa28124d16c1902a1162cd5c70a4d65b7c903d002d2ac4f653adc418a154f4e21255127183647da03e898822bc2bb791b513b43cfb7edeeed324a74a74d80b15b83be1b7f6b85bb5b490fd880eb4da6319cea8302c72fbda026a0f21ca698a263f9cf1a0b8aa18892a20fd770c6c69080b528e3203f351d0e127c65fc1158c2c0676e1250815cfd57677dc41fd50de3c54e7383275792a8356c1bb5cd98d697910afb04d34f0bdfb8ec6c500c77a6df12e43efe00b7c2996951b58dbe94f1978b79bb"
+            },
+            {
+              "mode": 0,
+              "flags": 0,
+              "target": "0x7a628728ed1fab9dec56e23ebfd60156f4eac1c1",
+              "limits": {
+                "execution": "0x13880",
+                "state": "0x186a0"
+              },
+              "value": "0x0",
+              "data": "0x6e6774474fd069a4c766cd7c82c827f8375b4932240750e49344743fd4d903fd"
+            },
+            {
+              "mode": 1,
+              "flags": 1,
+              "target": "0x7a628728ed1fab9dec56e23ebfd60156f4eac1c1",
+              "limits": {
+                "execution": "0xea60",
+                "state": "0x0"
+              },
+              "value": "0x0",
+              "data": "0x"
+            },
+            {
+              "mode": 2,
+              "flags": 0,
+              "target": "0x1b7d32025F7cA633943BbCC9Ec61a98ef66187b6",
+              "limits": {
+                "execution": "0x1d4c0",
+                "state": "0x30d40"
+              },
+              "value": "0x0",
+              "data": "0xa9059cbb0000000000000000000000008943545177806ed17b9f23f0a21ee5948ecaa77600000000000000000000000000000000000000000000000000038d7ea4c68000"
+            }
+          ],
+          "frameStatuses": [
+            "not-run",
+            "not-run",
+            "not-run",
+            "not-run"
+          ]
+        },
+        "events": [
+          {
+            "seq": 77,
+            "txHash": "0xb13027388242d52c475f4f505d017d2450acde4369299e1888b5d7b16b0a15ae",
+            "at": 1793971251257,
+            "kind": "rejected",
+            "reason": "prefix gas budget exceeded: 540100 > 100000 (MAX_VERIFY_GAS)"
+          }
+        ]
+      }
+    }
+  }
+]

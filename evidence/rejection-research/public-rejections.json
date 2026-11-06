@@ -1,0 +1,1757 @@
+{
+  "observedAt": "2026-11-06T13:27:04.449200+00:00",
+  "method": "skandha_explorer_listAdmissions",
+  "readOnly": true,
+  "results": [
+    {
+      "endpoint": "https://altmempool.forshtat.com/rpc",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "items": [
+            {
+              "id": 62,
+              "txHash": "0x10b104ffe0feea3b4065e5f16a10804e7cbef8400d59f1b23bfefdec3ce7a434",
+              "sender": "0x3bec38940c253155d4e3611909871fb7f593a189",
+              "nonce": "0x9",
+              "nonceKeys": [
+                "0x0"
+              ],
+              "at": 1793971489615,
+              "source": "rpc",
+              "outcome": "rejected",
+              "errorCode": -32500,
+              "checks": [
+                {
+                  "rule": "gas-limit",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "recent-root",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "prefix",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "structure",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "signature",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "simulation",
+                  "verdict": "fail",
+                  "detail": "validation frame 0: reverted with data 0x62e1ca7d"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-061",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "execution",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "mempool",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-011",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "create",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "storage",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "COD-010",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "verdict": "skipped"
+                }
+              ],
+              "frames": [
+                {
+                  "mode": 1,
+                  "flags": 3,
+                  "target": null,
+                  "limits": {
+                    "execution": "0x17b4c",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0xbf5d0dfc"
+                },
+                {
+                  "mode": 2,
+                  "flags": 0,
+                  "target": null,
+                  "limits": {
+                    "execution": "0x493e0",
+                    "state": "0x61a80"
+                  },
+                  "value": "0x0",
+                  "data": "0xb61d27f60000000000000000000000008943545177806ed17b9f23f0a21ee5948ecaa7760000000000000000000000000000000000000000000000000dbaf587fa2eb40000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000"
+                }
+              ],
+              "frameStatuses": [
+                "not-run",
+                "not-run"
+              ]
+            },
+            {
+              "id": 61,
+              "txHash": "0xce09b9d5bc0afcd02db650b098c3e6e6f18e7c77b2fd1233afd3c6b7e0d1d546",
+              "sender": "0x3bec38940c253155d4e3611909871fb7f593a189",
+              "nonce": "0x9",
+              "nonceKeys": [
+                "0x0"
+              ],
+              "at": 1793971480138,
+              "source": "rpc",
+              "outcome": "rejected",
+              "errorCode": -32500,
+              "checks": [
+                {
+                  "rule": "gas-limit",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "recent-root",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "prefix",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "structure",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "signature",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "simulation",
+                  "verdict": "fail",
+                  "detail": "validation frame 0: reverted with data 0x62e1ca7d"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-061",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "execution",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "mempool",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-011",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "create",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "storage",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "COD-010",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "verdict": "skipped"
+                }
+              ],
+              "frames": [
+                {
+                  "mode": 1,
+                  "flags": 3,
+                  "target": null,
+                  "limits": {
+                    "execution": "0x17b4c",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0xbf5d0dfc"
+                },
+                {
+                  "mode": 2,
+                  "flags": 0,
+                  "target": null,
+                  "limits": {
+                    "execution": "0x493e0",
+                    "state": "0x61a80"
+                  },
+                  "value": "0x0",
+                  "data": "0xb61d27f60000000000000000000000008943545177806ed17b9f23f0a21ee5948ecaa7760000000000000000000000000000000000000000000000000dbaf587fa2eb40000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000"
+                }
+              ],
+              "frameStatuses": [
+                "not-run",
+                "not-run"
+              ]
+            },
+            {
+              "id": 40,
+              "txHash": "0x3d2026c07a49692e363a61db13a9af4b4ddfc4ee689316302a0bbc86aa16c63e",
+              "sender": "0x5Ec8F5Cc274A65FDA9dFEEdf26d9C6171CD14931",
+              "nonce": "0x9",
+              "nonceKeys": [
+                "0x0"
+              ],
+              "at": 1793970059483,
+              "source": "rpc",
+              "outcome": "rejected",
+              "errorCode": -32500,
+              "checks": [
+                {
+                  "rule": "gas-limit",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "recent-root",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "prefix",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "structure",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "signature",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "simulation",
+                  "verdict": "fail",
+                  "detail": "validation frame 0: reverted with data 0x41dbb51e"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-061",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "execution",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "mempool",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-011",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "create",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "storage",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "COD-010",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "verdict": "skipped"
+                }
+              ],
+              "frames": [
+                {
+                  "mode": 1,
+                  "flags": 2,
+                  "target": null,
+                  "limits": {
+                    "execution": "0xb3b0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 0,
+                  "flags": 0,
+                  "target": "0x773F357bfc5734B33b93826307826AC6D7664209",
+                  "limits": {
+                    "execution": "0x84d0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x1dedc6f7"
+                },
+                {
+                  "mode": 1,
+                  "flags": 1,
+                  "target": "0x773F357bfc5734B33b93826307826AC6D7664209",
+                  "limits": {
+                    "execution": "0x36b0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 2,
+                  "flags": 0,
+                  "target": null,
+                  "limits": {
+                    "execution": "0xdbba0",
+                    "state": "0x6ddd0"
+                  },
+                  "value": "0x0",
+                  "data": "0x003578250000000000000000000000008ecb4bd77477ea799ab4b555b5915d370195cba800000000000000000000000095db61548865f4a1a0c0554afe3295b9f7f85a1c00000000000000000000000000000000000000000000000000000000004c4b40000000000000000000000000000000000000000000000000000000006aedd0b500000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000000801135fbad3789d0abe2ab23b6ee77e2ad4e33731b1196b7330d98ebd3d95ee314b4813170769ee767f491dbee779b5eb53367c0d8e01a4d970603247eab9561e1052fe091fd14295d9797bcf321049c69a2b0f000423865e834b4ef9b7bac3d1a647e40c3f4a22b727d4dfb4b2fd2ce6af637509d0cc51ca8a483b16f6cd753f300000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000017000000000000000000000000000000000000000000000000000000000000000130468f11263aa5bb30be911c3ac7cdbef5bcb5a631c43a2b5b17cd13510bed356c1fc92db758229c3be578088f339d1b745fe6eeeebc0e0ec3a4446957301f580000000000000000000000000000000000000000000000000000000000000025ec77b801d06d4b3547a6b3bdb33bac0e67958d0c25ba71f3719babbc0e4036fb050000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000867b2274797065223a22776562617574686e2e676574222c226368616c6c656e6765223a22647173536a4e615952394e4c5447635176715978776946745a79754c4a57506f784d4e33375a5941465063222c226f726967696e223a2268747470733a2f2f746170326574682e6c6f63616c222c2263726f73734f726967696e223a66616c73657d0000000000000000000000000000000000000000000000000000"
+                }
+              ],
+              "frameStatuses": [
+                "not-run",
+                "not-run",
+                "not-run",
+                "not-run"
+              ]
+            },
+            {
+              "id": 39,
+              "txHash": "0xe8df86a4c319b8d152b610a211d252104b44c480dac29d139f72a2511e5dc5f8",
+              "sender": "0x5Ec8F5Cc274A65FDA9dFEEdf26d9C6171CD14931",
+              "nonce": "0x9",
+              "nonceKeys": [
+                "0x0"
+              ],
+              "at": 1793970047354,
+              "source": "rpc",
+              "outcome": "rejected",
+              "errorCode": -32500,
+              "checks": [
+                {
+                  "rule": "gas-limit",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "recent-root",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "prefix",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "structure",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "signature",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "simulation",
+                  "verdict": "fail",
+                  "detail": "validation frame 0: reverted with data 0xe383abaf"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-061",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "execution",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "mempool",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-011",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "create",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "storage",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "COD-010",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "verdict": "skipped"
+                }
+              ],
+              "frames": [
+                {
+                  "mode": 1,
+                  "flags": 2,
+                  "target": null,
+                  "limits": {
+                    "execution": "0xb3b0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 0,
+                  "flags": 0,
+                  "target": "0x773F357bfc5734B33b93826307826AC6D7664209",
+                  "limits": {
+                    "execution": "0x84d0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x1dedc6f7"
+                },
+                {
+                  "mode": 1,
+                  "flags": 1,
+                  "target": "0x773F357bfc5734B33b93826307826AC6D7664209",
+                  "limits": {
+                    "execution": "0x36b0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 2,
+                  "flags": 0,
+                  "target": "0x8eCB4Bd77477eA799AB4b555b5915d370195cba8",
+                  "limits": {
+                    "execution": "0x186a0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0xa9059cbb00000000000000000000000095db61548865f4a1a0c0554afe3295b9f7f85a1c000000000000000000000000000000000000000000000000000000001dcd6500"
+                },
+                {
+                  "mode": 2,
+                  "flags": 0,
+                  "target": null,
+                  "limits": {
+                    "execution": "0xdbba0",
+                    "state": "0x6ddd0"
+                  },
+                  "value": "0x0",
+                  "data": "0x003578250000000000000000000000008ecb4bd77477ea799ab4b555b5915d370195cba800000000000000000000000095db61548865f4a1a0c0554afe3295b9f7f85a1c00000000000000000000000000000000000000000000000000000000004c4b40000000000000000000000000000000000000000000000000000000006aedd0a900000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000000160000000000000000000000000000000000000000000000000000000000000008080bf82a3ce304e712d2abd3616dd8c614746f3422e1284657ddd7b4377f726f84161d881c7aef76d9dadd49a114ad704300f5c8171fd7ee63693e87f49961c1da4ca748b37242847ce9595eabcc4a122e6d3587f992790cba327d7dc4321a8f3401e930bc84b506db7125dadcd0ac6dcfa2529238f1d18901ac6a24e58a4495c00000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000000170000000000000000000000000000000000000000000000000000000000000001032941ab7435890388c17afea087b5d4b0168090abac5b764048fc8b0384aab3180707b95dcb40dbf33d1d95094f7964733c60b343cf9511210a18d9f4b878a00000000000000000000000000000000000000000000000000000000000000025dc9033e4a3a7ec6a75bcc5cdc1ff0e204d264aaf34dc38b2e494384719f16665050000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000867b2274797065223a22776562617574686e2e676574222c226368616c6c656e6765223a224630625139574b796a303061696344634c3366436567755f57423244766e32493734695166537974573549222c226f726967696e223a2268747470733a2f2f746170326574682e6c6f63616c222c2263726f73734f726967696e223a66616c73657d0000000000000000000000000000000000000000000000000000"
+                }
+              ],
+              "frameStatuses": [
+                "not-run",
+                "not-run",
+                "not-run",
+                "not-run",
+                "not-run"
+              ]
+            },
+            {
+              "id": 38,
+              "txHash": "0xfa4425461d2ecc41b1f724cff1519081c409879c031f402b3d81b10d3b141aa0",
+              "sender": "0x5Ec8F5Cc274A65FDA9dFEEdf26d9C6171CD14931",
+              "nonce": "0x9",
+              "nonceKeys": [
+                "0x0"
+              ],
+              "at": 1793970045231,
+              "source": "rpc",
+              "outcome": "rejected",
+              "errorCode": -32500,
+              "checks": [
+                {
+                  "rule": "gas-limit",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "recent-root",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "prefix",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "structure",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "signature",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "simulation",
+                  "verdict": "fail",
+                  "detail": "validation frame 0: reverted with data 0xa98d9456"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-061",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "execution",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "mempool",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-011",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "create",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "storage",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "COD-010",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "verdict": "skipped"
+                }
+              ],
+              "frames": [
+                {
+                  "mode": 1,
+                  "flags": 2,
+                  "target": null,
+                  "limits": {
+                    "execution": "0xb3b0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 0,
+                  "flags": 0,
+                  "target": "0x773F357bfc5734B33b93826307826AC6D7664209",
+                  "limits": {
+                    "execution": "0x84d0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x1dedc6f7"
+                },
+                {
+                  "mode": 1,
+                  "flags": 1,
+                  "target": "0x773F357bfc5734B33b93826307826AC6D7664209",
+                  "limits": {
+                    "execution": "0x36b0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 2,
+                  "flags": 0,
+                  "target": null,
+                  "limits": {
+                    "execution": "0xdbba0",
+                    "state": "0x6ddd0"
+                  },
+                  "value": "0x0",
+                  "data": "0x003578250000000000000000000000008ecb4bd77477ea799ab4b555b5915d370195cba800000000000000000000000095db61548865f4a1a0c0554afe3295b9f7f85a1c00000000000000000000000000000000000000000000000000000000004c4b40000000000000000000000000000000000000000000000000000000006aedd0a700000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000000806821a2a91a66e1885d475ca800507fbd0bd609ccc48382fc90c0e88718a9604ff12609ef3bdf52fb8ca27e1d4e9a37bb292a35019eba28569df08644bd3fb368997bc3994d5469d9b4d10e2cc22bb4c8c041af2274dacd79502343de4b01f4d127f3d27be0046b2e8516c725912c6e7cd400f78ef388ef20e9d9199ef377639b00000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000001700000000000000000000000000000000000000000000000000000000000000018496d5c7cdb6a56463eaa30f2c07ea048f25fddb67b06972d16b28d0c856de356b209b336311e82b9ed9ad8526b74139dda307ca41cc3b375ac5363ae7e63fa40000000000000000000000000000000000000000000000000000000000000025b40578de8f13dac3e071b1244b29a4c6c4e34de1fd06608fc3d45d286c9b185d050000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000867b2274797065223a22776562617574686e2e676574222c226368616c6c656e6765223a22494a584f6d434c30616c4c6d4565517a68773147665a4a43503941634e4d7a75637748755a484b55373151222c226f726967696e223a2268747470733a2f2f746170326574682e6c6f63616c222c2263726f73734f726967696e223a66616c73657d0000000000000000000000000000000000000000000000000000"
+                }
+              ],
+              "frameStatuses": [
+                "not-run",
+                "not-run",
+                "not-run",
+                "not-run"
+              ]
+            },
+            {
+              "id": 37,
+              "txHash": "0xc68f755b503353e9a839a4b069d7b2417ea465afdedccc0d6faa5737268f7065",
+              "sender": "0x5Ec8F5Cc274A65FDA9dFEEdf26d9C6171CD14931",
+              "nonce": "0x9",
+              "nonceKeys": [
+                "0x0"
+              ],
+              "at": 1793970043173,
+              "source": "rpc",
+              "outcome": "rejected",
+              "errorCode": -32500,
+              "checks": [
+                {
+                  "rule": "gas-limit",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "recent-root",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "prefix",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "structure",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "signature",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "simulation",
+                  "verdict": "fail",
+                  "detail": "validation frame 0: reverted with data 0xb92612ed"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-061",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "execution",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "mempool",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-011",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "create",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "storage",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "COD-010",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "verdict": "skipped"
+                }
+              ],
+              "frames": [
+                {
+                  "mode": 1,
+                  "flags": 2,
+                  "target": null,
+                  "limits": {
+                    "execution": "0xb3b0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 0,
+                  "flags": 0,
+                  "target": "0x773F357bfc5734B33b93826307826AC6D7664209",
+                  "limits": {
+                    "execution": "0x84d0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x1dedc6f7"
+                },
+                {
+                  "mode": 1,
+                  "flags": 1,
+                  "target": "0x773F357bfc5734B33b93826307826AC6D7664209",
+                  "limits": {
+                    "execution": "0x36b0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 2,
+                  "flags": 0,
+                  "target": null,
+                  "limits": {
+                    "execution": "0xdbba0",
+                    "state": "0x6ddd0"
+                  },
+                  "value": "0x0",
+                  "data": "0x003578250000000000000000000000008ecb4bd77477ea799ab4b555b5915d370195cba800000000000000000000000095db61548865f4a1a0c0554afe3295b9f7f85a1c00000000000000000000000000000000000000000000000000000000030a32c0000000000000000000000000000000000000000000000000000000006aedd0a400000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000000160000000000000000000000000000000000000000000000000000000000000008073af0c2a6fcce549eba194639a2bbad0073ef7ffd67cd931912554ca97cc9e6f83352602d97387ca9e0806a4b83c64e73fd939fb4b2d31c4bd5a6902a7f653300494dddf82705d1756e8140ef8a530f781c058d75206d53ae496dcfa8ac7b9bc9eaedf65c2223fb832a5f463cfb0c5a5823b2c87d72599315fb85d68abeac2ba00000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000000170000000000000000000000000000000000000000000000000000000000000001a9bc4a7eda68ab5d99645e65653c954b141ab9a737053f0b03f15f827617c9f0632c77b4ebe476ae2e774acde44a4b13c2e21b385a111fbffc7ec08c13c52fbe0000000000000000000000000000000000000000000000000000000000000025a7f1ee716cc1e17f087303ef0584cc604c479d2d1b5185d9db08d3d1c19f195d050000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000867b2274797065223a22776562617574686e2e676574222c226368616c6c656e6765223a226e4b453650464e384c3849676f6e5069325676777a69575448714c5a3955305f64594c6965374f496d6977222c226f726967696e223a2268747470733a2f2f746170326574682e6c6f63616c222c2263726f73734f726967696e223a66616c73657d0000000000000000000000000000000000000000000000000000"
+                }
+              ],
+              "frameStatuses": [
+                "not-run",
+                "not-run",
+                "not-run",
+                "not-run"
+              ]
+            },
+            {
+              "id": 35,
+              "txHash": "0x4b2f4d82b298188c20fe178204d430192470f64bb3780dcdc2dd223abddc5cfd",
+              "sender": "0x5Ec8F5Cc274A65FDA9dFEEdf26d9C6171CD14931",
+              "nonce": "0x8",
+              "nonceKeys": [
+                "0x0"
+              ],
+              "at": 1793970019563,
+              "source": "rpc",
+              "outcome": "rejected",
+              "errorCode": -32502,
+              "checks": [
+                {
+                  "rule": "gas-limit",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "recent-root",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "prefix",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "structure",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "signature",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "simulation",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "OP-061",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "execution",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "OP-011",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "create",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "storage",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "COD-010",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "OP-011",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "create",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "storage",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "fail",
+                  "detail": "unstaked payer accessed payer slot 0x0000000000000000000000000000000000000000000000000000000000000000"
+                },
+                {
+                  "rule": "COD-010",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "mempool",
+                  "verdict": "skipped"
+                }
+              ],
+              "frames": [
+                {
+                  "mode": 1,
+                  "flags": 2,
+                  "target": null,
+                  "limits": {
+                    "execution": "0xb3b0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 0,
+                  "flags": 0,
+                  "target": "0x7d7EC6E60F24595530bf7E7521B1ab3E10A1fc17",
+                  "limits": {
+                    "execution": "0x84d0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x1dedc6f7"
+                },
+                {
+                  "mode": 1,
+                  "flags": 1,
+                  "target": "0x7d7EC6E60F24595530bf7E7521B1ab3E10A1fc17",
+                  "limits": {
+                    "execution": "0x36b0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 2,
+                  "flags": 0,
+                  "target": null,
+                  "limits": {
+                    "execution": "0xdbba0",
+                    "state": "0x6ddd0"
+                  },
+                  "value": "0x0",
+                  "data": "0x003578250000000000000000000000008ecb4bd77477ea799ab4b555b5915d370195cba800000000000000000000000095db61548865f4a1a0c0554afe3295b9f7f85a1c00000000000000000000000000000000000000000000000000000000004c4b40000000000000000000000000000000000000000000000000000000006aedd08e00000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000001600000000000000000000000000000000000000000000000000000000000000080543f52fb4b2988bdac37291c5a1472eb5bda2136281d77be0620aa0b12e0d3defda5b90adfa47a95a7825b7d20620ef502557dc67c8841202a6586ced59fe958b8f4bc0422c050e050d6a5ec749babc6770351fe9a229e419f85571e396c7cb05664b93abdea2bf46861feed8a607ee61624d55efb22b440f1a4d53825a1a0c000000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000000170000000000000000000000000000000000000000000000000000000000000001418b740256cc0bf4b0b14fa956ba99e939b3c34bf5314f8a8de3f479c44d251c719a706bae59bbef3b72baeab910639047c44f5b16eaaa459c2b9be40640707a0000000000000000000000000000000000000000000000000000000000000025e3cb8a8ccc4bdeba7cf6cb4d6dc14d2fecb69434e1f11e7e8d6ae6c5af745fc4050000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000867b2274797065223a22776562617574686e2e676574222c226368616c6c656e6765223a22733132726d564b66714e544d57763164536a6a614530644c6d655447513831654856554433566d762d544d222c226f726967696e223a2268747470733a2f2f746170326574682e6c6f63616c222c2263726f73734f726967696e223a66616c73657d0000000000000000000000000000000000000000000000000000"
+                }
+              ],
+              "frameStatuses": [
+                "success",
+                "success",
+                "success",
+                "success"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "endpoint": "https://altmempoolgateway.forshtat.com/rpc",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "items": [
+            {
+              "id": 30,
+              "txHash": "0xf5b65c96057977aaab766eb055520a001b22662c8dffef555068e7e56899ef09",
+              "sender": "0xf7df2dba12b7915fe8690c3048f89c73f32b7db6",
+              "nonce": "0x0",
+              "nonceKeys": [
+                "0x1d829c7ac57516776215f7594e18d733eaf6da1aa90e17f936b8360249a94d0"
+              ],
+              "at": 1793971571570,
+              "source": "rpc",
+              "outcome": "rejected",
+              "errorCode": -32500,
+              "checks": [
+                {
+                  "rule": "gas-limit",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "prefix",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "structure",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "signature",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "simulation",
+                  "verdict": "fail",
+                  "detail": "validation frame 0: reverted with data 0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000023416e6f6e41493a20726f6f742066726f6d20616e206f6c642067656e65726174696f6e0000000000000000000000000000000000000000000000000000000000"
+                },
+                {
+                  "rule": "recent-root",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-061",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "execution",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "mempool",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-011",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "create",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "storage",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "COD-010",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "verdict": "skipped"
+                }
+              ],
+              "frames": [
+                {
+                  "mode": 1,
+                  "flags": 2,
+                  "target": null,
+                  "limits": {
+                    "execution": "0x61a80",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000002000000000000000000000000001b7d32025f7ca633943bbcc9ec61a98ef66187b6a9059cbb000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002386f26fc10000000000000000000000000000000000000000000000000000000000000000000a07dfa67616e133e6c7afa77e86bb3ab3300b4da910a84af555a8fe8f3a03f4df01d829c7ac57516776215f7594e18d733eaf6da1aa90e17f936b8360249a94d000000000000000000000000000000000000000000000000000000000000000052380074b40ab5fe9668f35b6b0cb1a39840f49f2c0c3d1f0894478a68c65b7982a4cd88566bd7b81aaeae9d235fa80ff9d30c66356c2839bab50f1213dab4f6a04e4a3974ae2dc94a537e6e6438dc29aec464a8287b4ed01f409b2b1def6a4b8021e5133746cfe49086871f35059cc96cbedda0bf0ea447e0986821c62ebf15f1173cbf5123195c2cf9758d0aaf482dfdb97b0a777a4cd601b5f00815b751c4b01de758bfc70057b235f59c14ceeddaa88d3cd970171ce4f5d838c83986328c90c676bad7146f5093ed736b2a9eb5ff6451c984cec349751a03820030385c1f3079f38ac7cbf35bf439c07333d11c7e00828a42322eacc2bf57754d59302a613"
+                },
+                {
+                  "mode": 0,
+                  "flags": 0,
+                  "target": "0x7a628728ed1fab9dec56e23ebfd60156f4eac1c1",
+                  "limits": {
+                    "execution": "0x13880",
+                    "state": "0x186a0"
+                  },
+                  "value": "0x0",
+                  "data": "0x6e6774474fd069a4c766cd7c82c827f8375b4932240750e49344743fd4d903fd"
+                },
+                {
+                  "mode": 1,
+                  "flags": 1,
+                  "target": "0x7a628728ed1fab9dec56e23ebfd60156f4eac1c1",
+                  "limits": {
+                    "execution": "0xea60",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 2,
+                  "flags": 0,
+                  "target": "0x1b7d32025F7cA633943BbCC9Ec61a98ef66187b6",
+                  "limits": {
+                    "execution": "0x1d4c0",
+                    "state": "0x30d40"
+                  },
+                  "value": "0x0",
+                  "data": "0xa9059cbb0000000000000000000000008943545177806ed17b9f23f0a21ee5948ecaa77600000000000000000000000000000000000000000000000000038d7ea4c68000"
+                }
+              ],
+              "frameStatuses": [
+                "not-run",
+                "not-run",
+                "not-run",
+                "not-run"
+              ]
+            },
+            {
+              "id": 27,
+              "txHash": "0xb13027388242d52c475f4f505d017d2450acde4369299e1888b5d7b16b0a15ae",
+              "sender": "0xf7df2dba12b7915fe8690c3048f89c73f32b7db6",
+              "nonce": "0x0",
+              "nonceKeys": [
+                "0x224bbbf0a57931f49b20a47e14d93db4d12294946bce5d8a34120a3aa26c4304"
+              ],
+              "at": 1793971251249,
+              "source": "rpc",
+              "outcome": "rejected",
+              "errorCode": -32500,
+              "checks": [
+                {
+                  "rule": "gas-limit",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "prefix",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "structure",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "signature",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "simulation",
+                  "verdict": "fail",
+                  "detail": "prefix gas budget exceeded: 540100 > 100000 (MAX_VERIFY_GAS)"
+                },
+                {
+                  "rule": "recent-root",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-061",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "execution",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "mempool",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-011",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "create",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "storage",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "COD-010",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "verdict": "skipped"
+                }
+              ],
+              "frames": [
+                {
+                  "mode": 1,
+                  "flags": 2,
+                  "target": null,
+                  "limits": {
+                    "execution": "0x61a80",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000002000000000000000000000000001b7d32025f7ca633943bbcc9ec61a98ef66187b6a9059cbb000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002386f26fc10000000000000000000000000000000000000000000000000000000000000000000a2a44e075ce546475742ab882e39145d40864746c9e93e2d039db71380294f575224bbbf0a57931f49b20a47e14d93db4d12294946bce5d8a34120a3aa26c430400000000000000000000000000000000000000000000000000000000000000021dc0b8a38907b3d4a6283dad77ad8e846a7c51cd073391af41f0dd57dd30a04b238ffd4c23dcea405c9733068027cd14ab1e4adae637716f2406e53da8aaa28124d16c1902a1162cd5c70a4d65b7c903d002d2ac4f653adc418a154f4e21255127183647da03e898822bc2bb791b513b43cfb7edeeed324a74a74d80b15b83be1b7f6b85bb5b490fd880eb4da6319cea8302c72fbda026a0f21ca698a263f9cf1a0b8aa18892a20fd770c6c69080b528e3203f351d0e127c65fc1158c2c0676e1250815cfd57677dc41fd50de3c54e7383275792a8356c1bb5cd98d697910afb04d34f0bdfb8ec6c500c77a6df12e43efe00b7c2996951b58dbe94f1978b79bb"
+                },
+                {
+                  "mode": 0,
+                  "flags": 0,
+                  "target": "0x7a628728ed1fab9dec56e23ebfd60156f4eac1c1",
+                  "limits": {
+                    "execution": "0x13880",
+                    "state": "0x186a0"
+                  },
+                  "value": "0x0",
+                  "data": "0x6e6774474fd069a4c766cd7c82c827f8375b4932240750e49344743fd4d903fd"
+                },
+                {
+                  "mode": 1,
+                  "flags": 1,
+                  "target": "0x7a628728ed1fab9dec56e23ebfd60156f4eac1c1",
+                  "limits": {
+                    "execution": "0xea60",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 2,
+                  "flags": 0,
+                  "target": "0x1b7d32025F7cA633943BbCC9Ec61a98ef66187b6",
+                  "limits": {
+                    "execution": "0x1d4c0",
+                    "state": "0x30d40"
+                  },
+                  "value": "0x0",
+                  "data": "0xa9059cbb0000000000000000000000008943545177806ed17b9f23f0a21ee5948ecaa77600000000000000000000000000000000000000000000000000038d7ea4c68000"
+                }
+              ],
+              "frameStatuses": [
+                "not-run",
+                "not-run",
+                "not-run",
+                "not-run"
+              ]
+            },
+            {
+              "id": 22,
+              "txHash": "0x7596a580faf42632298033a71e1f5d5246942f8aa3f00ab9c08fc53b8310036f",
+              "sender": "0xf7df2dba12b7915fe8690c3048f89c73f32b7db6",
+              "nonce": "0x0",
+              "nonceKeys": [
+                "0x7709c6d6fe25e9a6deebcc18b3bbbcad0d7696e7"
+              ],
+              "at": 1793970558211,
+              "source": "rpc",
+              "outcome": "rejected",
+              "errorCode": -32500,
+              "checks": [
+                {
+                  "rule": "gas-limit",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "recent-root",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "prefix",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "structure",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "signature",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "simulation",
+                  "verdict": "fail",
+                  "detail": "validation frame 2: reverted"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-061",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "execution",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "mempool",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "OP-011",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "create",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "storage",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "COD-010",
+                  "verdict": "skipped"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "verdict": "skipped"
+                }
+              ],
+              "frames": [
+                {
+                  "mode": 1,
+                  "flags": 2,
+                  "target": null,
+                  "limits": {
+                    "execution": "0x1d4c0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000800000000000000000000000001b7d32025f7ca633943bbcc9ec61a98ef66187b6a9059cbb000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002386f26fc10000"
+                },
+                {
+                  "mode": 0,
+                  "flags": 0,
+                  "target": "0x6b03493b3cd64a1ae3cb9d5893a0406e7d53df09",
+                  "limits": {
+                    "execution": "0xea60",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x6e6774474fd069a4c766cd7c82c827f8375b4932240750e49344743fd4d903fd"
+                },
+                {
+                  "mode": 1,
+                  "flags": 1,
+                  "target": "0x6b03493b3cd64a1ae3cb9d5893a0406e7d53df09",
+                  "limits": {
+                    "execution": "0x9c40",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 2,
+                  "flags": 0,
+                  "target": "0x1b7d32025F7cA633943BbCC9Ec61a98ef66187b6",
+                  "limits": {
+                    "execution": "0x1d4c0",
+                    "state": "0x30d40"
+                  },
+                  "value": "0x0",
+                  "data": "0xa9059cbb0000000000000000000000008943545177806ed17b9f23f0a21ee5948ecaa77600000000000000000000000000000000000000000000000000038d7ea4c68000"
+                }
+              ],
+              "frameStatuses": [
+                "not-run",
+                "not-run",
+                "not-run",
+                "not-run"
+              ]
+            },
+            {
+              "id": 9,
+              "txHash": "0xc4cb2503873c3b17a0c2e037076c2e709d92f02ac8365a784a6ff2dcd76ae5bd",
+              "sender": "0x6BD61141a8188b7656a01DE01F649B2dC1ecc15C",
+              "nonce": "0x8",
+              "nonceKeys": [
+                "0x0"
+              ],
+              "at": 1793968807827,
+              "source": "rpc",
+              "outcome": "rejected",
+              "errorCode": -32502,
+              "checks": [
+                {
+                  "rule": "gas-limit",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "recent-root",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "prefix",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "structure",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "signature",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "simulation",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "OP-061",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "execution",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "OP-011",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "create",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "storage",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "COD-010",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "OP-011",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "create",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "storage",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "fail",
+                  "detail": "unstaked payer accessed payer slot 0x0000000000000000000000000000000000000000000000000000000000000000"
+                },
+                {
+                  "rule": "COD-010",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "mempool",
+                  "verdict": "skipped"
+                }
+              ],
+              "frames": [
+                {
+                  "mode": 1,
+                  "flags": 2,
+                  "target": null,
+                  "limits": {
+                    "execution": "0xb3b0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 0,
+                  "flags": 0,
+                  "target": "0x7d7EC6E60F24595530bf7E7521B1ab3E10A1fc17",
+                  "limits": {
+                    "execution": "0x84d0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x1dedc6f7"
+                },
+                {
+                  "mode": 1,
+                  "flags": 1,
+                  "target": "0x7d7EC6E60F24595530bf7E7521B1ab3E10A1fc17",
+                  "limits": {
+                    "execution": "0x36b0",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 2,
+                  "flags": 0,
+                  "target": null,
+                  "limits": {
+                    "execution": "0xdbba0",
+                    "state": "0x6ddd0"
+                  },
+                  "value": "0x0",
+                  "data": "0x003578250000000000000000000000008ecb4bd77477ea799ab4b555b5915d370195cba80000000000000000000000006c7c491ef0ca13a2488124c6f7b0d6dacf3ca4a500000000000000000000000000000000000000000000000000000000004c4b40000000000000000000000000000000000000000000000000000000006aedcbd200000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000000807f603efc013f1d3f75641fe8b4affe86084649e1b5607fb464f381dcc713a63b9f5182f272fe1c831008963e2dd5bc00190fc10a8add2cef89c27be46bdf2a7101e0bc538429aabd747d39ba793becce01acedd2a56dd17d1245e206be2dd1a99c15a503b66109bedac48827fada05a27621bac788f42088e9ba7856c2e1783a00000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000000170000000000000000000000000000000000000000000000000000000000000001c6f1328c0b3c7fa7f528668ad7bcba2e8a20f50da7a334546aae56953932938e3ba807d5b25a7344377556c061fef300e6961a8a4e4943dedbabcf38280255e10000000000000000000000000000000000000000000000000000000000000025f8fe8be4b59ebf41f807bbd074c0f5416a6c86232c0bae4b348aad45bb652115050000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000867b2274797065223a22776562617574686e2e676574222c226368616c6c656e6765223a226875732d505f6f516a4670744e4f73695658593975694c3657426b5a4559544a4244556455337062493055222c226f726967696e223a2268747470733a2f2f746170326574682e6c6f63616c222c2263726f73734f726967696e223a66616c73657d0000000000000000000000000000000000000000000000000000"
+                }
+              ],
+              "frameStatuses": [
+                "success",
+                "success",
+                "success",
+                "success"
+              ]
+            },
+            {
+              "id": 8,
+              "txHash": "0x0ae869f78a4b80a07d03b0d0eb46868b27ee6fdecfc888098772461bd0f5acae",
+              "sender": "0xdfa2765aba66e1949eec8851d99e3829eb6c4276",
+              "nonce": "0x32",
+              "nonceKeys": [
+                "0x0"
+              ],
+              "at": 1793968412659,
+              "source": "rpc",
+              "outcome": "rejected",
+              "errorCode": -32602,
+              "checks": [
+                {
+                  "rule": "gas-limit",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "recent-root",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "prefix",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "structure",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "signature",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "simulation",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "OP-061",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "execution",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "OP-011",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "create",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "storage",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "COD-010",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "frameIndex": 0,
+                  "entity": "sender",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "trace-alignment",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "out-of-gas",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "OP-011",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "create",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "storage",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "COD-010",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "entrypoint-access",
+                  "frameIndex": 1,
+                  "entity": "payer",
+                  "verdict": "pass"
+                },
+                {
+                  "rule": "mempool",
+                  "verdict": "fail",
+                  "detail": "Frame transaction already known"
+                }
+              ],
+              "frames": [
+                {
+                  "mode": 1,
+                  "flags": 2,
+                  "target": null,
+                  "limits": {
+                    "execution": "0x15f90",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 1,
+                  "flags": 1,
+                  "target": "0xee2271689fd1ea51f9953b31fa8fd85002e35ba6",
+                  "limits": {
+                    "execution": "0x26ac",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x"
+                },
+                {
+                  "mode": 2,
+                  "flags": 0,
+                  "target": "0xde1a12a99add47ccc79b1ccd2eb48f90b0b551d1",
+                  "limits": {
+                    "execution": "0xc350",
+                    "state": "0x186a0"
+                  },
+                  "value": "0x0",
+                  "data": "0x6e5141ba00000000000000000000000000000000000000000000000000000000000000310000000000000000000000000000000000000000000000000000000000000a7b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000017a69000b73c50000000000000a7b000000000000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000002439316331363165652d623966302d343331662d393230342d35633633653133313237353000000000000000000000000000000000000000000000000000000000"
+                },
+                {
+                  "mode": 0,
+                  "flags": 0,
+                  "target": "0xee2271689fd1ea51f9953b31fa8fd85002e35ba6",
+                  "limits": {
+                    "execution": "0x9c40",
+                    "state": "0x0"
+                  },
+                  "value": "0x0",
+                  "data": "0x11da60b4"
+                }
+              ],
+              "frameStatuses": [
+                "success",
+                "success",
+                "success",
+                "success"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
