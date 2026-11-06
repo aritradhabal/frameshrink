@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.2",
+  "reviewedAt": "2026-11-06T19:00:47.961174+00:00",
+  "requestedAgreement": 0.6,
+  "reviewers": [
+    {
+      "id": "review_visual",
+      "scope": "palette, wording, terminal hierarchy, native PTY screenshots",
+      "vote": "approve",
+      "blockingFindings": []
+    },
+    {
+      "id": "review_flow",
+      "scope": "candidate/retry clutter, confirmations, funding and receipt flow",
+      "vote": "approve",
+      "blockingFindings": []
+    },
+    {
+      "id": "review_technical",
+      "scope": "browser spawning, output modes, runtime ownership, packaging",
+      "vote": "approve",
+      "blockingFindings": []
+    }
+  ],
+  "approved": 3,
+  "total": 3,
+  "agreement": 1.0,
+  "reviewRounds": [
+    "Independent issue discovery",
+    "Implementation and focused checks",
+    "Independent source re-review; actual terminal screenshot review for visual reviewer"
+  ],
+  "implemented": [
+    "Bound candidate progress to one transient terminal row",
+    "Clear repeated preview, funding and receipt prompt answers",
+    "Retain explicit deployment/submission confirmations and stage summaries",
+    "Open each receipt-confirmed corrected transaction once; keep rejection URLs available without interrupting debugging",
+    "Add --no-open and FRAMESHRINK_NO_OPEN plus noninteractive/CI guards",
+    "Launch validated browser URLs without a shell, with timeout and nonfatal fallback",
+    "Use CONFIRMED for verified execution and neutral normal-search outcomes",
+    "Show named terminal corrections, exact masks in editor preview",
+    "Use terminal-native dim text; suppress animation in dumb/CI/redirected output",
+    "Treat unavailable balance separately from zero balance",
+    "Persist every local check in checksum-covered evidence",
+    "Recover killed-process runtime locks without deleting live/unknown owners"
+  ],
+  "verification": {
+    "typecheck": "passed",
+    "unitTests": 59,
+    "integrationScenarios": 5,
+    "browserScenarios": 1,
+    "isolatedNpmInstallAndExec": "passed including real five-stage replay",
+    "format": "passed",
+    "nativePty": [
+      "wallet-free local replay",
+      "saved-case preview and decline, without public submission"
+    ],
+    "publicSubmissionsThisReview": 0
+  },
+  "platformLimitations": "Verified on macOS arm64. Other browser launch commands are unit-tested; Windows/Linux desktop launches were not exercised. Linux CI workflow has not run remotely.",
+  "references": [
+    "https://clig.dev/",
+    "https://nodejs.org/api/child_process.html"
+  ]
+}
