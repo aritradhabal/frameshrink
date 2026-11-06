@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "status": "reproduced",
+  "cleanState": true,
+  "profileHash": "29cb41afca9412593b83787feb9dc7cd1ce4e8cd69e8f9dad3e933522a2f48cb",
+  "results": [
+    {
+      "name": "original",
+      "status": "rejected",
+      "bytes": 745,
+      "message": "payer uses banned opcode: TIMESTAMP"
+    },
+    {
+      "name": "reduced",
+      "status": "rejected",
+      "bytes": 251,
+      "message": "payer uses banned opcode: TIMESTAMP"
+    }
+  ],
+  "control": "accepted"
+}

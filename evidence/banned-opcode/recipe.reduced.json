@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "mode": "owned",
+  "family": "banned-opcode",
+  "name": "banned-opcode",
+  "prefixGas": 30000,
+  "body": [
+    {
+      "id": "required-call",
+      "required": true,
+      "values": []
+    }
+  ]
+}

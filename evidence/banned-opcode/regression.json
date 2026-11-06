@@ -1,0 +1,19 @@
+{
+  "fingerprint": {
+    "stage": "local-policy",
+    "ruleId": "OP-011",
+    "normalizedCause": "BANNED_OPCODE:TIMESTAMP",
+    "entityRole": "payer",
+    "stableFixtureFrameId": "validation",
+    "profileHash": "29cb41afca9412593b83787feb9dc7cd1ce4e8cd69e8f9dad3e933522a2f48cb",
+    "stateHash": "6222b88107531dd36f5734f5d2221d2899aeb446e6fb0d01417660b78a65bd5f"
+  },
+  "locallyMinimal": true,
+  "termination": "locally-minimal",
+  "evaluations": 6,
+  "durationMs": 55,
+  "editSet": [
+    "remove independent optional body frame",
+    "remove uint256[] element using ABI re-encoding"
+  ]
+}
