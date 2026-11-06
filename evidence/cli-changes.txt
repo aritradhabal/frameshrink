@@ -1,0 +1,12 @@
+ FrameShrink  · devnet 1337
+0x497a1a3318060016EF70A32989e69b9695e5fc22
+ Changes
+Frames 4 → 2  Bytes 767 → 282 · 63.2% smaller
+~ frame 1 required-call · uint256[] [1,2,3,4] → []
+− frame 2 extra-a · optional call removed (2 input values)
+− frame 3 extra-b · optional call removed (3 input values)
+~ State write during validation · skip SSTORE in read-only validation
+Owner authorization retained · edited candidates re-signed
+Corrected local check passes · signed replay verified
+✓ Submit corrected transaction to devnet? No
+Continue: frameshrink start debug expanded-static-write
