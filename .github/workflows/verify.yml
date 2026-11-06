@@ -1,0 +1,37 @@
+name: Verify FrameShrink
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  real-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run bootstrap
+      - run: npm run runtime:up
+      - run: npm run verify
+      - run: npm run format:check
+      - run: npm run test:package -- --runtime
+      - run: npx playwright install --with-deps chromium
+      - run: |
+          npm start > /tmp/frameshrink-ui.log 2>&1 &
+          for i in $(seq 1 40); do
+            if curl --fail -s http://127.0.0.1:4317/ > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frameshrink-verification
+          path: |
+            evidence/browser-results.json
+            evidence/workbench-*.png
+      - run: npm run runtime:down
+        if: always()

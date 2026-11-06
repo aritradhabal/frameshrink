@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "kind": "frameshrink-devnet-case",
+  "state": "inconclusive",
+  "wallet": "0xebF00143AC1A763922A65b887e2d1B66233eFDaB",
+  "createdAt": "2026-11-06T17:06:46.559Z",
+  "directory": "/Users/aritra/Documents/project/frameshrink/.runs/demos/wizard-separate/case-1",
+  "originalHash": "0xd6a23698a1ad59641eb7e6c9dabcbb78661e7a5da06460051727fc5801d0a231",
+  "originalFrames": 4,
+  "originalAttemptedAt": "2026-11-06T17:07:36.138Z",
+  "reducedFrames": 2,
+  "originalBytes": 767,
+  "reducedBytes": 282,
+  "replay": "reproduced",
+  "correctedHash": "0xc8b8c78f78512aa83fbed9706a1dc7c6b5ca810a57f27ac2bc4340490a3d3332",
+  "correctedAttemptedAt": "2026-11-06T17:08:31.259Z",
+  "error": "Public relayer cancelled submission · relayed 4 times without being included in a block"
+}

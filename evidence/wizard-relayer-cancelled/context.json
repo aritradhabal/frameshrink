@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "chainId": 1337,
+  "address": "0xebF00143AC1A763922A65b887e2d1B66233eFDaB",
+  "nonce": "0x3",
+  "balance": "0xd96fa5e51220a5c",
+  "code": "0x",
+  "maxFeePerGas": "0x3b9aca0e",
+  "maxPriorityFeePerGas": "0x3b9aca00",
+  "blockNumber": "0x18ea",
+  "blockHash": "0x1ad5918f74ba38c1835bc98b59574c0811fbbb66c4f509e74355d6c01f947caf",
+  "validator": {
+    "address": "0x0505DEAcb5Ad5712160D53d4b5fc16ff9aF883ED",
+    "nonce": "0x2",
+    "balance": "0x236de98a4a5356",
+    "code": "0x3360aa14600857005b60006000b473ebf00143ac1a763922a65b887e2d1b66233efdab1415605f5760026000b41515605f5760016000b460011415605f5760003560011615604a5742505b6000356002161560575743505b600360006000aa5b60006000fd"
+  }
+}

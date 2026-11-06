@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "kind": "frameshrink-devnet-case",
+  "state": "complete",
+  "wallet": "0xebF00143AC1A763922A65b887e2d1B66233eFDaB",
+  "createdAt": "2026-11-06T17:02:02.291Z",
+  "directory": "/Users/aritra/Documents/project/frameshrink/.runs/demos/wizard-combined",
+  "originalHash": "0x95759def90a973b03a4e850b29e6d16d8c10f3093e7cf42d2cf727911e64d5ce",
+  "originalFrames": 4,
+  "originalAttemptedAt": "2026-11-06T17:02:15.211Z",
+  "reducedFrames": 2,
+  "originalBytes": 767,
+  "reducedBytes": 282,
+  "replay": "reproduced",
+  "correctedHash": "0x1ec45e7e4b919c697eb88a42a6732c4fc3d4136178a47359b560d6d04a386b12",
+  "correctedAttemptedAt": "2026-11-06T17:04:18.144Z",
+  "blockNumber": "0x18d8",
+  "explorer": "https://explorer.altmempool.wtf/tx/0x1ec45e7e4b919c697eb88a42a6732c4fc3d4136178a47359b560d6d04a386b12?node=https%3A%2F%2Faltmempool.forshtat.com%2Frpc"
+}

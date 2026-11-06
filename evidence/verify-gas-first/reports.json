@@ -1,0 +1,612 @@
+{
+  "baseline": {
+    "status": "rejected",
+    "fingerprint": {
+      "stage": "local-policy",
+      "ruleId": "structure",
+      "normalizedCause": "MAX_VERIFY_GAS:declared-prefix-plus-signatures",
+      "entityRole": null,
+      "stableFixtureFrameId": null,
+      "profileHash": "29cb41afca9412593b83787feb9dc7cd1ce4e8cd69e8f9dad3e933522a2f48cb",
+      "stateHash": "6222b88107531dd36f5734f5d2221d2899aeb446e6fb0d01417660b78a65bd5f"
+    },
+    "raw": "0x06f902e609c180019400000000000000000000000000000000c0ffee03f9025ecb010380c58301d4c0808080f8e402809400000000000000000000000000000000c0ffee04c5830186a08080b8c412d48885000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000004f8a402809400000000000000000000000000000000c0ffee04c5830186a08080b88412d4888500000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000014f8c402809400000000000000000000000000000000c0ffee04c5830186a08080b8a412d4888500000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000001e00000000000000000000000000000000000000000000000000000000000000280000000000000000000000000000000000000000000000000000000000000032f85cf85a0194f90eb613b5da79b19c02f5d02c5a8e730a3f0afb80b84101e4056a218cd63722fa40a161856880aed7968f7438523ec81956524f5cd8852d4176d9330357fb733d68a681647385d6e8f7da5c89454db633c41eb8ff942164cb843b9aca00847735940080c0c0",
+    "frameIds": [
+      "validation",
+      "required-call",
+      "extra-a",
+      "extra-b"
+    ],
+    "checks": [
+      {
+        "rule": "prefix",
+        "verdict": "pass"
+      },
+      {
+        "rule": "structure",
+        "verdict": "fail",
+        "detail": "validation prefix execution gas sum 120000 + signature-verification cost 2800 = 122800 exceeds MAX_VERIFY_GAS 100000"
+      },
+      {
+        "rule": "gas-limit",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "recent-root",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "signature",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "simulation",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "trace-alignment",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "OP-061",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "execution",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "mempool",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "out-of-gas",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "OP-011",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "create",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "storage",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "COD-010",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "entrypoint-access",
+        "verdict": "skipped"
+      }
+    ],
+    "simulation": {
+      "canonicalMempoolValid": false,
+      "canonicalMempoolViolation": "prefix gas budget exceeded: 122800 > 100000 (MAX_VERIFY_GAS)",
+      "erc7562Trace": [
+        {
+          "frameIndex": 0,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000000000aa",
+            "outOfGas": false,
+            "to": "0x00000000000000000000000000000000c0ffee03",
+            "type": "CALL",
+            "usedOpcodes": {
+              "170": 1
+            },
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 1,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000c0ffee03",
+            "outOfGas": false,
+            "to": "0x00000000000000000000000000000000c0ffee04",
+            "type": "CALL",
+            "usedOpcodes": {
+              "52": 1,
+              "53": 7,
+              "54": 2,
+              "81": 2,
+              "82": 2,
+              "86": 16,
+              "87": 21,
+              "91": 1,
+              "243": 1
+            },
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 2,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000c0ffee03",
+            "outOfGas": false,
+            "to": "0x00000000000000000000000000000000c0ffee04",
+            "type": "CALL",
+            "usedOpcodes": {
+              "52": 1,
+              "53": 5,
+              "54": 2,
+              "81": 2,
+              "82": 2,
+              "86": 10,
+              "87": 15,
+              "91": 1,
+              "243": 1
+            },
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 3,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000c0ffee03",
+            "outOfGas": false,
+            "to": "0x00000000000000000000000000000000c0ffee04",
+            "type": "CALL",
+            "usedOpcodes": {
+              "52": 1,
+              "53": 6,
+              "54": 2,
+              "81": 2,
+              "82": 2,
+              "86": 13,
+              "87": 18,
+              "91": 1,
+              "243": 1
+            },
+            "value": "0x0"
+          }
+        }
+      ],
+      "erc7562TraceError": null,
+      "executionError": null,
+      "executionStatus": "success",
+      "frames": [
+        {
+          "gasUsed": "0x6d",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0x1040",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0x38a",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0x43b",
+          "succeeded": true
+        }
+      ],
+      "gasUsed": "0xd23c",
+      "maxCost": "0x321153b1e4000",
+      "payer": "0x00000000000000000000000000000000c0ffee03",
+      "prefixShape": "SelfVerify"
+    },
+    "message": "validation prefix execution gas sum 120000 + signature-verification cost 2800 = 122800 exceeds MAX_VERIFY_GAS 100000",
+    "bytes": 746
+  },
+  "reduced": {
+    "status": "rejected",
+    "fingerprint": {
+      "stage": "local-policy",
+      "ruleId": "structure",
+      "normalizedCause": "MAX_VERIFY_GAS:declared-prefix-plus-signatures",
+      "entityRole": null,
+      "stableFixtureFrameId": null,
+      "profileHash": "29cb41afca9412593b83787feb9dc7cd1ce4e8cd69e8f9dad3e933522a2f48cb",
+      "stateHash": "6222b88107531dd36f5734f5d2221d2899aeb446e6fb0d01417660b78a65bd5f"
+    },
+    "raw": "0x06f8f909c180019400000000000000000000000000000000c0ffee03f872cb010380c58301d4c0808080f86402809400000000000000000000000000000000c0ffee04c5830186a08080b84412d4888500000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194f90eb613b5da79b19c02f5d02c5a8e730a3f0afb80b841014cd1c7783fcf3f4af70225459916ebfff33074d062871a65fa0913afe6c8dfdf25133e2f2c64a79576d04247deb618a0201b2d1b197b43d528a797a7ea756d11cb843b9aca00847735940080c0c0",
+    "frameIds": [
+      "validation",
+      "required-call"
+    ],
+    "checks": [
+      {
+        "rule": "prefix",
+        "verdict": "pass"
+      },
+      {
+        "rule": "structure",
+        "verdict": "fail",
+        "detail": "validation prefix execution gas sum 120000 + signature-verification cost 2800 = 122800 exceeds MAX_VERIFY_GAS 100000"
+      },
+      {
+        "rule": "gas-limit",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "recent-root",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "signature",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "simulation",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "trace-alignment",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "OP-061",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "execution",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "mempool",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "out-of-gas",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "OP-011",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "create",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "storage",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "COD-010",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "entrypoint-access",
+        "verdict": "skipped"
+      }
+    ],
+    "simulation": {
+      "canonicalMempoolValid": false,
+      "canonicalMempoolViolation": "prefix gas budget exceeded: 122800 > 100000 (MAX_VERIFY_GAS)",
+      "erc7562Trace": [
+        {
+          "frameIndex": 0,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000000000aa",
+            "outOfGas": false,
+            "to": "0x00000000000000000000000000000000c0ffee03",
+            "type": "CALL",
+            "usedOpcodes": {
+              "170": 1
+            },
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 1,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000c0ffee03",
+            "outOfGas": false,
+            "to": "0x00000000000000000000000000000000c0ffee04",
+            "type": "CALL",
+            "usedOpcodes": {
+              "52": 1,
+              "53": 3,
+              "54": 2,
+              "81": 2,
+              "82": 2,
+              "86": 4,
+              "87": 9,
+              "91": 1,
+              "243": 1
+            },
+            "value": "0x0"
+          }
+        }
+      ],
+      "erc7562TraceError": null,
+      "executionError": null,
+      "executionStatus": "success",
+      "frames": [
+        {
+          "gasUsed": "0x6d",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0xd7c",
+          "succeeded": true
+        }
+      ],
+      "gasUsed": "0x6486",
+      "maxCost": "0x1affde62ce800",
+      "payer": "0x00000000000000000000000000000000c0ffee03",
+      "prefixShape": "SelfVerify"
+    },
+    "message": "validation prefix execution gas sum 120000 + signature-verification cost 2800 = 122800 exceeds MAX_VERIFY_GAS 100000",
+    "bytes": 252
+  },
+  "control": {
+    "status": "accepted",
+    "fingerprint": null,
+    "raw": "0x06f902e509c180019400000000000000000000000000000000c0ffee03f9025dca010380c4827530808080f8e402809400000000000000000000000000000000c0ffee04c5830186a08080b8c412d48885000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000004f8a402809400000000000000000000000000000000c0ffee04c5830186a08080b88412d4888500000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000014f8c402809400000000000000000000000000000000c0ffee04c5830186a08080b8a412d4888500000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000001e00000000000000000000000000000000000000000000000000000000000000280000000000000000000000000000000000000000000000000000000000000032f85cf85a0194f90eb613b5da79b19c02f5d02c5a8e730a3f0afb80b84100ad3c5fffb6e218a89b22c05c5bac7e07e0d239bf6b3949f1bdb7f0b51bb5ce542f6b9d5cb03cd25c4cbe1fffd27a3483c4557183d7dd750ea4d8e6b065b0366acb843b9aca00847735940080c0c0",
+    "frameIds": [
+      "validation",
+      "required-call",
+      "extra-a",
+      "extra-b"
+    ],
+    "checks": [
+      {
+        "rule": "prefix",
+        "verdict": "pass"
+      },
+      {
+        "rule": "structure",
+        "verdict": "pass"
+      },
+      {
+        "rule": "signature",
+        "verdict": "pass"
+      },
+      {
+        "rule": "simulation",
+        "verdict": "pass"
+      },
+      {
+        "rule": "trace-alignment",
+        "verdict": "pass"
+      },
+      {
+        "rule": "OP-061",
+        "verdict": "pass"
+      },
+      {
+        "rule": "execution",
+        "verdict": "pass"
+      },
+      {
+        "rule": "trace-alignment",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "out-of-gas",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "OP-011",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "create",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "storage",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "COD-010",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "entrypoint-access",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      }
+    ],
+    "simulation": {
+      "canonicalMempoolValid": true,
+      "canonicalMempoolViolation": null,
+      "erc7562Trace": [
+        {
+          "frameIndex": 0,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000000000aa",
+            "outOfGas": false,
+            "to": "0x00000000000000000000000000000000c0ffee03",
+            "type": "CALL",
+            "usedOpcodes": {
+              "170": 1
+            },
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 1,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000c0ffee03",
+            "outOfGas": false,
+            "to": "0x00000000000000000000000000000000c0ffee04",
+            "type": "CALL",
+            "usedOpcodes": {
+              "52": 1,
+              "53": 7,
+              "54": 2,
+              "81": 2,
+              "82": 2,
+              "86": 16,
+              "87": 21,
+              "91": 1,
+              "243": 1
+            },
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 2,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000c0ffee03",
+            "outOfGas": false,
+            "to": "0x00000000000000000000000000000000c0ffee04",
+            "type": "CALL",
+            "usedOpcodes": {
+              "52": 1,
+              "53": 5,
+              "54": 2,
+              "81": 2,
+              "82": 2,
+              "86": 10,
+              "87": 15,
+              "91": 1,
+              "243": 1
+            },
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 3,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000c0ffee03",
+            "outOfGas": false,
+            "to": "0x00000000000000000000000000000000c0ffee04",
+            "type": "CALL",
+            "usedOpcodes": {
+              "52": 1,
+              "53": 6,
+              "54": 2,
+              "81": 2,
+              "82": 2,
+              "86": 13,
+              "87": 18,
+              "91": 1,
+              "243": 1
+            },
+            "value": "0x0"
+          }
+        }
+      ],
+      "erc7562TraceError": null,
+      "executionError": null,
+      "executionStatus": "success",
+      "frames": [
+        {
+          "gasUsed": "0x6d",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0x1040",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0x38a",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0x43b",
+          "succeeded": true
+        }
+      ],
+      "gasUsed": "0xd23c",
+      "maxCost": "0x27d5a208c1000",
+      "payer": "0x00000000000000000000000000000000c0ffee03",
+      "prefixShape": "SelfVerify"
+    },
+    "message": "Accepted by local simulation and covered policy checks",
+    "bytes": 745
+  }
+}

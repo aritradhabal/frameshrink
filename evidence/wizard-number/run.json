@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "kind": "frameshrink-devnet-case",
+  "state": "complete",
+  "wallet": "0x497a1a3318060016EF70A32989e69b9695e5fc22",
+  "createdAt": "2026-11-06T17:15:01.941Z",
+  "directory": "/Users/aritra/Documents/project/frameshrink/.runs/demos/wizard-fresh-number",
+  "originalHash": "0x5b722fdea26b4a78e7246ef5fc84794df0b2f759776e4167ec00f7163c7bfad0",
+  "originalFrames": 4,
+  "originalAttemptedAt": "2026-11-06T17:15:46.541Z",
+  "reducedFrames": 2,
+  "originalBytes": 767,
+  "reducedBytes": 282,
+  "replay": "reproduced",
+  "correctedHash": "0xe09397d801116ba47aafdea5f036a51401e62ec7d11a01c7ab033ec2fca87f36",
+  "correctedAttemptedAt": "2026-11-06T17:16:32.457Z",
+  "blockNumber": "0x1950",
+  "explorer": "https://explorer.altmempool.wtf/tx/0xe09397d801116ba47aafdea5f036a51401e62ec7d11a01c7ab033ec2fca87f36?node=https%3A%2F%2Faltmempool.forshtat.com%2Frpc"
+}

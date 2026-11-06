@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="frameshrink-session" content="__SESSION_TOKEN__" />
+    <title>FrameShrink · A smaller failure, a clearer fix</title>
+    <style>
+      :root {
+        --bg: #f5f4f0;
+        --ink: #14252b;
+        --muted: #687477;
+        --line: #dce0da;
+        --accent: #e65b35;
+        --green: #16724e;
+        --nav: #142a30;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          14px/1.5 system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+      button,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+        border: 1px solid var(--line);
+        background: white;
+        padding: 10px 16px;
+        border-radius: 6px;
+        color: var(--ink);
+        font-weight: 600;
+      }
+      button:hover {
+        border-color: var(--accent);
+      }
+      button:disabled {
+        opacity: 0.45;
+        cursor: default;
+      }
+      button.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: white;
+      }
+      a {
+        color: inherit;
+      }
+      .layout {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 248px 1fr;
+      }
+      aside {
+        background: var(--nav);
+        color: #eaf1ed;
+        padding: 30px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 22px;
+        letter-spacing: -1px;
+        font-weight: 700;
+      }
+      .mark {
+        color: #ff8057;
+        font: 30px monospace;
+      }
+      .tag {
+        font: 10px monospace;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      aside .tag {
+        color: #96aaa9;
+      }
+      .navitem {
+        display: block;
+        text-decoration: none;
+        padding: 11px 12px;
+        border-radius: 5px;
+        margin: 4px 0;
+        color: #a8bdbc;
+      }
+      .navitem.active {
+        background: #294248;
+        color: #fff;
+      }
+      .navitem span {
+        float: right;
+        font: 11px monospace;
+        margin-top: 4px;
+      }
+      .aside-note {
+        margin-top: auto;
+        font-size: 12px;
+        color: #9db1af;
+        border-top: 1px solid #375056;
+        padding-top: 20px;
+      }
+      main {
+        padding: 0 44px 40px;
+        max-width: 1560px;
+        width: 100%;
+      }
+      .topbar {
+        height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #97a6a2;
+      }
+      .ready .dot {
+        background: var(--green);
+      }
+      .hero {
+        padding: 36px 0 30px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+      }
+      h1 {
+        font-size: 38px;
+        line-height: 1.15;
+        letter-spacing: -1.8px;
+        margin: 10px 0 13px;
+        font-weight: 650;
+      }
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 620px;
+      }
+      .label {
+        font: 11px monospace;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+      .orange {
+        color: var(--accent);
+      }
+      .badge {
+        border: 1px solid #bdccc4;
+        color: var(--green);
+        border-radius: 20px;
+        padding: 5px 10px;
+        font: 11px monospace;
+        white-space: nowrap;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 20px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        overflow: hidden;
+      }
+      .card-head {
+        padding: 19px 22px;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      .card-head h2 {
+        font-size: 15px;
+        margin: 0;
+        font-weight: 650;
+      }
+      .section {
+        padding: 22px;
+      }
+      .fixture {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .fixture-icon {
+        background: #f6ede5;
+        color: #c76836;
+        padding: 11px;
+        border-radius: 7px;
+        font: 20px monospace;
+      }
+      select {
+        margin-top: 6px;
+        max-width: 100%;
+        padding: 8px;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        background: white;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .small {
+        font-size: 12px;
+      }
+      .facts {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding-top: 17px;
+        border-top: 1px solid var(--line);
+      }
+      .facts strong {
+        font: 12px monospace;
+        display: block;
+        margin-top: 5px;
+      }
+      .actions {
+        padding: 17px 22px;
+        background: #fcfcf9;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      .frame-view {
+        margin-top: 20px;
+      }
+      .strips {
+        padding: 24px;
+      }
+      .striplabel {
+        display: flex;
+        justify-content: space-between;
+        font: 11px monospace;
+        color: var(--muted);
+        margin-bottom: 12px;
+      }
+      .strip {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+        margin-bottom: 22px;
+      }
+      .frame {
+        padding: 16px 10px;
+        min-width: 82px;
+        border: 1px solid #d9e2df;
+        background: #f2f6f2;
+        border-radius: 5px;
+        font: 11px monospace;
+        text-align: center;
+      }
+      .frame.prefix {
+        background: #fdf0e8;
+        border-color: #edc8b7;
+        color: #ac572e;
+      }
+      .frame.removed {
+        border-style: dashed;
+        background: #f8f8f5;
+        color: #8c9995;
+        text-decoration: line-through;
+        opacity: 0.65;
+      }
+      .frame.empty {
+        background: transparent;
+        color: #9ca5a1;
+        border-style: dashed;
+      }
+      .legend {
+        display: flex;
+        gap: 20px;
+        color: var(--muted);
+        font: 11px monospace;
+      }
+      .legend b {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        background: #e5a27f;
+        margin-right: 6px;
+      }
+      .legend span:last-child b {
+        background: #c9d9cf;
+      }
+      .statrow {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin: 18px 0;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--line);
+      }
+      .statrow:last-child {
+        border: 0;
+        margin-bottom: 0;
+      }
+      .statrow strong {
+        font-size: 26px;
+        letter-spacing: -1px;
+        font-weight: 550;
+      }
+      .statrow .unit {
+        font: 11px monospace;
+        color: var(--muted);
+        margin-left: 6px;
+      }
+      .meter {
+        height: 5px;
+        background: #e8ede7;
+        border-radius: 4px;
+        margin-top: 16px;
+        overflow: hidden;
+      }
+      .meter i {
+        height: 100%;
+        display: block;
+        background: var(--accent);
+        width: 0;
+        transition: width 0.3s;
+      }
+      .evidence {
+        margin-top: 20px;
+      }
+      .notice {
+        background: #f7f6f0;
+        border: 1px solid #e5e3d6;
+        padding: 13px 15px;
+        border-radius: 5px;
+        font-size: 12px;
+        color: #716a53;
+      }
+      .log {
+        padding: 0 22px;
+        max-height: 270px;
+        overflow: auto;
+      }
+      .entry {
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        gap: 13px;
+        align-items: start;
+        font-size: 12px;
+      }
+      .entry strong {
+        font: 10px monospace;
+        color: var(--green);
+        padding-top: 3px;
+        min-width: 34px;
+      }
+      .entry p {
+        margin: 0;
+      }
+      .entry code {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      details {
+        padding: 18px 22px;
+        border-top: 1px solid var(--line);
+      }
+      summary {
+        cursor: pointer;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      pre {
+        font:
+          11px/1.6 ui-monospace,
+          monospace;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        max-height: 380px;
+        overflow: auto;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 24px 0;
+        color: var(--muted);
+        font: 10px monospace;
+      }
+      #error {
+        display: none;
+        background: #fff0e9;
+        border: 1px solid #e3b9a6;
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        white-space: pre-wrap;
+      }
+      #bundle {
+        font: 11px monospace;
+        overflow-wrap: anywhere;
+        margin-top: 12px;
+      }
+      .importbox {
+        margin-top: 20px;
+      }
+      textarea {
+        width: 100%;
+        height: 100px;
+        margin: 10px 0;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        padding: 10px;
+        font: 11px monospace;
+      }
+      .proof {
+        color: var(--green);
+        font-size: 12px;
+        margin-top: 10px;
+      }
+      .sidecard h3 {
+        margin: 0 0 12px;
+        font-size: 13px;
+      }
+      .profile-line {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 11px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .profile-line code {
+        font-size: 10px;
+      }
+      .right-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      @media (max-width: 1100px) {
+        .layout {
+          grid-template-columns: 190px 1fr;
+        }
+        aside {
+          padding: 25px 15px;
+        }
+        main {
+          padding: 0 24px 30px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .right-stack {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+        .hero h1 {
+          font-size: 32px;
+        }
+      }
+      @media (max-width: 680px) {
+        .layout {
+          display: block;
+        }
+        aside {
+          padding: 15px 20px;
+          display: block;
+        }
+        .brand {
+          font-size: 20px;
+        }
+        .navitem,
+        .aside-note,
+        aside .tag {
+          display: none;
+        }
+        main {
+          padding: 0 16px 25px;
+        }
+        .topbar {
+          height: 56px;
+        }
+        .hero {
+          padding: 25px 0;
+          display: block;
+        }
+        .hero .badge {
+          display: inline-block;
+          margin-top: 15px;
+        }
+        h1 {
+          font-size: 30px;
+        }
+        .right-stack {
+          display: flex;
+        }
+        .facts {
+          grid-template-columns: 1fr 1fr;
+        }
+        .actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+        .card-head {
+          padding: 16px;
+        }
+        .section,
+        .strips {
+          padding: 17px;
+        }
+        .footer {
+          gap: 15px;
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside>
+        <div class="brand"><span class="mark">[≋]</span> FrameShrink</div>
+        <div>
+          <div class="tag">Workspace / local</div>
+          <a class="navitem active" href="#fixture-panel"
+            >Fixture reducer <span>01</span></a
+          ><a class="navitem" href="#replay-panel"
+            >Regression replay <span>02</span></a
+          ><a class="navitem" href="#runtime-panel"
+            >Runtime evidence <span>03</span></a
+          >
+        </div>
+        <div class="aside-note">
+          <div class="tag">Small cases. Real evidence.</div>
+          <p>
+            Reduce an owned fixture. Preserve the failure. Give maintainers a
+            case they can replay.
+          </p>
+          <span>v0.1 · EIP-8141</span>
+        </div>
+      </aside>
+      <main>
+        <div class="topbar">
+          <span
+            >WORKBENCH
+            <span style="padding: 0 12px; color: #bbc3bb">/</span> Fixture
+            reducer</span
+          ><span id="runtimeStatus" class="status"
+            ><i class="dot"></i>Checking local runtime</span
+          >
+        </div>
+        <div class="hero">
+          <div>
+            <div class="label orange">Less noise. Same failure.</div>
+            <h1>Make the failure smaller.</h1>
+            <p>
+              Turn a failing frame transaction into a focused, reproducible
+              regression case.
+            </p>
+          </div>
+          <span class="badge">OWNED FIXTURES ONLY</span>
+        </div>
+        <div id="error" role="alert"></div>
+        <div class="grid">
+          <div>
+            <section class="card" id="fixture-panel">
+              <div class="card-head">
+                <h2>01 / Choose a fixture</h2>
+                <span class="small muted">Local · disposable environment</span>
+              </div>
+              <div class="section">
+                <div class="fixture">
+                  <div class="fixture-icon">{ }</div>
+                  <div>
+                    <label for="fixture" class="small muted"
+                      >Controlled failure family</label
+                    ><br /><select id="fixture" aria-label="Failure family">
+                      <option value="verify-gas">
+                        Verification gas budget
+                      </option>
+                      <option value="banned-opcode">
+                        Banned opcode · TIMESTAMP
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <p id="description" class="small muted">
+                  A valid signed transaction whose declared verification budget
+                  exceeds the mempool policy limit.
+                </p>
+                <div class="facts">
+                  <div>
+                    <span class="small muted">Input mode</span
+                    ><strong>Owned recipe</strong>
+                  </div>
+                  <div>
+                    <span class="small muted">Mutation permission</span
+                    ><strong>Rebuild + re-sign</strong>
+                  </div>
+                  <div>
+                    <span class="small muted">State isolation</span
+                    ><strong>Fixed genesis · block 0</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="actions">
+                <span class="small muted" id="runLabel"
+                  >80 evaluations · 120-second maximum</span
+                ><button class="primary" id="run" disabled>
+                  Reduce fixture <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+            </section>
+            <section class="card frame-view">
+              <div class="card-head">
+                <h2>02 / Before & after</h2>
+                <span id="verdict" class="small muted"
+                  >Awaiting evaluation</span
+                >
+              </div>
+              <div class="strips">
+                <div class="striplabel">
+                  <span>ORIGINAL</span><span id="beforeCount">4 frames</span>
+                </div>
+                <div class="strip" id="before"></div>
+                <div class="striplabel">
+                  <span>REDUCED</span><span id="afterCount">—</span>
+                </div>
+                <div class="strip" id="after">
+                  <div class="frame empty">Run a fixture to see the result</div>
+                </div>
+                <div class="legend">
+                  <span><b></b>Preserved validation prefix</span
+                  ><span><b></b>Body call</span>
+                </div>
+              </div>
+              <details>
+                <summary>
+                  Failure predicate & unmodified upstream evidence
+                </summary>
+                <pre id="rawEvidence">
+Evidence appears after a real evaluation.</pre
+                >
+              </details>
+            </section>
+            <section class="card evidence">
+              <div class="card-head">
+                <h2>03 / Reduction journal</h2>
+                <span id="attemptCount" class="small muted">0 edits</span>
+              </div>
+              <div class="log" id="log">
+                <p class="muted small">
+                  Each retained edit must preserve the exact baseline
+                  fingerprint.
+                </p>
+              </div>
+            </section>
+            <details class="card importbox">
+              <summary>
+                Inspect an imported signed transaction · read-only
+              </summary>
+              <p class="small muted">
+                Paste {"schemaVersion":1,"mode":"imported","raw":"0x06…"}.
+                Imports are decoded without signing, mutation or submission.
+              </p>
+              <textarea
+                id="importInput"
+                aria-label="Imported transaction JSON"
+                spellcheck="false"
+              ></textarea
+              ><button id="inspect">Inspect payload</button>
+              <pre id="importResult"></pre>
+            </details>
+          </div>
+          <div class="right-stack">
+            <section class="card">
+              <div class="card-head">
+                <h2>Measured reduction</h2>
+                <span class="orange">↘</span>
+              </div>
+              <div class="section">
+                <div class="small muted">Canonical transaction bytes</div>
+                <div class="statrow">
+                  <strong id="bytes">—</strong
+                  ><span class="unit" id="saved">NOT RUN</span>
+                </div>
+                <div class="statrow">
+                  <div>
+                    <span class="small muted">Simulations</span><br /><strong
+                      id="simulations"
+                      >0</strong
+                    >
+                  </div>
+                  <span class="unit">/ 80 MAX</span>
+                </div>
+                <div class="statrow">
+                  <div>
+                    <span class="small muted">Elapsed</span><br /><strong
+                      id="elapsed"
+                      >—</strong
+                    >
+                  </div>
+                  <span class="unit">SECONDS</span>
+                </div>
+                <div class="meter"><i id="meter"></i></div>
+                <p class="small muted" id="termination">
+                  No result yet. Metrics are measured during evaluation.
+                </p>
+              </div>
+            </section>
+            <section class="card sidecard" id="runtime-panel">
+              <div class="card-head">
+                <h2>Runtime profile</h2>
+                <span class="small muted">PINNED</span>
+              </div>
+              <div class="section">
+                <div class="profile-line">
+                  <span>Execution client</span><code>ethrex / 9aa3645</code>
+                </div>
+                <div class="profile-line">
+                  <span>Policy adapter</span><code>sidecar / 2e22ff0</code>
+                </div>
+                <div class="profile-line">
+                  <span>Chain / head</span><code id="chain">—</code>
+                </div>
+                <div class="profile-line">
+                  <span>Signer</span><code>Disposable local key</code>
+                </div>
+                <details style="padding: 14px 0 0; border: 0">
+                  <summary>Full profile & hashes</summary>
+                  <pre id="profile">Checking…</pre>
+                </details>
+              </div>
+            </section>
+            <section class="card" id="replay-panel">
+              <div class="card-head"><h2>Reproduce the result</h2></div>
+              <div class="section">
+                <p class="small muted" style="margin-top: 0">
+                  Export the recipes, raw reports, signed payloads, setup and
+                  checksums. Replay rebuilds the dedicated local chain.
+                </p>
+                <button
+                  id="export"
+                  disabled
+                  style="width: 100%; margin-bottom: 9px"
+                >
+                  Export regression bundle</button
+                ><button id="replay" disabled style="width: 100%">
+                  Replay from clean state
+                </button>
+                <div id="bundle"></div>
+                <div id="replayResult" class="proof" role="status"></div>
+              </div>
+            </section>
+            <div class="notice">
+              Local simulation and policy checks are separate from public
+              mempool admission. This workbench never submits reduction
+              candidates.
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <span>FrameShrink / deterministic fixture reduction</span
+          ><span
+            >Supported-edit local minimality · no global minimality claim</span
+          >
+        </div>
+      </main>
+    </div>
+    <script>
+      const $ = (id) => document.getElementById(id),
+        token = document.querySelector(
+          'meta[name="frameshrink-session"]',
+        ).content;
+      let fixtures = [],
+        jobId = null,
+        polling = null,
+        start = 0;
+      async function request(url, method = "GET", body) {
+        const res = await fetch(url, {
+          method,
+          headers: {
+            "content-type": "application/json",
+            "x-frameshrink-token": token,
+          },
+          ...(body === undefined ? {} : { body: JSON.stringify(body) }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw Error(data.error || "Request failed");
+        return data;
+      }
+      function error(e) {
+        $("error").textContent = e.message;
+        $("error").style.display = "block";
+      }
+      function frame(id, removed = false) {
+        const el = document.createElement("div");
+        el.className =
+          "frame" +
+          (id === "validation" ? " prefix" : "") +
+          (removed ? " removed" : "");
+        el.textContent = id === "validation" ? "VERIFY" : id;
+        return el;
+      }
+      function showBefore() {
+        const recipe = fixtures.find((f) => f.family === $("fixture").value);
+        if (!recipe) return;
+        $("before").replaceChildren(
+          ...["validation", ...recipe.body.map((b) => b.id)].map((id) =>
+            frame(id),
+          ),
+        );
+        $("beforeCount").textContent = recipe.body.length + 1 + " frames";
+        $("description").textContent =
+          recipe.family === "verify-gas"
+            ? "A valid signed transaction whose declared verification budget exceeds the mempool policy limit."
+            : "An owned validation wallet uses TIMESTAMP, prohibited during ERC-7562 validation.";
+      }
+      $("fixture").onchange = () => {
+        showBefore();
+        $("after").replaceChildren(frame("Run a fixture to see the result"));
+        jobId = null;
+        $("export").disabled = true;
+        $("replay").disabled = true;
+        $("bytes").textContent = "—";
+        $("saved").textContent = "NOT RUN";
+        $("simulations").textContent = "0";
+        $("elapsed").textContent = "—";
+        $("termination").textContent = "No result yet.";
+        $("verdict").textContent = "Awaiting evaluation";
+        $("rawEvidence").textContent =
+          "Evidence appears after a real evaluation.";
+        $("log").replaceChildren();
+        $("attemptCount").textContent = "0 edits";
+        $("bundle").textContent = "";
+        $("replayResult").textContent = "";
+        $("afterCount").textContent = "—";
+        $("meter").style.width = "0";
+        $("runLabel").textContent = "80 evaluations · 120-second maximum";
+      };
+      function render(job) {
+        $("log").replaceChildren(
+          ...job.progress.map((a) => {
+            const el = document.createElement("div");
+            el.className = "entry";
+            const tag = document.createElement("strong");
+            tag.textContent = a.accepted ? "KEPT" : "SKIP";
+            const p = document.createElement("p");
+            p.textContent =
+              a.edit.kind === "remove-frames"
+                ? "Remove " + a.edit.ids.join(", ")
+                : "Remove " +
+                  a.edit.count +
+                  " array value(s) from " +
+                  a.edit.id;
+            const detail = document.createElement("code");
+            detail.textContent = a.reason;
+            p.append(document.createElement("br"), detail);
+            el.append(tag, p);
+            return el;
+          }),
+        );
+        $("attemptCount").textContent = job.progress.length + " edits";
+        $("elapsed").textContent = ((Date.now() - start) / 1000).toFixed(1);
+        if (job.status === "error") throw Error(job.error);
+        if (job.status !== "complete") return false;
+        const r = job.result;
+        $("bytes").textContent = r.baseline.bytes + " → " + r.result.bytes;
+        $("saved").textContent =
+          Math.round((1 - r.result.bytes / r.baseline.bytes) * 100) +
+          "% SMALLER";
+        $("simulations").textContent = r.evaluations;
+        $("elapsed").textContent = (r.durationMs / 1000).toFixed(2);
+        $("meter").style.width =
+          (1 - r.result.bytes / r.baseline.bytes) * 100 + "%";
+        $("termination").textContent = r.locallyMinimal
+          ? "Locally minimal for the supported edits. Corrected control passed."
+          : "Stopped: " +
+            r.termination +
+            ". Smaller fixture; minimality not established.";
+        $("verdict").textContent = "Same failure preserved";
+        $("verdict").style.color = "var(--green)";
+        $("after").replaceChildren(
+          ...r.baseline.frameIds.map((id) =>
+            frame(id, !r.result.frameIds.includes(id)),
+          ),
+        );
+        $("afterCount").textContent = r.result.frameIds.length + " frames";
+        $("rawEvidence").textContent = JSON.stringify(
+          {
+            fingerprint: r.baseline.fingerprint,
+            checks: r.result.checks,
+            simulation: r.result.simulation,
+          },
+          null,
+          2,
+        );
+        $("export").disabled = false;
+        $("replay").disabled = false;
+        $("runLabel").textContent = "Reduction complete · " + r.termination;
+        return true;
+      }
+      $("run").onclick = async () => {
+        try {
+          $("error").style.display = "none";
+          $("run").disabled = true;
+          $("fixture").disabled = true;
+          $("export").disabled = true;
+          $("replay").disabled = true;
+          $("bundle").textContent = "";
+          $("replayResult").textContent = "";
+          $("runLabel").textContent = "Evaluating real fixtures…";
+          $("verdict").textContent = "Evaluating…";
+          start = Date.now();
+          const data = await request(
+            "/api/reduce",
+            "POST",
+            fixtures.find((f) => f.family === $("fixture").value),
+          );
+          jobId = data.id;
+          polling = setInterval(async () => {
+            try {
+              if (render(await request("/api/jobs/" + jobId))) {
+                clearInterval(polling);
+                $("run").disabled = false;
+                $("fixture").disabled = false;
+              }
+            } catch (e) {
+              clearInterval(polling);
+              error(e);
+              $("run").disabled = false;
+              $("fixture").disabled = false;
+              $("runLabel").textContent = "Evaluation stopped";
+            }
+          }, 350);
+        } catch (e) {
+          error(e);
+          $("run").disabled = false;
+          $("fixture").disabled = false;
+        }
+      };
+      $("export").onclick = async () => {
+        try {
+          const d = await request("/api/jobs/" + jobId + "/export", "POST", {});
+          $("bundle").textContent = d.path + "\n" + d.command;
+        } catch (e) {
+          error(e);
+        }
+      };
+      $("replay").onclick = async () => {
+        try {
+          $("replay").disabled = true;
+          $("run").disabled = true;
+          $("replayResult").textContent =
+            "Rebuilding local genesis and replaying…";
+          const d = await request("/api/jobs/" + jobId + "/replay", "POST", {});
+          $("bundle").textContent = d.path;
+          $("replayResult").textContent =
+            "✓ Clean replay passed. Both failures reproduced; corrected control accepted.";
+        } catch (e) {
+          error(e);
+          $("replayResult").textContent = "Replay failed.";
+        } finally {
+          $("replay").disabled = false;
+          $("run").disabled = false;
+        }
+      };
+      $("inspect").onclick = async () => {
+        try {
+          $("importResult").textContent = JSON.stringify(
+            await request(
+              "/api/inspect",
+              "POST",
+              JSON.parse($("importInput").value),
+            ),
+            null,
+            2,
+          );
+        } catch (e) {
+          error(e);
+        }
+      };
+      (async () => {
+        try {
+          const data = await request("/api/info");
+          fixtures = data.fixtures;
+          showBefore();
+          $("runtimeStatus").className = "status ready";
+          $("runtimeStatus").replaceChildren(
+            Object.assign(document.createElement("i"), { className: "dot" }),
+            document.createTextNode("Local runtime ready"),
+          );
+          $("chain").textContent = "9 / block 0";
+          $("profile").textContent = JSON.stringify(data.profile, null, 2);
+          $("run").disabled = false;
+        } catch (e) {
+          $("runtimeStatus").textContent = "Runtime unavailable";
+          $("profile").textContent = e.message;
+          error(e);
+        }
+      })();
+    </script>
+  </body>
+</html>

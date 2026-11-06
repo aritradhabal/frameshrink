@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "mode": "owned",
+  "family": "verify-gas",
+  "name": "verify-gas",
+  "prefixGas": 120000,
+  "body": [
+    {
+      "id": "required-call",
+      "required": true,
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "extra-a",
+      "required": false,
+      "values": [
+        10,
+        20
+      ]
+    },
+    {
+      "id": "extra-b",
+      "required": false,
+      "values": [
+        30,
+        40,
+        50
+      ]
+    }
+  ]
+}

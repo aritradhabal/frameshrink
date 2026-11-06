@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-06T17:38:09.549844+00:00",
+  "caseDirectory": "/Users/aritra/Documents/project/frameshrink/.runs/demos/preview-live-check",
+  "originalHash": "0x67a0c43d5300c5e2979305b882df44dd96f73af902110a4017849a8e8be75f75",
+  "originalOutcome": "rejected",
+  "hashAndLinkBeforeDebug": true,
+  "streamedChecks": {
+    "TIMESTAMP": 6,
+    "NUMBER": 3
+  },
+  "transactionAndChangesEditorLaunch": "verified using a configured test editor command",
+  "previewCopiesReadOnly": true,
+  "correctedSubmission": "declined; no correction sent in this check",
+  "caseState": "reduced"
+}

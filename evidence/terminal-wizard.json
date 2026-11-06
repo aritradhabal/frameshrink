@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "ptyChecks": [
+    {
+      "color": true,
+      "sgrMatches": true,
+      "cleanCancel": true,
+      "exitCode": 130
+    },
+    {
+      "color": false,
+      "sgrMatches": false,
+      "cleanCancel": true,
+      "exitCode": 130
+    }
+  ],
+  "interactiveChecks": [
+    "wallet selection",
+    "named wallet creation",
+    "matching faucet receipt",
+    "multiple failure selection",
+    "disabled planned choices",
+    "combined and separate grouping",
+    "default-no public confirmations",
+    "standard and quick debug budgets",
+    "terminal-only correction diff",
+    "Save & exit",
+    "resume without original resend",
+    "decline and later approve correction"
+  ],
+  "checkboxSelectionRendering": [
+    {
+      "color": true,
+      "selectionAndNavigation": "passed",
+      "literalEscapeCodes": false,
+      "colorCodesRendered": true
+    },
+    {
+      "color": false,
+      "selectionAndNavigation": "passed",
+      "literalEscapeCodes": false,
+      "colorCodesRendered": false
+    }
+  ],
+  "expandedCheckboxRendering": [
+    {
+      "color": true,
+      "supportedSelections": 5,
+      "selectionAndNavigation": "passed",
+      "literalEscapeCodes": false
+    },
+    {
+      "color": false,
+      "supportedSelections": 5,
+      "selectionAndNavigation": "passed",
+      "literalEscapeCodes": false
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "sidecarCommit": "2e22ff0a2898e69ea4bf5275bce1be8581a8582a",
+  "ethrexCommit": "9aa3645d795945c64400f41a70aace0edfa7f383",
+  "image": "ghcr.io/forshtat/eip8141-devnet@sha256:09e0871af79cb06ee3cf3f7bc760a39bdcb539bc9c8d1ef1fe8a1bf57962030e",
+  "genesisFileHash": "7340745870f5932223b47e818953656992d5d3762baa0024de39ea847800a954",
+  "genesisHash": "0x4c2e02d11efca8c79d8e6f5660f278e92d1a84dc0aff2c17df9955a9f1b79e0a",
+  "headHash": "0x4c2e02d11efca8c79d8e6f5660f278e92d1a84dc0aff2c17df9955a9f1b79e0a",
+  "headNumber": "0x0",
+  "chainId": "0x539",
+  "clientVersion": "ethrex/v23.0.0-eip8141-tracer-9aa3645d795945c64400f41a70aace0edfa7f383/x86_64-unknown-linux-gnu/rustc-v1.93.1",
+  "accounts": {
+    "0x497a1a3318060016EF70A32989e69b9695e5fc22": {
+      "code": "0x",
+      "balance": "0xdbbe4d72f1c7b24",
+      "nonce": "0x1"
+    },
+    "0x67f130c44928CCDb8aA3095dC02aD7a855ef6Cd2": {
+      "code": "0x3360aa14600857005b60006000b473497a1a3318060016ef70a32989e69b9695e5fc221415605f5760026000b41515605f5760016000b460011415605f5760003560011615604a5742505b6000356002161560575743505b600360006000aa5b60006000fd",
+      "balance": "0x2386f26fc10000",
+      "nonce": "0x1"
+    }
+  },
+  "policy": {
+    "stakingRegistry": "disabled",
+    "stake": "0x0",
+    "unstakeDelaySec": "0x0",
+    "whitelist": [],
+    "reputation": "all unlisted; insufficient stake",
+    "minStake": "0x2540be400",
+    "standardMempoolId": "FrameShrink-local-policy",
+    "scope": "upstream FrameTxValidationService; no mempool, fees, replacement, reputation admission or gossip"
+  },
+  "policyHash": "1553444f2cb8d58d76b835e530ac2462f6af2f75e7f78d37ce7527d7230d5f08",
+  "profileHash": "937ecadab79a5121e6ea91e42c936d121dc06484524e3bde8af7d28adb254aec",
+  "stateHash": "d21c01146d4fb817dabb28cc02317f433c2889330fac4f0e19fdab5a4ea22970"
+}

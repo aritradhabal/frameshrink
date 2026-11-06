@@ -1,0 +1,190 @@
+[
+  {
+    "failure": "BANNED_OPCODE:TIMESTAMP",
+    "original": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "banned-opcode",
+        "opcodeMask": 3,
+        "name": "banned-opcode",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": "extra-a",
+            "required": false,
+            "values": [
+              10,
+              20
+            ]
+          },
+          {
+            "id": "extra-b",
+            "required": false,
+            "values": [
+              30,
+              40,
+              50
+            ]
+          }
+        ]
+      },
+      "raw": "0x06f902fb820539c18001940505deacb5ad5712160d53d4b5fc16ff9af883edf90271ea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000003f8e0028094ebf00143ac1a763922a65b887e2d1b66233efdabc5830186a08080b8c0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000004f8a0028094ebf00143ac1a763922a65b887e2d1b66233efdabc5830186a08080b88000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000014f8c0028094ebf00143ac1a763922a65b887e2d1b66233efdabc5830186a08080b8a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000001e00000000000000000000000000000000000000000000000000000000000000280000000000000000000000000000000000000000000000000000000000000032f85cf85a0194ebf00143ac1a763922a65b887e2d1b66233efdab80b84101f8be3d19b38ef3f0e297cea66fd5f15cb6a37e2a5df8794d4ade3de564915d763b9a385e711fe0153df2182b2a2092070b5779e0181531eee10f04b9d34b2ee1cb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x95759def90a973b03a4e850b29e6d16d8c10f3093e7cf42d2cf727911e64d5ce",
+      "frameIds": [
+        "validation",
+        "required-call",
+        "extra-a",
+        "extra-b"
+      ]
+    },
+    "reduced": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "banned-opcode",
+        "opcodeMask": 3,
+        "name": "banned-opcode",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c18001940505deacb5ad5712160d53d4b5fc16ff9af883edf88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000003f860028094ebf00143ac1a763922a65b887e2d1b66233efdabc5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194ebf00143ac1a763922a65b887e2d1b66233efdab80b841016cf9747451bf5f9429456cf14645b73741849b0f1aee4dd4ae1da932d086bdaa40db3f35402ff0749f344f78a0d25ae3d8ab130154e4fce2b51527dceddaf1dacb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x8d86fbf52d168d01f0245b14bb51c6c23b80603d43112a813e37aeffadfbb254",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "correction": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "banned-opcode",
+        "opcodeMask": 2,
+        "name": "banned-opcode",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c18001940505deacb5ad5712160d53d4b5fc16ff9af883edf88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000002f860028094ebf00143ac1a763922a65b887e2d1b66233efdabc5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194ebf00143ac1a763922a65b887e2d1b66233efdab80b841012bf52bbc7f2255a8b67880fec63d7190313243115eafe00f31a0abd4b3ef0bd82172688f40a20b0cd9ce53cfcb7169ac73d1569eecce2b1da068e28460c91d1acb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x5b117619fb20ae57f334ef3f400f632217c89a22cdaffc4603965c92ea3a1be4",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "evaluations": 6,
+    "fingerprint": {
+      "stage": "local-policy",
+      "ruleId": "OP-011",
+      "normalizedCause": "BANNED_OPCODE:TIMESTAMP",
+      "entityRole": "payer",
+      "stableFixtureFrameId": "validation",
+      "profileHash": "55252ea0270ce707d4358c2b2e2dc5281192dae154a96e5d981c0b9ede295230",
+      "stateHash": "80bcecac106487b01249d1ac3c0b1a0637e446569986dc6aa8b060a6a6ae4352"
+    }
+  },
+  {
+    "failure": "BANNED_OPCODE:NUMBER",
+    "original": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "banned-opcode",
+        "opcodeMask": 2,
+        "name": "banned-opcode",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c18001940505deacb5ad5712160d53d4b5fc16ff9af883edf88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000002f860028094ebf00143ac1a763922a65b887e2d1b66233efdabc5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194ebf00143ac1a763922a65b887e2d1b66233efdab80b841012bf52bbc7f2255a8b67880fec63d7190313243115eafe00f31a0abd4b3ef0bd82172688f40a20b0cd9ce53cfcb7169ac73d1569eecce2b1da068e28460c91d1acb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x5b117619fb20ae57f334ef3f400f632217c89a22cdaffc4603965c92ea3a1be4",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "reduced": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "banned-opcode",
+        "opcodeMask": 2,
+        "name": "banned-opcode",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c18001940505deacb5ad5712160d53d4b5fc16ff9af883edf88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000002f860028094ebf00143ac1a763922a65b887e2d1b66233efdabc5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194ebf00143ac1a763922a65b887e2d1b66233efdab80b841012bf52bbc7f2255a8b67880fec63d7190313243115eafe00f31a0abd4b3ef0bd82172688f40a20b0cd9ce53cfcb7169ac73d1569eecce2b1da068e28460c91d1acb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x5b117619fb20ae57f334ef3f400f632217c89a22cdaffc4603965c92ea3a1be4",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "correction": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "verify-gas",
+        "opcodeMask": 2,
+        "name": "banned-opcode",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c18001940505deacb5ad5712160d53d4b5fc16ff9af883edf88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000000f860028094ebf00143ac1a763922a65b887e2d1b66233efdabc5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194ebf00143ac1a763922a65b887e2d1b66233efdab80b84101c506ff513553503b394d5e934f8c7ccb9d2526ab5fe2c4c461b993bb001e4a36137fd9d8487e7251f0f533ab596bc41b1c746b8074f5b6d9b0f3dba613a5486dcb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x1ec45e7e4b919c697eb88a42a6732c4fc3d4136178a47359b560d6d04a386b12",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "evaluations": 3,
+    "fingerprint": {
+      "stage": "local-policy",
+      "ruleId": "OP-011",
+      "normalizedCause": "BANNED_OPCODE:NUMBER",
+      "entityRole": "payer",
+      "stableFixtureFrameId": "validation",
+      "profileHash": "55252ea0270ce707d4358c2b2e2dc5281192dae154a96e5d981c0b9ede295230",
+      "stateHash": "80bcecac106487b01249d1ac3c0b1a0637e446569986dc6aa8b060a6a6ae4352"
+    }
+  }
+]

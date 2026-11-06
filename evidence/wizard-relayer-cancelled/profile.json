@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "sidecarCommit": "2e22ff0a2898e69ea4bf5275bce1be8581a8582a",
+  "ethrexCommit": "9aa3645d795945c64400f41a70aace0edfa7f383",
+  "image": "ghcr.io/forshtat/eip8141-devnet@sha256:09e0871af79cb06ee3cf3f7bc760a39bdcb539bc9c8d1ef1fe8a1bf57962030e",
+  "genesisFileHash": "bc91de9f5e824782d14a1985b77354ed17352713a9df51a6562ce8b28dd119d1",
+  "genesisHash": "0x54b8e1295ebba87a1247740ddacc2ceffbe25be69a42af900ff3e006206bb795",
+  "headHash": "0x54b8e1295ebba87a1247740ddacc2ceffbe25be69a42af900ff3e006206bb795",
+  "headNumber": "0x0",
+  "chainId": "0x539",
+  "clientVersion": "ethrex/v23.0.0-eip8141-tracer-9aa3645d795945c64400f41a70aace0edfa7f383/x86_64-unknown-linux-gnu/rustc-v1.93.1",
+  "accounts": {
+    "0xebF00143AC1A763922A65b887e2d1B66233eFDaB": {
+      "code": "0x",
+      "balance": "0xd96fa5e51220a5c",
+      "nonce": "0x3"
+    },
+    "0x0505DEAcb5Ad5712160D53d4b5fc16ff9aF883ED": {
+      "code": "0x3360aa14600857005b60006000b473ebf00143ac1a763922a65b887e2d1b66233efdab1415605f5760026000b41515605f5760016000b460011415605f5760003560011615604a5742505b6000356002161560575743505b600360006000aa5b60006000fd",
+      "balance": "0x236de98a4a5356",
+      "nonce": "0x2"
+    }
+  },
+  "policy": {
+    "stakingRegistry": "disabled",
+    "stake": "0x0",
+    "unstakeDelaySec": "0x0",
+    "whitelist": [],
+    "reputation": "all unlisted; insufficient stake",
+    "minStake": "0x2540be400",
+    "standardMempoolId": "FrameShrink-local-policy",
+    "scope": "upstream FrameTxValidationService; no mempool, fees, replacement, reputation admission or gossip"
+  },
+  "policyHash": "1553444f2cb8d58d76b835e530ac2462f6af2f75e7f78d37ce7527d7230d5f08",
+  "profileHash": "daf1cae26d5a846c5978c4782570920664cc74964c00c8f104672de01059d620",
+  "stateHash": "78644bf9760219a086b26cfe1c6c1b468246d49937ed3b37e6d141323beeeb2d"
+}

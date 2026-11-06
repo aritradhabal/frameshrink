@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "kind": "frameshrink-investigation",
+  "reproductionStatus": "diagnostic-only",
+  "checksums": {
+    "report.json": "7c9ee69eb983f25cd0b88891cee363931eda0677a42f99aedec2892021424a76",
+    "rpc-evidence.json": "cc3337f73c289526d8ee3b73f49875646818a1df35ed47c97edfe8ecbd27a969",
+    "observed-state.json": "3b1b802bf814b62d357c8679c960f9c1e6ebf04e11d5f80885d17bd6156f4bef",
+    "README.txt": "b58d53d2fa3184bf621a0460aacc7f5db344218520bb82b90d0d284eebc0771b"
+  }
+}

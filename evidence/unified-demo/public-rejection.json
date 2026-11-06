@@ -1,0 +1,184 @@
+{
+  "response": {
+    "message": "payer uses banned opcode: TIMESTAMP",
+    "code": -32502
+  },
+  "admission": {
+    "hash": "0xb20cc4daaf82ccd0f8bfde27be1e65843c1a1e7b873859a297ae8cdaa61b73c5",
+    "entry": null,
+    "admission": {
+      "id": 585,
+      "txHash": "0xb20cc4daaf82ccd0f8bfde27be1e65843c1a1e7b873859a297ae8cdaa61b73c5",
+      "sender": "0xfb2d1b90af1d285cbab43bf64e5054fc7a002bf4",
+      "nonce": "0x1",
+      "nonceKeys": [
+        "0x0"
+      ],
+      "at": 1793978272512,
+      "source": "rpc",
+      "outcome": "rejected",
+      "errorCode": -32502,
+      "checks": [
+        {
+          "rule": "gas-limit",
+          "verdict": "pass"
+        },
+        {
+          "rule": "recent-root",
+          "verdict": "pass"
+        },
+        {
+          "rule": "prefix",
+          "verdict": "pass"
+        },
+        {
+          "rule": "structure",
+          "verdict": "pass"
+        },
+        {
+          "rule": "signature",
+          "verdict": "pass"
+        },
+        {
+          "rule": "simulation",
+          "verdict": "pass"
+        },
+        {
+          "rule": "trace-alignment",
+          "verdict": "pass"
+        },
+        {
+          "rule": "OP-061",
+          "verdict": "pass"
+        },
+        {
+          "rule": "execution",
+          "verdict": "pass"
+        },
+        {
+          "rule": "trace-alignment",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "out-of-gas",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "OP-011",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "fail",
+          "detail": "payer uses banned opcode: TIMESTAMP"
+        },
+        {
+          "rule": "create",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "storage",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "COD-010",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "entrypoint-access",
+          "frameIndex": 0,
+          "entity": "payer",
+          "verdict": "pass"
+        },
+        {
+          "rule": "mempool",
+          "verdict": "skipped"
+        }
+      ],
+      "frames": [
+        {
+          "mode": 1,
+          "flags": 3,
+          "target": null,
+          "limits": {
+            "execution": "0x7530",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        },
+        {
+          "mode": 2,
+          "flags": 0,
+          "target": "0xebf00143ac1a763922a65b887e2d1b66233efdab",
+          "limits": {
+            "execution": "0x186a0",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "mode": 2,
+          "flags": 0,
+          "target": "0xebf00143ac1a763922a65b887e2d1b66233efdab",
+          "limits": {
+            "execution": "0x186a0",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000014"
+        },
+        {
+          "mode": 2,
+          "flags": 0,
+          "target": "0xebf00143ac1a763922a65b887e2d1b66233efdab",
+          "limits": {
+            "execution": "0x186a0",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000001e00000000000000000000000000000000000000000000000000000000000000280000000000000000000000000000000000000000000000000000000000000032"
+        }
+      ],
+      "frameStatuses": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ]
+    },
+    "events": [
+      {
+        "seq": 1674,
+        "txHash": "0xb20cc4daaf82ccd0f8bfde27be1e65843c1a1e7b873859a297ae8cdaa61b73c5",
+        "at": 1793978272542,
+        "kind": "rejected",
+        "reason": "payer uses banned opcode: TIMESTAMP"
+      }
+    ]
+  },
+  "nodeInfo": {
+    "protocolVersion": 1,
+    "chainId": 1337,
+    "version": "v4.1.1",
+    "commit": "",
+    "bundlingMode": "auto",
+    "p2pEnabled": true,
+    "latestSeq": 1674,
+    "oldestSeq": 1,
+    "historyCapacity": 10000,
+    "bootId": "6ba711bc5014aeb0",
+    "minInclusionDenominator": 10,
+    "throttlingSlack": 10,
+    "banSlack": 50
+  }
+}
