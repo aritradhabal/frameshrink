@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "status": "reproduced",
+  "exactSignedPayloads": true,
+  "profileHash": "87ad5e94d1e9a1f06cd5e74606297b343e3de0e002b97efaa2bc5ae48b18f5c8",
+  "stateHash": "b9eef02d92598d2bf3c2644e58c5fdba260d8cf922a6fa7510b985d60ae8616c",
+  "results": [
+    {
+      "name": "original",
+      "status": "rejected",
+      "bytes": 767,
+      "message": "Invalid Transaction: Invalid frame transaction: VERIFY frame 0 (target 0xf474d78732ec00461b294977c6a37113298c81ff, 175 bytes of code) failed: RevertOpcode"
+    },
+    {
+      "name": "reduced",
+      "status": "rejected",
+      "bytes": 282,
+      "message": "Invalid Transaction: Invalid frame transaction: VERIFY frame 0 (target 0xf474d78732ec00461b294977c6a37113298c81ff, 175 bytes of code) failed: RevertOpcode"
+    },
+    {
+      "name": "corrected",
+      "status": "accepted",
+      "bytes": 282,
+      "message": "Accepted by local simulation and covered policy checks"
+    },
+    {
+      "name": "stage-1",
+      "status": "rejected",
+      "bytes": 282,
+      "message": "Invalid Transaction: Invalid frame transaction: VERIFY frame 0 (target 0xf474d78732ec00461b294977c6a37113298c81ff, 175 bytes of code) failed: RevertOpcode"
+    },
+    {
+      "name": "stage-2",
+      "status": "rejected",
+      "bytes": 282,
+      "message": "Invalid Transaction: Invalid frame transaction: VERIFY frame 0 (target 0xf474d78732ec00461b294977c6a37113298c81ff, 175 bytes of code) failed: Opcode Not Allowed In Static Context"
+    },
+    {
+      "name": "stage-3",
+      "status": "rejected",
+      "bytes": 282,
+      "message": "payer uses banned opcode: TIMESTAMP"
+    },
+    {
+      "name": "stage-4",
+      "status": "rejected",
+      "bytes": 282,
+      "message": "payer uses banned opcode: NUMBER"
+    },
+    {
+      "name": "stage-5",
+      "status": "rejected",
+      "bytes": 282,
+      "message": "payer accesses un-deployed contract address 0x497a1a3318060016ef70a32989e69b9695e5fc22 with opcode EXTCODESIZE"
+    }
+  ]
+}

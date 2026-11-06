@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 1,
+  "status": "reduced",
+  "profile": {
+    "schemaVersion": 1,
+    "sidecarCommit": "2e22ff0a2898e69ea4bf5275bce1be8581a8582a",
+    "ethrexCommit": "9aa3645d795945c64400f41a70aace0edfa7f383",
+    "image": "ghcr.io/forshtat/eip8141-devnet@sha256:09e0871af79cb06ee3cf3f7bc760a39bdcb539bc9c8d1ef1fe8a1bf57962030e",
+    "genesisFileHash": "750b6a68b13543a0a0f7665e40b54d262cccfb4901aeecc927012b05635a4564",
+    "genesisHash": "0x96c88150a4d3cc56482faac71073f3afe6fa90b4eb92f9258bae1c1791b8ac96",
+    "headHash": "0x96c88150a4d3cc56482faac71073f3afe6fa90b4eb92f9258bae1c1791b8ac96",
+    "headNumber": "0x0",
+    "chainId": "0x539",
+    "clientVersion": "ethrex/v23.0.0-eip8141-tracer-9aa3645d795945c64400f41a70aace0edfa7f383/x86_64-unknown-linux-gnu/rustc-v1.93.1",
+    "accounts": {
+      "0x497a1a3318060016EF70A32989e69b9695e5fc22": {
+        "code": "0x",
+        "balance": "0xd96aaf8339b8f40",
+        "nonce": "0x2"
+      },
+      "0xF474d78732eC00461b294977c6A37113298C81fF": {
+        "code": "0x3360aa14600857005b60006000b473497a1a3318060016ef70a32989e69b9695e5fc22141560a95760026000b4151560a95760016000b46001141560a95760003560101615605557632e29a28b6000526004601cfd5b6000356008161560655760016000555b6000356001161560725742505b60003560021615607f5743505b6000356004161560a15773497a1a3318060016ef70a32989e69b9695e5fc223b505b600360006000aa5b60006000fd",
+        "balance": "0x2386f26fc10000",
+        "nonce": "0x1"
+      }
+    },
+    "policy": {
+      "stakingRegistry": "disabled",
+      "stake": "0x0",
+      "unstakeDelaySec": "0x0",
+      "whitelist": [],
+      "reputation": "all unlisted; insufficient stake",
+      "minStake": "0x2540be400",
+      "standardMempoolId": "FrameShrink-local-policy",
+      "scope": "upstream FrameTxValidationService; no mempool, fees, replacement, reputation admission or gossip"
+    },
+    "policyHash": "1553444f2cb8d58d76b835e530ac2462f6af2f75e7f78d37ce7527d7230d5f08",
+    "profileHash": "87ad5e94d1e9a1f06cd5e74606297b343e3de0e002b97efaa2bc5ae48b18f5c8",
+    "stateHash": "b9eef02d92598d2bf3c2644e58c5fdba260d8cf922a6fa7510b985d60ae8616c"
+  },
+  "original": {
+    "schemaVersion": 1,
+    "mode": "owned",
+    "family": "validation-fixture",
+    "failureMask": 31,
+    "name": "validation-failures",
+    "prefixGas": 30000,
+    "body": [
+      {
+        "id": "required-call",
+        "required": true,
+        "values": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "id": "extra-a",
+        "required": false,
+        "values": [
+          10,
+          20
+        ]
+      },
+      {
+        "id": "extra-b",
+        "required": false,
+        "values": [
+          30,
+          40,
+          50
+        ]
+      }
+    ]
+  },
+  "reduced": {
+    "schemaVersion": 1,
+    "mode": "owned",
+    "family": "validation-fixture",
+    "failureMask": 31,
+    "name": "validation-failures",
+    "prefixGas": 30000,
+    "body": [
+      {
+        "id": "required-call",
+        "required": true,
+        "values": []
+      }
+    ]
+  },
+  "baseline": {
+    "status": "rejected",
+    "fingerprint": {
+      "stage": "local-execution",
+      "ruleId": "simulation",
+      "normalizedCause": "APPLICATION_REVERT:FrameShrinkFixtureFailure()",
+      "entityRole": "payer",
+      "stableFixtureFrameId": "validation",
+      "profileHash": "87ad5e94d1e9a1f06cd5e74606297b343e3de0e002b97efaa2bc5ae48b18f5c8",
+      "stateHash": "b9eef02d92598d2bf3c2644e58c5fdba260d8cf922a6fa7510b985d60ae8616c"
+    },
+    "raw": "0x06f902fb820539c1800194f474d78732ec00461b294977c6a37113298c81fff90271ea010380c48275308080a0000000000000000000000000000000000000000000000000000000000000001ff8e0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b8c0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000004f8a0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b88000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000014f8c0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b8a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000001e00000000000000000000000000000000000000000000000000000000000000280000000000000000000000000000000000000000000000000000000000000032f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b8410183af9cd373c5aca5b140b0b74fe81535923843ecd47e76b11673472000cc19942d36866f2c8bebc0b982df200947115b100fb75b47ceb33b73a145fd07cdc282cb843b9aca00843b9aca0e80c0c0",
+    "frameIds": [
+      "validation",
+      "required-call",
+      "extra-a",
+      "extra-b"
+    ],
+    "checks": [
+      {
+        "rule": "simulation",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "fail",
+        "detail": "Invalid Transaction: Invalid frame transaction: VERIFY frame 0 (target 0xf474d78732ec00461b294977c6a37113298c81ff, 175 bytes of code) failed: RevertOpcode"
+      },
+      {
+        "rule": "gas-limit",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "recent-root",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "prefix",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "structure",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "signature",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "simulation",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "trace-alignment",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "OP-061",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "execution",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "mempool",
+        "verdict": "skipped"
+      }
+    ],
+    "simulation": {
+      "canonicalMempoolValid": false,
+      "canonicalMempoolViolation": "validation prefix frame reverted",
+      "erc7562Trace": null,
+      "erc7562TraceError": null,
+      "executionError": "Invalid Transaction: Invalid frame transaction: VERIFY frame 0 (target 0xf474d78732ec00461b294977c6a37113298c81ff, 175 bytes of code) failed: RevertOpcode",
+      "executionStatus": null,
+      "failedFrameIndex": 0,
+      "frames": null,
+      "gasUsed": null,
+      "haltDetail": "the frame reverted",
+      "haltReason": "revert",
+      "maxCost": "0x13e9e29de5e58",
+      "payer": null,
+      "prefixShape": "SelfVerify",
+      "revertData": "0x2e29a28b"
+    },
+    "message": "Invalid Transaction: Invalid frame transaction: VERIFY frame 0 (target 0xf474d78732ec00461b294977c6a37113298c81ff, 175 bytes of code) failed: RevertOpcode",
+    "bytes": 767
+  },
+  "result": {
+    "status": "rejected",
+    "fingerprint": {
+      "stage": "local-execution",
+      "ruleId": "simulation",
+      "normalizedCause": "APPLICATION_REVERT:FrameShrinkFixtureFailure()",
+      "entityRole": "payer",
+      "stableFixtureFrameId": "validation",
+      "profileHash": "87ad5e94d1e9a1f06cd5e74606297b343e3de0e002b97efaa2bc5ae48b18f5c8",
+      "stateHash": "b9eef02d92598d2bf3c2644e58c5fdba260d8cf922a6fa7510b985d60ae8616c"
+    },
+    "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a0000000000000000000000000000000000000000000000000000000000000001ff860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b841009c1d46dfd3695fc7dff95f648e315cedbeda48765a258c78da1374c2eb76065970501e720205b6bc6915adcf67ccd3890cfb2fa82d0d94353d076c69f8d448e3cb843b9aca00843b9aca0e80c0c0",
+    "frameIds": [
+      "validation",
+      "required-call"
+    ],
+    "checks": [
+      {
+        "rule": "simulation",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "fail",
+        "detail": "Invalid Transaction: Invalid frame transaction: VERIFY frame 0 (target 0xf474d78732ec00461b294977c6a37113298c81ff, 175 bytes of code) failed: RevertOpcode"
+      },
+      {
+        "rule": "gas-limit",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "recent-root",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "prefix",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "structure",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "signature",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "simulation",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "trace-alignment",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "OP-061",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "execution",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "mempool",
+        "verdict": "skipped"
+      }
+    ],
+    "simulation": {
+      "canonicalMempoolValid": false,
+      "canonicalMempoolViolation": "validation prefix frame reverted",
+      "erc7562Trace": null,
+      "erc7562TraceError": null,
+      "executionError": "Invalid Transaction: Invalid frame transaction: VERIFY frame 0 (target 0xf474d78732ec00461b294977c6a37113298c81ff, 175 bytes of code) failed: RevertOpcode",
+      "executionStatus": null,
+      "failedFrameIndex": 0,
+      "frames": null,
+      "gasUsed": null,
+      "haltDetail": "the frame reverted",
+      "haltReason": "revert",
+      "maxCost": "0x86304c9f60b4",
+      "payer": null,
+      "prefixShape": "SelfVerify",
+      "revertData": "0x2e29a28b"
+    },
+    "message": "Invalid Transaction: Invalid frame transaction: VERIFY frame 0 (target 0xf474d78732ec00461b294977c6a37113298c81ff, 175 bytes of code) failed: RevertOpcode",
+    "bytes": 282
+  },
+  "control": {
+    "status": "accepted",
+    "fingerprint": null,
+    "raw": "0x06f902fb820539c1800194f474d78732ec00461b294977c6a37113298c81fff90271ea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000000f8e0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b8c0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000004f8a0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b88000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000014f8c0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b8a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000001e00000000000000000000000000000000000000000000000000000000000000280000000000000000000000000000000000000000000000000000000000000032f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84100b10abe8f7faa9c1783a8b83aef4e5ff18032be3f384b857a3a1b151cf59ede6e32bcc011e592c28dbeaa43eabdfb2daa03f9accaa22d2995ab9e90a2ffcb1517cb843b9aca00843b9aca0e80c0c0",
+    "frameIds": [
+      "validation",
+      "required-call",
+      "extra-a",
+      "extra-b"
+    ],
+    "checks": [
+      {
+        "rule": "prefix",
+        "verdict": "pass"
+      },
+      {
+        "rule": "structure",
+        "verdict": "pass"
+      },
+      {
+        "rule": "signature",
+        "verdict": "pass"
+      },
+      {
+        "rule": "simulation",
+        "verdict": "pass"
+      },
+      {
+        "rule": "trace-alignment",
+        "verdict": "pass"
+      },
+      {
+        "rule": "OP-061",
+        "verdict": "pass"
+      },
+      {
+        "rule": "execution",
+        "verdict": "pass"
+      },
+      {
+        "rule": "trace-alignment",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "out-of-gas",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "OP-011",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "create",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "storage",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "COD-010",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "entrypoint-access",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      }
+    ],
+    "simulation": {
+      "canonicalMempoolValid": true,
+      "canonicalMempoolViolation": null,
+      "erc7562Trace": [
+        {
+          "frameIndex": 0,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000000000aa",
+            "outOfGas": false,
+            "to": "0xf474d78732ec00461b294977c6a37113298c81ff",
+            "type": "CALL",
+            "usedOpcodes": {
+              "51": 1,
+              "53": 5,
+              "87": 9,
+              "170": 1,
+              "180": 3
+            },
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 1,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0xf474d78732ec00461b294977c6a37113298c81ff",
+            "outOfGas": false,
+            "to": "0x497a1a3318060016ef70a32989e69b9695e5fc22",
+            "type": "CALL",
+            "usedOpcodes": {},
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 2,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0xf474d78732ec00461b294977c6a37113298c81ff",
+            "outOfGas": false,
+            "to": "0x497a1a3318060016ef70a32989e69b9695e5fc22",
+            "type": "CALL",
+            "usedOpcodes": {},
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 3,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0xf474d78732ec00461b294977c6a37113298c81ff",
+            "outOfGas": false,
+            "to": "0x497a1a3318060016ef70a32989e69b9695e5fc22",
+            "type": "CALL",
+            "usedOpcodes": {},
+            "value": "0x0"
+          }
+        }
+      ],
+      "erc7562TraceError": null,
+      "executionError": null,
+      "executionStatus": "success",
+      "frames": [
+        {
+          "gasUsed": "0x16b",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0xbb8",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0x64",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0x64",
+          "succeeded": true
+        }
+      ],
+      "gasUsed": "0xd73c",
+      "maxCost": "0x13e9b5e9ce5b0",
+      "payer": "0xf474d78732ec00461b294977c6a37113298c81ff",
+      "prefixShape": "SelfVerify"
+    },
+    "message": "Accepted by local simulation and covered policy checks",
+    "bytes": 767
+  },
+  "attempts": [
+    {
+      "index": 1,
+      "edit": {
+        "kind": "remove-frames",
+        "ids": [
+          "extra-a"
+        ]
+      },
+      "accepted": true,
+      "cached": false,
+      "reason": "Preserves the exact baseline fingerprint and reduces canonical bytes",
+      "candidateHash": "d943d7e7c26c8a90a63885389743b42f44649f4e27379b67eee22b20955d2a9f",
+      "bytes": 605
+    },
+    {
+      "index": 2,
+      "edit": {
+        "kind": "remove-frames",
+        "ids": [
+          "extra-b"
+        ]
+      },
+      "accepted": true,
+      "cached": false,
+      "reason": "Preserves the exact baseline fingerprint and reduces canonical bytes",
+      "candidateHash": "316ab7a9d029e0450b379d851fa05b46f45de120a24bf6a22f5c2d531dec92f8",
+      "bytes": 411
+    },
+    {
+      "index": 3,
+      "edit": {
+        "kind": "remove-values",
+        "id": "required-call",
+        "start": 0,
+        "count": 4
+      },
+      "accepted": true,
+      "cached": false,
+      "reason": "Preserves the exact baseline fingerprint and reduces canonical bytes",
+      "candidateHash": "5320e7c2159378e48fcf94f450c29125a8cb272338baef2cfd3a55d3740bd118",
+      "bytes": 282
+    }
+  ],
+  "evaluations": 6,
+  "durationMs": 67,
+  "termination": "locally-minimal",
+  "locallyMinimal": true,
+  "editSet": [
+    "remove independent optional body frame",
+    "remove uint256[] element using ABI re-encoding"
+  ]
+}
