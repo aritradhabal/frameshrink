@@ -1,0 +1,60 @@
+{
+  "observedAt": "2026-11-06T13:04:25.395765+00:00",
+  "method": "skandha_explorer_info",
+  "readOnly": true,
+  "probes": [
+    {
+      "url": "https://altmempool.forshtat.com/rpc",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "protocolVersion": 1,
+          "chainId": 1337,
+          "version": "v4.1.1",
+          "commit": "",
+          "bundlingMode": "auto",
+          "p2pEnabled": true,
+          "latestSeq": 158,
+          "oldestSeq": 1,
+          "historyCapacity": 10000,
+          "bootId": "6ba711bc5014aeb0",
+          "minInclusionDenominator": 10,
+          "throttlingSlack": 10,
+          "banSlack": 50
+        }
+      }
+    },
+    {
+      "url": "https://altmempoolgateway.forshtat.com/rpc",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "protocolVersion": 1,
+          "chainId": 1337,
+          "version": "v4.1.1",
+          "commit": "",
+          "bundlingMode": "manual",
+          "p2pEnabled": true,
+          "latestSeq": 56,
+          "oldestSeq": 1,
+          "historyCapacity": 10000,
+          "bootId": "1297de401113fb04",
+          "minInclusionDenominator": 10,
+          "throttlingSlack": 10,
+          "banSlack": 50,
+          "faucetEnabled": true
+        }
+      }
+    },
+    {
+      "url": "https://altmempool.wtf/rpc",
+      "error": "HTTP Error 308: Permanent Redirect"
+    },
+    {
+      "url": "https://altmempoolgateway.wtf/rpc",
+      "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "observed": "Public node accepted a high-budget EOA that the pinned local policy rejected; workflow stopped before correction. The unified demo uses a directly evidenced TIMESTAMP rejection instead.",
+  "record": {
+    "schemaVersion": 1,
+    "kind": "frameshrink-devnet-case",
+    "state": "inconclusive",
+    "wallet": "0xebF00143AC1A763922A65b887e2d1B66233eFDaB",
+    "createdAt": "2026-11-06T15:02:17.873Z",
+    "directory": "/Users/aritra/Documents/project/frameshrink/.runs/demos/event-case",
+    "originalHash": "0xc2d2d63e8628743a8d293668734fb8cdd5a84b75156f1a595a6f7563400d5e64",
+    "originalFrames": 4,
+    "originalAttemptedAt": "2026-11-06T15:02:18.689Z",
+    "error": "Public node accepted the intended failing case; stopped before correction"
+  },
+  "response": {
+    "unexpectedAcceptance": "0xc2d2d63e8628743a8d293668734fb8cdd5a84b75156f1a595a6f7563400d5e64"
+  }
+}
