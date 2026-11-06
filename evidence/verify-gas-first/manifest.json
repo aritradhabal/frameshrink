@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "frameshrink-regression",
+  "reproductionStatus": "local-replay-required",
+  "checksums": {
+    "recipe.original.json": "0bb8a8073cbb585874e54805e0842b658c975fe6aada804923b2d07de0deba4c",
+    "recipe.reduced.json": "e90311dd960a6de7bfa52933a6ef3e799535849bc5522c30cd071b5085c2e34b",
+    "profile.json": "74edd033331c4a76ffa9b65cc8f525154e843151a0edc2d262d8c5ac5e6abf43",
+    "transaction.original.json": "4606edf6f7a0a20b9e508e97a0d0cae036fbbcb53fcdda40aea0db5cf5c48d40",
+    "transaction.reduced.json": "750bac34992928710a13a5821be6ab4625acc32b82215bd1d1b3d10f72d6bddc",
+    "reports.json": "9d16234027b854871be8766886771c8799993d33e297ea205519aa4901a7b008",
+    "reduction-log.jsonl": "c6f3b35a37e8ce3dc02116114329bdedb81654222b1ee1a677235bd97272d060",
+    "regression.json": "f13015641863cc6b261ef5b2b0b452addf04dbfb52378015093be417bcc2edc7",
+    "genesis.json": "1ac01baa8a3e98d6a6e8fdab0f2202e208bec5efc40c9bc7c57a72c5890d3f12",
+    "PayloadSink.sol": "c3aa0123f66b8f520ea5533677b28840f15916b222f16d0c967a19f28e9ae971",
+    "PayloadSink.artifact.json": "32be2a59076ce4102ec0647f62298635efe03b02ebf11cefbbd6ed19a78a4af6",
+    "README.md": "cfd01769cb044f16a8f99f04d7ebb5a85d4436c345f71508fd3fd3f4a9d793cb"
+  },
+  "profileHash": "29cb41afca9412593b83787feb9dc7cd1ce4e8cd69e8f9dad3e933522a2f48cb",
+  "stateHash": "6222b88107531dd36f5734f5d2221d2899aeb446e6fb0d01417660b78a65bd5f"
+}
