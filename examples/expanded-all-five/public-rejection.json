@@ -1,0 +1,166 @@
+{
+  "response": {
+    "message": "validation frame 0: reverted with data 0x2e29a28b",
+    "code": -32500
+  },
+  "admission": {
+    "hash": "0x68626d69843238ffb114a2fd3f4aceb219543476bba97a4b68361c1d583c404f",
+    "entry": null,
+    "admission": {
+      "id": 901,
+      "txHash": "0x68626d69843238ffb114a2fd3f4aceb219543476bba97a4b68361c1d583c404f",
+      "sender": "0xf474d78732ec00461b294977c6a37113298c81ff",
+      "nonce": "0x1",
+      "nonceKeys": [
+        "0x0"
+      ],
+      "at": 1793987952849,
+      "source": "rpc",
+      "outcome": "rejected",
+      "errorCode": -32500,
+      "checks": [
+        {
+          "rule": "gas-limit",
+          "verdict": "pass"
+        },
+        {
+          "rule": "recent-root",
+          "verdict": "pass"
+        },
+        {
+          "rule": "prefix",
+          "verdict": "pass"
+        },
+        {
+          "rule": "structure",
+          "verdict": "pass"
+        },
+        {
+          "rule": "signature",
+          "verdict": "pass"
+        },
+        {
+          "rule": "simulation",
+          "verdict": "fail",
+          "detail": "validation frame 0: reverted with data 0x2e29a28b"
+        },
+        {
+          "rule": "trace-alignment",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "OP-061",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "execution",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "mempool",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "out-of-gas",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "OP-011",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "create",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "storage",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "COD-010",
+          "verdict": "skipped"
+        },
+        {
+          "rule": "entrypoint-access",
+          "verdict": "skipped"
+        }
+      ],
+      "frames": [
+        {
+          "mode": 1,
+          "flags": 3,
+          "target": null,
+          "limits": {
+            "execution": "0x7530",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x000000000000000000000000000000000000000000000000000000000000001f"
+        },
+        {
+          "mode": 2,
+          "flags": 0,
+          "target": "0x497a1a3318060016ef70a32989e69b9695e5fc22",
+          "limits": {
+            "execution": "0x186a0",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "mode": 2,
+          "flags": 0,
+          "target": "0x497a1a3318060016ef70a32989e69b9695e5fc22",
+          "limits": {
+            "execution": "0x186a0",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000014"
+        },
+        {
+          "mode": 2,
+          "flags": 0,
+          "target": "0x497a1a3318060016ef70a32989e69b9695e5fc22",
+          "limits": {
+            "execution": "0x186a0",
+            "state": "0x0"
+          },
+          "value": "0x0",
+          "data": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000001e00000000000000000000000000000000000000000000000000000000000000280000000000000000000000000000000000000000000000000000000000000032"
+        }
+      ],
+      "frameStatuses": [
+        "not-run",
+        "not-run",
+        "not-run",
+        "not-run"
+      ]
+    },
+    "events": [
+      {
+        "seq": 2690,
+        "txHash": "0x68626d69843238ffb114a2fd3f4aceb219543476bba97a4b68361c1d583c404f",
+        "at": 1793987952862,
+        "kind": "rejected",
+        "reason": "validation frame 0: reverted with data 0x2e29a28b"
+      }
+    ]
+  },
+  "nodeInfo": {
+    "protocolVersion": 1,
+    "chainId": 1337,
+    "version": "v4.1.1",
+    "commit": "",
+    "bundlingMode": "auto",
+    "p2pEnabled": true,
+    "latestSeq": 2690,
+    "oldestSeq": 1,
+    "historyCapacity": 10000,
+    "bootId": "6ba711bc5014aeb0",
+    "minInclusionDenominator": 10,
+    "throttlingSlack": 10,
+    "banSlack": 50
+  }
+}
