@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "status": "reproduced",
+  "cleanState": true,
+  "profileHash": "29cb41afca9412593b83787feb9dc7cd1ce4e8cd69e8f9dad3e933522a2f48cb",
+  "results": [
+    {
+      "name": "original",
+      "status": "rejected",
+      "bytes": 746,
+      "message": "validation prefix execution gas sum 120000 + signature-verification cost 2800 = 122800 exceeds MAX_VERIFY_GAS 100000"
+    },
+    {
+      "name": "reduced",
+      "status": "rejected",
+      "bytes": 252,
+      "message": "validation prefix execution gas sum 120000 + signature-verification cost 2800 = 122800 exceeds MAX_VERIFY_GAS 100000"
+    }
+  ],
+  "control": "accepted"
+}
