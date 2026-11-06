@@ -1,0 +1,11 @@
+ FrameShrink  · LOCAL REPLAY
+Captured signed case · five failure stages
+  1/5 Application revert (test error)        ✓ verified
+  2/5 State write during validation          ✓ verified
+  3/5 Forbidden TIMESTAMP                    ✓ verified
+  4/5 Forbidden NUMBER                       ✓ verified
+  5/5 Code access to an undeployed account   ✓ verified
+
+ PASSED  Five failure stages + corrected control
+Frames 4 → 2  Bytes 767 → 282 · 63.2% smaller
+Captured reduction · exact signed replay · no public submissions

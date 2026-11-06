@@ -15,6 +15,9 @@ import { fileURLToPath } from "node:url";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const temporary = await mkdtemp(path.join(tmpdir(), "frameshrink-package-"));
 const runtime = process.argv.includes("--runtime");
+const expectedVersion = JSON.parse(
+  await readFile(path.join(root, "package.json"), "utf8"),
+).version;
 try {
   const packed = JSON.parse(
     execFileSync(
@@ -95,7 +98,7 @@ try {
     env,
     encoding: "utf8",
   }).trim();
-  assert.equal(version, "0.1.0");
+  assert.equal(version, expectedVersion);
   const failures = JSON.parse(
     execFileSync(process.execPath, [cli, "failures", "--json"], {
       cwd: installed,
@@ -136,6 +139,23 @@ try {
   });
   assert(execHelp.includes("demo local"));
   await assert.rejects(() => access(path.join(execOnly, "node_modules")));
+  const brokenDocker = path.join(fake, "docker");
+  await writeFile(brokenDocker, "#!/bin/sh\nexit 1\n");
+  await chmod(brokenDocker, 0o755);
+  const missingState = path.join(temporary, "missing-docker-state");
+  const missingDocker = spawnSync(
+    process.execPath,
+    [cli, "demo", "local", "--json"],
+    {
+      cwd: installed,
+      env: { ...env, FRAMESHRINK_HOME: missingState },
+      encoding: "utf8",
+    },
+  );
+  assert.equal(missingDocker.status, 3);
+  assert(missingDocker.stderr.includes("Docker is not responding"));
+  await assert.rejects(() => access(missingState));
+  await rm(brokenDocker);
   if (runtime) {
     const sampleState = path.join(temporary, "sample-state");
     const sample = JSON.parse(
@@ -158,17 +178,13 @@ try {
       "accepted",
     );
     await assert.rejects(() => access(path.join(sampleState, "wallet")));
-    const human = execFileSync(
-      process.execPath,
-      [cli, "demo", "local", "--no-color"],
-      {
-        cwd: installed,
-        env: { ...env, FRAMESHRINK_HOME: sampleState },
-        encoding: "utf8",
-        stdio: ["ignore", "pipe", "pipe"],
-        timeout: 120000,
-      },
-    );
+    const human = execFileSync(process.execPath, [cli, "demo", "--no-color"], {
+      cwd: installed,
+      env: { ...env, FRAMESHRINK_HOME: sampleState },
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+      timeout: 120000,
+    });
     assert(!human.includes(temporary));
     assert(human.includes("[PASSED]"));
   }
@@ -200,6 +216,7 @@ try {
     runtimeReplay: runtime ? "passed" : "not run",
     secretsExcluded: true,
     modifiedBundleRefused: true,
+    dockerFailureActionable: true,
     files: report.files.map((file) => file.path),
   };
   await writeFile(

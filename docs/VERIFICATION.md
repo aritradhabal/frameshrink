@@ -8,7 +8,7 @@ Prepared 6 November 2026. All outcomes below are observations from this build, n
 |---|---|
 | Fresh pinned dependency checkout and build | Passed; own `.vendor/sidecar`, no dependency on the research checkout |
 | TypeScript strict type checking | Passed |
-| Core/CLI/wallet/signing/wizard test suite | 37 passed, 0 failed |
+| Core/CLI/wallet/signing/wizard test suite | 42 passed, 0 failed |
 | Real ethrex integration suite | 5 scenarios passed, including v2 combined TIMESTAMP → NUMBER → passing control: original fixture families, captured EOA and captured owner-bound validator; includes clean replay and canonical-authorization checks |
 | Browser end-to-end suite | 1 scenario passed, covering both families, export/replay, invalid imports, mobile layout and request guards |
 | Formatting | Passed |
@@ -92,3 +92,9 @@ The CLI now has filled status badges and omits the trailing absolute case-direct
 The npm tarball contains a compiled ESM CLI with pinned sidecar code and bundled dependency license notices, fixed fixtures and a portable five-stage example. There are no install/build hooks. Fresh-folder checks install with scripts disabled, run the CLI with Git/Bun blocked, verify persistent state outside the installed package, and use an isolated npm-exec cache without a global installation. Both installed and npm-exec variants replay the real five-stage sample with Docker. A modified compiled bundle is refused by the build-manifest check. Runtime dependencies are limited to the interactive prompt package; source builds retain their pinned development toolchain.
 
 Source type checking, 37 unit tests, five real-runtime integration scenarios, the browser test, package install/exec replay, and formatting passed locally. `evidence/package-check.json` records package checks. Packaging/install tests make no public submissions. Linux CI remains supplied rather than remotely verified. No package or Git remote has been published.
+
+## 0.1.1 polish review
+
+The local replay now emits verified stage results and reports the captured frame/byte reduction. It does not claim a new reduction search occurred during replay. Activity indicators cover real asynchronous work, pause before interactive prompts, and are excluded from JSON. Missing Docker stops before artifact creation or validator deployment; first-run image preparation uses the pinned digest. `demo` without a subcommand selects local replay rather than public automation.
+
+Five additional unit scenarios cover compact balance/byte presentation, correct inconclusive labels, Docker prerequisites/image download, and duplicate wallet names. The real v3 replay test now also refuses a forged display label even when a bundle's checksums were recomputed. Clean-folder package tests cover actionable Docker failure without creating a state directory and both explicit/local-default replay. Source strict typing, 42 unit tests, five real-runtime integration scenarios, the browser scenario, package install/npm-exec replay, and formatting checks passed during the review. Public test submissions were not needed for this visual/flow update.

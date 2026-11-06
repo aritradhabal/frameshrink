@@ -193,6 +193,17 @@ test("v3 fixture: three new categories, all-five staged reduction, strict execut
       directory: dir,
     });
     await sealDemo(dir);
+    const actualFailure = stages[0].failure;
+    stages[0].failure = "unverified display label";
+    await saveJSON(path.join(dir, "debug-stages.json"), stages);
+    await sealDemo(dir);
+    await assert.rejects(
+      () => replayDemo(dir),
+      /Staged failure replay differs/,
+    );
+    stages[0].failure = actualFailure;
+    await saveJSON(path.join(dir, "debug-stages.json"), stages);
+    await sealDemo(dir);
     await rm(wd, { recursive: true, force: true });
     const replay = await replayDemo(dir);
     assert.equal(replay.exactSignedPayloads, true);

@@ -55,5 +55,14 @@
       "selectionAndNavigation": "passed",
       "literalEscapeCodes": false
     }
-  ]
+  ],
+  "polishReview": {
+    "version": "0.1.1",
+    "realPtyLocalReplay": "passed",
+    "filledBackgroundCodes": "verified",
+    "literalEscapeCodes": false,
+    "verifiedStages": 5,
+    "nativeResumePreview": "passed; correction declined",
+    "screenshot": "cli-demo.png rendered from captured PTY output"
+  }
 }

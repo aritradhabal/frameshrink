@@ -442,3 +442,33 @@ test("recovery uses short case IDs while existing and custom paths still resolve
   const custom = path.join(tmpdir(), "frameshrink-custom-case");
   assert.equal(resolveDemoDirectory(demoReference(custom)), custom);
 });
+
+test("new wallet selection cannot silently reuse an existing wallet name", async () => {
+  const existing = {
+    name: "demo",
+    directory: "/unused",
+    address: "0x" + "22".repeat(20),
+  } as Awaited<ReturnType<typeof createNamedWallet>>;
+  const names = ["demo", "fresh"],
+    created: string[] = [],
+    lines: string[] = [];
+  const prompts: WizardUI = {
+    choose: async (message) => (message === "Wallet" ? "new" : "cancel"),
+    name: async () => names.shift()!,
+    multiple: async () => [],
+    yes: async () => false,
+    review: async () => "continue",
+    line: (value) => lines.push(value),
+  };
+  const services = {
+    wallets: async () => [existing],
+    status: async () => ({ balanceWei: "0", balanceEth: "0" }),
+    create: async (name: string) => {
+      created.push(name);
+      return { ...existing, name };
+    },
+  } as WizardServices;
+  await startTransaction(prompts, services, { color: false });
+  assert.deepEqual(created, ["fresh"]);
+  assert(lines.some((line) => line.includes("already exists")));
+});

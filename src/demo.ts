@@ -56,6 +56,7 @@ import {
 } from "./case-runtime.js";
 import { evaluateTx, type Profile, type Evaluation } from "./runtime.js";
 import { reduce, type Budget, type EvaluationEvent } from "./reducer.js";
+import { prepareRuntime } from "./environment.js";
 import { exclusive } from "./lock.js";
 const FILES = new Set([
   "context.json",
@@ -298,11 +299,22 @@ export async function loadDemo(directory: string): Promise<DemoRun> {
     throw new FrameShrinkError("Invalid demo record", 2);
   return { ...run, directory: path.resolve(directory) };
 }
-async function replayOpen(directory: string) {
+export type ReplayEvent =
+  | { kind: "phase"; message: string }
+  | { kind: "stage"; index: number; total: number; failure: string };
+async function replayOpen(
+  directory: string,
+  progress: (event: ReplayEvent) => void = () => {},
+) {
   const context = ContextSchema.parse(
     await readJSON(path.join(directory, "context.json")),
   );
+  progress({ kind: "phase", message: "Starting isolated runtime" });
   await startCaseRuntime(directory);
+  progress({
+    kind: "phase",
+    message: "Verifying captured state and signed controls",
+  });
   const profile = await captureCaseProfile(context, directory);
   const saved = await readJSON(path.join(directory, "profile.json"));
   if (
@@ -349,6 +361,7 @@ async function replayOpen(directory: string) {
       hash(smaller.fingerprint) !== hash(stage.fingerprint) ||
       baseline.fingerprint?.normalizedCause !==
         expectedCause(stage.original.recipe) ||
+      stage.failure !== baseline.fingerprint?.normalizedCause ||
       (index + 1 === stages.length
         ? after.status !== "accepted"
         : after.fingerprint?.normalizedCause !==
@@ -357,6 +370,12 @@ async function replayOpen(directory: string) {
         stage.correction.raw !== stages[index + 1].original.raw)
     )
       throw new FrameShrinkError("Staged failure replay differs", 5);
+    progress({
+      kind: "stage",
+      index: index + 1,
+      total: stages.length,
+      failure: stage.failure,
+    });
     results.push({
       name: "stage-" + (index + 1),
       status: smaller.status,
@@ -373,10 +392,13 @@ async function replayOpen(directory: string) {
     results,
   };
 }
-export async function replayDemo(directory: string) {
+export async function replayDemo(
+  directory: string,
+  progress?: (event: ReplayEvent) => void,
+) {
   return exclusive(async () => {
     await loadDemo(directory);
-    return replayOpen(directory);
+    return replayOpen(directory, progress);
   });
 }
 async function publicDetail(hash: string) {
@@ -479,6 +501,7 @@ export async function resumeDemo(directory: string) {
   });
 }
 export type DemoOptions = {
+  onActivity?: (label: string | null) => void;
   onOriginalRejected?: (run: DemoRun) => void;
   onEvaluation?: (
     stage: number,
@@ -525,6 +548,21 @@ export async function runDemo(
       if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e;
     }
   }
+  const task = async <T>(
+    label: string,
+    operation: () => Promise<T>,
+  ): Promise<T> => {
+    options.onActivity?.(label);
+    try {
+      return await operation();
+    } finally {
+      options.onActivity?.(null);
+    }
+  };
+  await walletStatus({ offline: true });
+  await task("Checking local runtime", () =>
+    prepareRuntime({ onProgress: (label) => options.onActivity?.(label) }),
+  );
   return withActiveWallet(async () =>
     exclusive(async () => {
       const wallet = await walletStatus({ offline: true });
@@ -550,15 +588,27 @@ export async function runDemo(
           context,
         ).record;
       } else {
-        const deployment = await ensureDemoValidator({
-          version: options.failureMask ? 3 : options.opcodeMask ? 2 : 1,
-          beforeDeploy: options.beforeDeploy,
-        });
+        const deployment = await task("Checking test validator", () =>
+          ensureDemoValidator({
+            version: options.failureMask ? 3 : options.opcodeMask ? 2 : 1,
+            beforeDeploy: options.beforeDeploy
+              ? async () => {
+                  options.onActivity?.(null);
+                  const approved = await options.beforeDeploy!();
+                  if (approved)
+                    options.onActivity?.("Deploying test validator");
+                  return approved;
+                }
+              : undefined,
+          }),
+        );
         onProgress("Owned validator ready");
-        context = await captureDemoContext(
-          wallet.address,
-          readDemoDevnet,
-          deployment.address,
+        context = await task("Capturing devnet state", () =>
+          captureDemoContext(
+            wallet.address,
+            readDemoDevnet,
+            deployment.address,
+          ),
         );
         await mkdir(path.dirname(directory), { recursive: true });
         await mkdir(directory, { recursive: false });
@@ -597,7 +647,9 @@ export async function runDemo(
         await saveJSON(path.join(directory, "original.json"), original);
       }
       try {
-        await startCaseRuntime(directory);
+        await task("Starting isolated runtime", () =>
+          startCaseRuntime(directory),
+        );
         const profile = await captureCaseProfile(context, directory);
         if (options.resume) {
           const saved = await readJSON(path.join(directory, "profile.json"));
@@ -608,7 +660,9 @@ export async function runDemo(
             throw new FrameShrinkError("Captured replay profile changed", 3);
         } else await saveJSON(path.join(directory, "profile.json"), profile);
         if (run.state === "preparing") {
-          const baseline = await evaluateSigned(original, context, profile);
+          const baseline = await task("Checking failing baseline", () =>
+            evaluateSigned(original, context, profile),
+          );
           const control = await buildSignedCase(
             { ...original.recipe, family: "verify-gas", prefixGas: 30000 },
             context,
@@ -616,8 +670,11 @@ export async function runDemo(
           if (
             baseline.fingerprint?.normalizedCause !==
               expectedCause(original.recipe) ||
-            (await evaluateSigned(control, context, profile)).status !==
-              "accepted"
+            (
+              await task("Checking corrected control", () =>
+                evaluateSigned(control, context, profile),
+              )
+            ).status !== "accepted"
           )
             throw new FrameShrinkError(
               "Owned baseline/control is not stable on the local runtime",
@@ -640,8 +697,8 @@ export async function runDemo(
             matchesPublicFailure(mode, message, wallet.address);
           let rejection: unknown;
           try {
-            const result = await submitDemoSelfRelay(
-              decodeSignedCase(original, context).tx,
+            const result = await task("Submitting failing transaction", () =>
+              submitDemoSelfRelay(decodeSignedCase(original, context).tx),
             );
             await saveJSON(path.join(directory, "public-rejection.json"), {
               unexpectedAcceptance: result,
@@ -659,7 +716,9 @@ export async function runDemo(
               throw e;
             rejection = { message: e.message, code: e.rpcCode };
           }
-          const detail = await publicDetail(original.hash);
+          const detail = await task("Capturing public rejection", () =>
+            publicDetail(original.hash),
+          );
           if (
             detail.admission.outcome !== "rejected" ||
             !detail.admission.checks?.some(
@@ -698,7 +757,9 @@ export async function runDemo(
                 item = await buildSignedCase(r, context);
                 evaluations.set(hash(r), item);
               }
-              return evaluateSigned(item, context, p);
+              return task("Simulating reduction candidate", () =>
+                evaluateSigned(item!, context, p),
+              );
             };
             const result = await reduce(
               current.recipe,
@@ -764,7 +825,9 @@ export async function runDemo(
           } while (stages.length < FAILURE_MODES.length);
           await saveJSON(path.join(directory, "debug-stages.json"), stages);
           await saveJSON(path.join(directory, "corrected.json"), current);
-          const replay = await replayOpen(directory);
+          const replay = await task("Verifying clean replay", () =>
+            replayOpen(directory),
+          );
           await saveJSON(path.join(directory, "local-replay.json"), replay);
           run.replay = replay.status;
           run.state = "reduced";
@@ -778,7 +841,8 @@ export async function runDemo(
         const stages: DebugStage[] = await readJSON(
           path.join(directory, "debug-stages.json"),
         );
-        if (alreadyReduced) await replayOpen(directory);
+        if (alreadyReduced)
+          await task("Verifying saved replay", () => replayOpen(directory));
         if (
           options.beforeCorrected &&
           !(await options.beforeCorrected(run, corrected, stages, context))
@@ -802,8 +866,8 @@ export async function runDemo(
         run.state = "pending";
         await checkpoint(directory, run);
         try {
-          const result = await submitDemoSelfRelay(
-            decodeSignedCase(corrected, context).tx,
+          const result = await task("Submitting corrected transaction", () =>
+            submitDemoSelfRelay(decodeSignedCase(corrected, context).tx),
           );
           if (result !== corrected.hash)
             throw new FrameShrinkError(
@@ -814,7 +878,9 @@ export async function runDemo(
           if (!(e instanceof DevnetRpcError) || !e.uncertain) throw e;
         }
         onProgress("Corrected transaction submitted");
-        await finishPublic(directory, run);
+        await task("Waiting for public execution", () =>
+          finishPublic(directory, run),
+        );
         if ((run as DemoRun).state === "complete")
           onProgress(
             "Public execution succeeded · block " +

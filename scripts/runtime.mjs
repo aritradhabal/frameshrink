@@ -6,7 +6,11 @@ export const image =
   "ghcr.io/forshtat/eip8141-devnet@sha256:09e0871af79cb06ee3cf3f7bc760a39bdcb539bc9c8d1ef1fe8a1bf57962030e";
 const name = "frameshrink-ethrex";
 if (process.argv[2] === "down") {
-  execFileSync("docker", ["rm", "-f", name], { stdio: "inherit" });
+  try {
+    execFileSync("docker", ["rm", "-f", name], { stdio: "pipe" });
+  } catch (error) {
+    if (!String(error.stderr).includes("No such container")) throw error;
+  }
 } else if (process.argv[2] === "up") {
   JSON.parse(readFileSync(root + "fixtures/genesis.json"));
   try {

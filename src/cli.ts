@@ -35,6 +35,13 @@ import {
   defaultDemoDirectory,
   type DemoRun,
 } from "./demo.js";
+import {
+  activity,
+  replayLine,
+  reductionMetrics,
+  transactionResult,
+} from "./presentation.js";
+import { prepareRuntime } from "./environment.js";
 import { terminal, safe } from "./terminal.js";
 const input = process.argv.slice(2),
   machine = input.includes("--json"),
@@ -44,16 +51,24 @@ const [command, arg, ...rest] = input.filter(
   (v) => !["--json", "--verbose", "--no-color"].includes(v),
 );
 const help = [
-  ui.bold("frameshrink"),
-  "  start transaction [--out <dir>] | start debug <dir>",
+  ui.badge("FrameShrink") + "  Ethereum frame transaction debugger",
+  "",
+  "  demo local                 Try the five-stage replay · Docker, no funds",
+  "  start transaction          Run the interactive devnet workflow",
+  "  debug <explorer-url>        Investigate a public rejection",
+  "",
   "  wallet create | status [--offline] | faucet",
-  "  demo local [--out <dir>] | run [--out <dir>]",
-  "  demo status <case> | resume <case>    runtime up | down",
-  "  debug <explorer-url> [--out <dir>]",
-  "  reduce <recipe> --out <dir>    replay <dir>",
-  "  explain <dir>  inspect <file>  compare <a> <b>",
-  "  whoami  doctor  failures  serve",
-  ui.dim("  --json  --verbose  --no-color"),
+  "  start debug <case>          Continue a saved case",
+  "  demo <status|resume> <case>  Check a saved public submission",
+  "  runtime up | down          Manage the local fixture runtime",
+  "  reduce <recipe> --out <dir> Minimize a local fixture",
+  "  replay <dir>               Verify a saved reproduction",
+  "",
+  "  inspect <file> · explain <case> · compare <a> <b>",
+  "  whoami · doctor · failures · serve",
+  ui.dim(
+    "  --out <dir> where supported · --json · --verbose · --no-color · --version",
+  ),
 ].join("\n");
 function failUsage(): never {
   throw new FrameShrinkError("Invalid arguments. Use frameshrink --help.", 2);
@@ -117,7 +132,9 @@ function investigationLines(report: Investigation, directory: string) {
 }
 function demoLines(run: DemoRun) {
   return [
-    run.state === "complete" ? ui.ok("Demo complete") : ui.warn(run.state),
+    run.correctedHash
+      ? transactionResult(run, input.includes("--no-color") ? false : undefined)
+      : ui.warn(run.state),
     ...(run.originalBytes !== undefined
       ? [
           `${run.originalFrames} → ${run.reducedFrames} frames · ${run.originalBytes} → ${run.reducedBytes} bytes`,
@@ -140,6 +157,7 @@ try {
       machine ? json({ name: pkg.name, version: pkg.version }) : pkg.version,
     );
   } else if (!command || command === "help" || command === "--help") {
+    if (arg || rest.length) failUsage();
     if (machine)
       console.log(
         json({
@@ -219,39 +237,74 @@ try {
       process.exitCode = 4;
   } else if (command === "runtime") {
     if (rest.length || !["up", "down"].includes(arg)) failUsage();
-    execFileSync(process.execPath, [ROOT + "scripts/runtime.mjs", arg], {
-      stdio: "inherit",
-    });
+    if (arg === "up") await prepareRuntime();
+    try {
+      execFileSync(process.execPath, [ROOT + "scripts/runtime.mjs", arg], {
+        stdio: ["ignore", "pipe", "pipe"],
+      });
+    } catch {
+      throw new FrameShrinkError(
+        arg === "up"
+          ? "Runtime could not start. Check Docker and port 18545; inspect docker logs frameshrink-ethrex."
+          : "Runtime could not stop. Check Docker and retry.",
+        3,
+      );
+    }
+    out(
+      {
+        schemaVersion: 1,
+        status: arg === "up" ? "ready" : "stopped",
+        chainId: 9,
+      },
+      [
+        ui.badge(arg === "up" ? "READY" : "STOPPED", "green") +
+          " Local fixture runtime · chain 9",
+      ],
+    );
   } else if (command === "demo") {
-    if (arg === "local") {
+    if (arg === "local" || !arg) {
       const { localDemo } = await import("./local-demo.js");
-      if (!machine)
-        console.log(
-          ui.badge("LOCAL") + " Replaying the bundled five-failure case…",
-        );
-      const result = await localDemo(outOption(rest));
+      if (!machine) {
+        console.log(ui.badge("FrameShrink") + ui.dim(" · LOCAL REPLAY"));
+        console.log(ui.dim("Captured signed case · five failure stages"));
+      }
+      const indicator = activity("Checking the captured case", {
+        enabled: !machine,
+        color: input.includes("--no-color") ? false : undefined,
+      });
+      let result: Awaited<ReturnType<typeof localDemo>>;
+      try {
+        result = await localDemo(outOption(rest), (event) => {
+          if (machine) return;
+          if (event.kind === "phase") indicator.update(event.message);
+          const line = replayLine(
+            event,
+            input.includes("--no-color") ? false : undefined,
+          );
+          if (line) indicator.log(line);
+        });
+      } finally {
+        indicator.stop();
+      }
       out(result, [
+        "",
         ui.badge("PASSED", "green") +
           " Five failure stages + corrected control",
-        `${result.originalFrames} → ${result.reducedFrames} frames · ${result.originalBytes} → ${result.reducedBytes} bytes`,
-        ui.dim("Local replay · no wallet or public submission"),
+        reductionMetrics(
+          result,
+          input.includes("--no-color") ? false : undefined,
+        ),
+        ui.dim(
+          "Captured reduction · exact signed replay · no public submissions",
+        ),
       ]);
-    } else if (arg === "run" || !arg) {
+    } else if (arg === "run") {
       const directory = outOption(rest) ?? defaultDemoDirectory();
       const run = await runDemo(
         directory,
         machine ? undefined : (m) => console.log(ui.ok(m)),
       );
-      out(run, [
-        ...(run.explorer ? [ui.cyan(run.explorer)] : []),
-        ...(run.state !== "complete"
-          ? [
-              ui.warn(
-                "Pending · use demo resume " + demoReference(run.directory),
-              ),
-            ]
-          : []),
-      ]);
+      out(run, demoLines(run));
       if (run.state !== "complete") process.exitCode = 4;
     } else if (["status", "resume"].includes(arg) && rest.length === 1) {
       const run =

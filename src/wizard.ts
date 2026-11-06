@@ -1,6 +1,15 @@
 import path from "node:path";
 import { select, checkbox, confirm, input } from "@inquirer/prompts";
-import { FAILURE_MODES, modeLabels, failureLabel } from "./failure-modes.js";
+import { FAILURE_MODES, failureLabel } from "./failure-modes.js";
+import {
+  balanceLabel,
+  reductionMetrics,
+  transactionResult,
+  caseHeading,
+  fitChoiceLabel,
+  withActivity,
+  activity,
+} from "./presentation.js";
 import { terminal } from "./terminal.js";
 import {
   changeDetails,
@@ -32,13 +41,19 @@ import {
   type DebugStage,
 } from "./demo.js";
 
-export type Choice = { value: string; name: string; disabled?: string };
+export type Choice = {
+  value: string;
+  name: string;
+  short?: string;
+  disabled?: string;
+};
 export type WizardUI = {
   choose(message: string, choices: Choice[]): Promise<string>;
   multiple(message: string, choices: Choice[]): Promise<string[]>;
   yes(message: string): Promise<boolean>;
   name(): Promise<string>;
   line(message: string): void;
+  busy?<T>(message: string, operation: () => Promise<T>): Promise<T>;
   review(message: string): Promise<"open" | "continue">;
 };
 export function promptUI(color?: boolean): WizardUI {
@@ -64,12 +79,20 @@ export function promptUI(color?: boolean): WizardUI {
     },
   };
   return {
+    busy: (message, operation) => withActivity(message, operation, color),
     choose: (message, choices) =>
       select({ message, choices, theme, loop: false }),
     multiple: (message, choices) =>
       checkbox({
         message,
-        choices,
+        choices: choices.map((choice) => ({
+          ...choice,
+          name: fitChoiceLabel(
+            choice.name,
+            choice.disabled,
+            process.stdout.columns || 80,
+          ),
+        })),
         theme,
         required: true,
         pageSize: 7,
@@ -135,8 +158,7 @@ export function correctionDiff(
   const ui = terminal(color);
   return [
     ui.badge("Changes"),
-    ui.red(`− ${run.originalFrames} frames · ${run.originalBytes} bytes`),
-    ui.green(`+ ${run.reducedFrames} frames · ${run.reducedBytes} bytes`),
+    reductionMetrics(run, color),
     ...changeDetails(stages).map((line) =>
       line.startsWith("−") ? ui.red(line) : ui.yellow(line),
     ),
@@ -236,21 +258,35 @@ export async function startTransaction(
       ...wallets.map((w) => ({
         value: w.directory,
         name: `${w.name} · ${w.address}`,
+        short: w.name,
       })),
       { value: "new", name: "Create wallet" },
     ]);
-    if (choice === "new") wallet = await services.create(await prompts.name());
-    else {
+    if (choice === "new") {
+      let name: string;
+      do {
+        name = await prompts.name();
+        if (wallets.some((existing) => existing.name === name))
+          print(
+            ui.warn("Wallet name already exists · choose a different name"),
+          );
+      } while (wallets.some((existing) => existing.name === name));
+      wallet = await services.create(name);
+    } else {
       const found = wallets.find((w) => w.directory === choice);
       if (!found) throw new FrameShrinkError("Unknown wallet selection", 2);
       wallet = found;
     }
   }
+  const busy = <T>(label: string, operation: () => Promise<T>) =>
+    prompts.busy ? prompts.busy(label, operation) : operation();
   return usingWallet(wallet.directory, async () => {
     print(ui.cyan(wallet.address));
     if (!saved) {
-      let status = await services.status();
-      print(ui.dim(`${status.balanceEth} devnet ETH`));
+      let status = await busy("Checking wallet balance", () =>
+        services.status(),
+      );
+      print(ui.dim(balanceLabel(status.balanceEth)));
       // Reserve setup funding plus the maximum fixed deployment gas charge.
       while (BigInt(status.balanceWei ?? "0") < 60000000000000000n) {
         const action = await prompts.choose("Fund wallet", [
@@ -268,7 +304,9 @@ export async function startTransaction(
             ),
           );
         } else if (action === "faucet") {
-          const funding = await services.fund();
+          const funding = await busy("Confirming faucet funding", () =>
+            services.fund(),
+          );
           print(
             funding.fundingConfirmed
               ? ui.ok("Faucet confirmed")
@@ -277,8 +315,8 @@ export async function startTransaction(
           if (funding.faucet.txHash) print(ui.dim(funding.faucet.txHash));
           if (funding.faucet.error) print(ui.warn(funding.faucet.error));
         }
-        status = await services.status();
-        print(ui.dim(`${status.balanceEth} devnet ETH`));
+        status = await busy("Checking wallet balance", () => services.status());
+        print(ui.dim(balanceLabel(status.balanceEth)));
       }
     }
     const selected = saved
@@ -294,12 +332,18 @@ export async function startTransaction(
     const runs: DemoRun[] = [];
     const base = options.directory ?? services.directory();
     for (const [index, mask] of plan.entries()) {
-      if (mask)
-        print(ui.bold(`${index + 1}/${plan.length} · ${modeLabels(mask)}`));
+      if (mask) print(caseHeading(mask, index + 1, plan.length, options.color));
       const directory =
         options.resume ??
         (plan.length > 1 ? path.join(base, `case-${index + 1}`) : base);
+      let indicator: ReturnType<typeof activity> | undefined;
       const hooks: DemoOptions = {
+        onActivity: (label) => {
+          indicator?.stop();
+          indicator = label
+            ? activity(label, { color: options.color })
+            : undefined;
+        },
         opcodeMask: mask && mask <= 3 ? (mask as 1 | 2 | 3) : undefined,
         failureMask: mask && mask > 3 ? mask : undefined,
         resume: !!saved,
@@ -393,6 +437,8 @@ export async function startTransaction(
           break;
         }
         throw e;
+      } finally {
+        indicator?.stop();
       }
       while (run.state === "pending") {
         const next = await prompts.choose("Receipt pending", [
@@ -400,21 +446,14 @@ export async function startTransaction(
           { value: "exit", name: "Save & exit" },
         ]);
         if (next !== "check") break;
-        run = await services.resume(directory);
-        if (run.state === "complete")
-          print(
-            ui.ok(
-              "Public execution succeeded · block " +
-                BigInt(run.blockNumber!).toString(),
-            ),
-          );
+        run = await busy("Checking public receipt", () =>
+          services.resume(directory),
+        );
       }
       if (run.error && run.state === "inconclusive") print(ui.warn(run.error));
       runs.push(run);
       if (run.correctedHash) {
-        print(
-          `${ui.badge(run.state === "complete" ? "ACCEPTED" : "PENDING", run.state === "complete" ? "green" : "yellow")} hash ${ui.cyan(run.correctedHash)}`,
-        );
+        print(transactionResult(run, options.color));
         print(
           ui.cyan(
             run.explorer ??

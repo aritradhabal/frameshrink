@@ -1,6 +1,6 @@
 {
   "name": "frameshrink",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -66,6 +66,8 @@
     "examples/",
     "docs/ATTRIBUTION.md",
     "docs/UPSTREAM-LICENSE.txt",
-    "docs/PACKAGING.md"
+    "docs/PACKAGING.md",
+    "CHANGELOG.md",
+    "evidence/cli-demo.png"
   ]
 }

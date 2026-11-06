@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-11-06T18:18:51.235798+00:00",
+  "verifiedAt": "2026-11-06T18:41:30.582010+00:00",
   "platform": "macOS arm64; Docker amd64 image through Rosetta",
   "sidecarCommit": "2e22ff0a2898e69ea4bf5275bce1be8581a8582a",
   "typecheck": "passed",
   "coreTests": {
-    "passed": 37,
+    "passed": 42,
     "failed": 0
   },
   "realRuntimeIntegration": {
@@ -72,7 +72,10 @@
     "liveEvaluations": "baseline/repeat/control/candidates streamed and checked with real ethrex",
     "transactionOutput": "original hash/link before debug; corrected-only final transaction summary",
     "filledBadges": true,
-    "trailingCasePath": false
+    "trailingCasePath": false,
+    "stageByStageLocalReplay": true,
+    "activeWorkIndicators": true,
+    "inconclusiveLabel": "UNCONFIRMED"
   },
   "wizardCombined": {
     "schemaVersion": 1,
@@ -170,11 +173,12 @@
   },
   "npmPackage": {
     "name": "frameshrink",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "published": false,
     "installAndExec": "passed",
     "realLocalReplay": "passed",
     "modifiedBundleRefused": true,
-    "recipientBuildToolsRequired": false
+    "recipientBuildToolsRequired": false,
+    "dockerPreflight": "passed"
   }
 }
