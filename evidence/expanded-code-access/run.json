@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "frameshrink-devnet-case",
+  "state": "reduced",
+  "wallet": "0x497a1a3318060016EF70A32989e69b9695e5fc22",
+  "createdAt": "2026-11-06T18:02:09.631Z",
+  "directory": "/Users/aritra/Documents/project/frameshrink/.runs/demos/expanded-code-access",
+  "originalHash": "0x03a90fd3a849248fa3bd49a4256cab4224c6bff726ffedaf335c54295c2dacc3",
+  "originalFrames": 4,
+  "originalAttemptedAt": "2026-11-06T18:02:10.457Z",
+  "reducedFrames": 2,
+  "originalBytes": 767,
+  "reducedBytes": 282,
+  "replay": "reproduced"
+}

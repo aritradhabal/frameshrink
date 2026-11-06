@@ -1,0 +1,436 @@
+[
+  {
+    "failure": "APPLICATION_REVERT:FrameShrinkFixtureFailure()",
+    "original": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 31,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": "extra-a",
+            "required": false,
+            "values": [
+              10,
+              20
+            ]
+          },
+          {
+            "id": "extra-b",
+            "required": false,
+            "values": [
+              30,
+              40,
+              50
+            ]
+          }
+        ]
+      },
+      "raw": "0x06f902fb820539c1800194f474d78732ec00461b294977c6a37113298c81fff90271ea010380c48275308080a0000000000000000000000000000000000000000000000000000000000000001ff8e0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b8c0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000004f8a0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b88000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000014f8c0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b8a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000001e00000000000000000000000000000000000000000000000000000000000000280000000000000000000000000000000000000000000000000000000000000032f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b8410183af9cd373c5aca5b140b0b74fe81535923843ecd47e76b11673472000cc19942d36866f2c8bebc0b982df200947115b100fb75b47ceb33b73a145fd07cdc282cb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x68626d69843238ffb114a2fd3f4aceb219543476bba97a4b68361c1d583c404f",
+      "frameIds": [
+        "validation",
+        "required-call",
+        "extra-a",
+        "extra-b"
+      ]
+    },
+    "reduced": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 31,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a0000000000000000000000000000000000000000000000000000000000000001ff860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b841009c1d46dfd3695fc7dff95f648e315cedbeda48765a258c78da1374c2eb76065970501e720205b6bc6915adcf67ccd3890cfb2fa82d0d94353d076c69f8d448e3cb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x9761f1f1d83c6b5514c0544a3ccbb6e57f1f502328395a3df095c4f48c9b7b09",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "correction": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 15,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a0000000000000000000000000000000000000000000000000000000000000000ff860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84101af824dd714d38fd0c409dc2e3ca3ebf5d2d22a122b43f902ff5652a9e31ba4a5390f6e99b664c8adf740c3496e40842900b14d3bb63ccef0021f61340ebfb238cb843b9aca00843b9aca0e80c0c0",
+      "hash": "0xa1b6801d8a676a2b0c4156ba06b89ca6a7a0dbb72f0ac2f117be1a834271ca93",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "evaluations": 6,
+    "fingerprint": {
+      "stage": "local-execution",
+      "ruleId": "simulation",
+      "normalizedCause": "APPLICATION_REVERT:FrameShrinkFixtureFailure()",
+      "entityRole": "payer",
+      "stableFixtureFrameId": "validation",
+      "profileHash": "87ad5e94d1e9a1f06cd5e74606297b343e3de0e002b97efaa2bc5ae48b18f5c8",
+      "stateHash": "b9eef02d92598d2bf3c2644e58c5fdba260d8cf922a6fa7510b985d60ae8616c"
+    }
+  },
+  {
+    "failure": "STATIC_WRITE:VALIDATION_SSTORE",
+    "original": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 15,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a0000000000000000000000000000000000000000000000000000000000000000ff860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84101af824dd714d38fd0c409dc2e3ca3ebf5d2d22a122b43f902ff5652a9e31ba4a5390f6e99b664c8adf740c3496e40842900b14d3bb63ccef0021f61340ebfb238cb843b9aca00843b9aca0e80c0c0",
+      "hash": "0xa1b6801d8a676a2b0c4156ba06b89ca6a7a0dbb72f0ac2f117be1a834271ca93",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "reduced": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 15,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a0000000000000000000000000000000000000000000000000000000000000000ff860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84101af824dd714d38fd0c409dc2e3ca3ebf5d2d22a122b43f902ff5652a9e31ba4a5390f6e99b664c8adf740c3496e40842900b14d3bb63ccef0021f61340ebfb238cb843b9aca00843b9aca0e80c0c0",
+      "hash": "0xa1b6801d8a676a2b0c4156ba06b89ca6a7a0dbb72f0ac2f117be1a834271ca93",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "correction": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 7,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000007f860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84101ca2c0bb552417794e2b075332e1a9e641966c6e279d6381a133a59fd337a6304221dd816071b49bee7246ed2ebf449f5787cd431477c265234cbf8013011eb81cb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x3c6428a7063a649b56684e87e96a1199b1612ad45995ff8d74c625315d311ce8",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "evaluations": 3,
+    "fingerprint": {
+      "stage": "local-execution",
+      "ruleId": "simulation",
+      "normalizedCause": "STATIC_WRITE:VALIDATION_SSTORE",
+      "entityRole": "payer",
+      "stableFixtureFrameId": "validation",
+      "profileHash": "87ad5e94d1e9a1f06cd5e74606297b343e3de0e002b97efaa2bc5ae48b18f5c8",
+      "stateHash": "b9eef02d92598d2bf3c2644e58c5fdba260d8cf922a6fa7510b985d60ae8616c"
+    }
+  },
+  {
+    "failure": "BANNED_OPCODE:TIMESTAMP",
+    "original": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 7,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000007f860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84101ca2c0bb552417794e2b075332e1a9e641966c6e279d6381a133a59fd337a6304221dd816071b49bee7246ed2ebf449f5787cd431477c265234cbf8013011eb81cb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x3c6428a7063a649b56684e87e96a1199b1612ad45995ff8d74c625315d311ce8",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "reduced": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 7,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000007f860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84101ca2c0bb552417794e2b075332e1a9e641966c6e279d6381a133a59fd337a6304221dd816071b49bee7246ed2ebf449f5787cd431477c265234cbf8013011eb81cb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x3c6428a7063a649b56684e87e96a1199b1612ad45995ff8d74c625315d311ce8",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "correction": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 6,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000006f860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84101e3a67ca8aba8315d50f90edc3e965f5dd8b02d23f75f9dfa0c7f600fee6634d21f9203590647a1647b4e1aa6a7df5ec1cd6f042a9e192a6fd84ad84d6bff2e76cb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x346166830f86fe162ba6777194afbf50a0656e017e9a6f3c9f23c445ec7639b1",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "evaluations": 3,
+    "fingerprint": {
+      "stage": "local-policy",
+      "ruleId": "OP-011",
+      "normalizedCause": "BANNED_OPCODE:TIMESTAMP",
+      "entityRole": "payer",
+      "stableFixtureFrameId": "validation",
+      "profileHash": "87ad5e94d1e9a1f06cd5e74606297b343e3de0e002b97efaa2bc5ae48b18f5c8",
+      "stateHash": "b9eef02d92598d2bf3c2644e58c5fdba260d8cf922a6fa7510b985d60ae8616c"
+    }
+  },
+  {
+    "failure": "BANNED_OPCODE:NUMBER",
+    "original": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 6,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000006f860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84101e3a67ca8aba8315d50f90edc3e965f5dd8b02d23f75f9dfa0c7f600fee6634d21f9203590647a1647b4e1aa6a7df5ec1cd6f042a9e192a6fd84ad84d6bff2e76cb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x346166830f86fe162ba6777194afbf50a0656e017e9a6f3c9f23c445ec7639b1",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "reduced": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 6,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000006f860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84101e3a67ca8aba8315d50f90edc3e965f5dd8b02d23f75f9dfa0c7f600fee6634d21f9203590647a1647b4e1aa6a7df5ec1cd6f042a9e192a6fd84ad84d6bff2e76cb843b9aca00843b9aca0e80c0c0",
+      "hash": "0x346166830f86fe162ba6777194afbf50a0656e017e9a6f3c9f23c445ec7639b1",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "correction": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 4,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000004f860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84100fb41cea98c77d1ec4d24d559ce8272631de7614427617f45c275c378631e96447a07485e1549e650f25b2d3371a2f3a8750189ef20ca6035ea69e5ce7c91df9ecb843b9aca00843b9aca0e80c0c0",
+      "hash": "0xdd00b77daa66fff8d4624e4f422ff23de448b79f8616ebc1ddd23f5bcf4463a1",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "evaluations": 3,
+    "fingerprint": {
+      "stage": "local-policy",
+      "ruleId": "OP-011",
+      "normalizedCause": "BANNED_OPCODE:NUMBER",
+      "entityRole": "payer",
+      "stableFixtureFrameId": "validation",
+      "profileHash": "87ad5e94d1e9a1f06cd5e74606297b343e3de0e002b97efaa2bc5ae48b18f5c8",
+      "stateHash": "b9eef02d92598d2bf3c2644e58c5fdba260d8cf922a6fa7510b985d60ae8616c"
+    }
+  },
+  {
+    "failure": "CODE_ACCESS:OWNER_NO_CODE",
+    "original": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 4,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000004f860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84100fb41cea98c77d1ec4d24d559ce8272631de7614427617f45c275c378631e96447a07485e1549e650f25b2d3371a2f3a8750189ef20ca6035ea69e5ce7c91df9ecb843b9aca00843b9aca0e80c0c0",
+      "hash": "0xdd00b77daa66fff8d4624e4f422ff23de448b79f8616ebc1ddd23f5bcf4463a1",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "reduced": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "validation-fixture",
+        "failureMask": 4,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000004f860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84100fb41cea98c77d1ec4d24d559ce8272631de7614427617f45c275c378631e96447a07485e1549e650f25b2d3371a2f3a8750189ef20ca6035ea69e5ce7c91df9ecb843b9aca00843b9aca0e80c0c0",
+      "hash": "0xdd00b77daa66fff8d4624e4f422ff23de448b79f8616ebc1ddd23f5bcf4463a1",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "correction": {
+      "recipe": {
+        "schemaVersion": 1,
+        "mode": "owned",
+        "family": "verify-gas",
+        "failureMask": 4,
+        "name": "validation-failures",
+        "prefixGas": 30000,
+        "body": [
+          {
+            "id": "required-call",
+            "required": true,
+            "values": []
+          }
+        ]
+      },
+      "raw": "0x06f90116820539c1800194f474d78732ec00461b294977c6a37113298c81fff88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000000f860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b841006729566e4d9f12ced2d6cc32a57f973fc15927806be23fca4fe6891f79e7315b7b6d2e39433bfd0bdf2c00667b3d53dd06b00f578a64c87adf659f94b39fda3ccb843b9aca00843b9aca0e80c0c0",
+      "hash": "0xd167ef14914854d92bfca7c87540c7cc28291d7ba3717f20ec1cd803c266b6ce",
+      "frameIds": [
+        "validation",
+        "required-call"
+      ]
+    },
+    "evaluations": 3,
+    "fingerprint": {
+      "stage": "local-policy",
+      "ruleId": "COD-010",
+      "normalizedCause": "CODE_ACCESS:OWNER_NO_CODE",
+      "entityRole": "payer",
+      "stableFixtureFrameId": "validation",
+      "profileHash": "87ad5e94d1e9a1f06cd5e74606297b343e3de0e002b97efaa2bc5ae48b18f5c8",
+      "stateHash": "b9eef02d92598d2bf3c2644e58c5fdba260d8cf922a6fa7510b985d60ae8616c"
+    }
+  }
+]

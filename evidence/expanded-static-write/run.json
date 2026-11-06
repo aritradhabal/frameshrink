@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "frameshrink-devnet-case",
+  "state": "reduced",
+  "wallet": "0x497a1a3318060016EF70A32989e69b9695e5fc22",
+  "createdAt": "2026-11-06T18:02:04.871Z",
+  "directory": "/Users/aritra/Documents/project/frameshrink/.runs/demos/expanded-static-write",
+  "originalHash": "0x0635ee2acdffa83db4e95630c9cba17892ef245eedc0332c22153bc4dfa248ba",
+  "originalFrames": 4,
+  "originalAttemptedAt": "2026-11-06T18:02:05.810Z",
+  "reducedFrames": 2,
+  "originalBytes": 767,
+  "reducedBytes": 282,
+  "replay": "reproduced"
+}

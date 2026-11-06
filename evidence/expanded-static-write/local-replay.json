@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "status": "reproduced",
+  "exactSignedPayloads": true,
+  "profileHash": "88d7fc2ce6194bd171b48b8076baff1ef5cd2a5fdc83353c8ae074e2c2e3c65e",
+  "stateHash": "657e08ade0552b624ab641b28573fdc9411970e625c811755e381c68913c0433",
+  "results": [
+    {
+      "name": "original",
+      "status": "rejected",
+      "bytes": 767,
+      "message": "Invalid Transaction: Invalid frame transaction: VERIFY frame 0 (target 0xf474d78732ec00461b294977c6a37113298c81ff, 175 bytes of code) failed: Opcode Not Allowed In Static Context"
+    },
+    {
+      "name": "reduced",
+      "status": "rejected",
+      "bytes": 282,
+      "message": "Invalid Transaction: Invalid frame transaction: VERIFY frame 0 (target 0xf474d78732ec00461b294977c6a37113298c81ff, 175 bytes of code) failed: Opcode Not Allowed In Static Context"
+    },
+    {
+      "name": "corrected",
+      "status": "accepted",
+      "bytes": 282,
+      "message": "Accepted by local simulation and covered policy checks"
+    },
+    {
+      "name": "stage-1",
+      "status": "rejected",
+      "bytes": 282,
+      "message": "Invalid Transaction: Invalid frame transaction: VERIFY frame 0 (target 0xf474d78732ec00461b294977c6a37113298c81ff, 175 bytes of code) failed: Opcode Not Allowed In Static Context"
+    }
+  ]
+}
