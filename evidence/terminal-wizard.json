@@ -57,12 +57,21 @@
     }
   ],
   "polishReview": {
-    "version": "0.1.1",
+    "version": "0.1.2",
     "realPtyLocalReplay": "passed",
     "filledBackgroundCodes": "verified",
     "literalEscapeCodes": false,
     "verifiedStages": 5,
     "nativeResumePreview": "passed; correction declined",
-    "screenshot": "cli-demo.png rendered from captured PTY output"
+    "screenshot": "cli-demo.png rendered from captured PTY output",
+    "savedCasePty": "passed; correction declined",
+    "transientReviewPrompt": "verified removed from settled native PTY output",
+    "confirmationRetention": "verified in settled native PTY output",
+    "screenshots": [
+      "cli-demo.png",
+      "cli-changes.png"
+    ],
+    "candidateUpdates": 400,
+    "candidatePersistentNewlines": 0
   }
 }

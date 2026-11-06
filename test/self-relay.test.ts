@@ -111,7 +111,12 @@ test("terminal colors are controlled and CLI summaries stay concise while JSON s
   const options = {
     cwd: ROOT,
     encoding: "utf8" as const,
-    env: { ...process.env, FORCE_COLOR: "1", NO_COLOR: undefined },
+    env: {
+      ...process.env,
+      TERM: "xterm-256color",
+      FORCE_COLOR: "1",
+      NO_COLOR: undefined,
+    },
   };
   const colored = spawnSync(
     process.execPath,

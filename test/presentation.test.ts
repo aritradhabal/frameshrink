@@ -40,7 +40,7 @@ test("uncertain public outcomes cannot be labelled pending or accepted", () => {
   const base = { correctedHash: "0x" + "ab".repeat(32) } as DemoRun;
   assert.match(
     transactionResult({ ...base, state: "complete" }, false),
-    /ACCEPTED/,
+    /CONFIRMED/,
   );
   assert.match(
     transactionResult({ ...base, state: "pending" }, false),

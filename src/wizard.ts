@@ -10,7 +10,8 @@ import {
   withActivity,
   activity,
 } from "./presentation.js";
-import { terminal } from "./terminal.js";
+import { browserEnabled, openExplorer } from "./browser.js";
+import { safe, terminal } from "./terminal.js";
 import {
   changeDetails,
   transactionPreview,
@@ -48,16 +49,33 @@ export type Choice = {
   disabled?: string;
 };
 export type WizardUI = {
-  choose(message: string, choices: Choice[]): Promise<string>;
+  choose(
+    message: string,
+    choices: Choice[],
+    options?: { transient?: boolean },
+  ): Promise<string>;
   multiple(message: string, choices: Choice[]): Promise<string[]>;
   yes(message: string): Promise<boolean>;
   name(): Promise<string>;
   line(message: string): void;
   busy?<T>(message: string, operation: () => Promise<T>): Promise<T>;
+  progress?(message: string | null): void;
   review(message: string): Promise<"open" | "continue">;
 };
 export function promptUI(color?: boolean): WizardUI {
   const ui = terminal(color);
+  let indicator: ReturnType<typeof activity> | undefined;
+  const clear = () => {
+    indicator?.stop();
+    indicator = undefined;
+  };
+  const progress = (label: string | null) => {
+    if (label && indicator) indicator.update(label);
+    else {
+      clear();
+      if (label) indicator = activity(label, { color });
+    }
+  };
   const theme = {
     spinner: { frames: ["·"], interval: 100 },
     // Inquirer wraps the whole row in highlight/disabled styling. Keep icons
@@ -79,11 +97,21 @@ export function promptUI(color?: boolean): WizardUI {
     },
   };
   return {
-    busy: (message, operation) => withActivity(message, operation, color),
-    choose: (message, choices) =>
-      select({ message, choices, theme, loop: false }),
-    multiple: (message, choices) =>
-      checkbox({
+    progress,
+    busy: async (message, operation) => {
+      clear();
+      return withActivity(message, operation, color);
+    },
+    choose: (message, choices, options) => {
+      clear();
+      return select(
+        { message, choices, theme, loop: false },
+        { clearPromptOnDone: options?.transient },
+      );
+    },
+    multiple: (message, choices) => {
+      clear();
+      return checkbox({
         message,
         choices: choices.map((choice) => ({
           ...choice,
@@ -98,33 +126,46 @@ export function promptUI(color?: boolean): WizardUI {
         pageSize: 7,
         loop: false,
         shortcuts: { all: "a", invert: null },
-      }),
+      });
+    },
     review: async (message) => {
+      clear();
       const answer = (
-        await input({
-          message,
-          default: "c",
-          theme,
-          validate: (value) =>
-            ["o", "open", "c", "continue"].includes(
-              value.trim().toLowerCase(),
-            ) || "O opens the editor; C continues",
-        })
+        await input(
+          {
+            message,
+            default: "c",
+            theme,
+            validate: (value) =>
+              ["o", "open", "c", "continue"].includes(
+                value.trim().toLowerCase(),
+              ) || "O opens the editor; C continues",
+          },
+          { clearPromptOnDone: true },
+        )
       )
         .trim()
         .toLowerCase();
       return answer === "o" || answer === "open" ? "open" : "continue";
     },
-    yes: (message) => confirm({ message, default: false, theme }),
-    name: () =>
-      input({
+    yes: (message) => {
+      clear();
+      return confirm({ message, default: false, theme });
+    },
+    name: () => {
+      clear();
+      return input({
         message: "Wallet name",
         theme,
         validate: (value) =>
           (/^[a-z][a-z0-9-]{0,31}$/.test(value) && value !== "default") ||
           "1–32 lowercase letters, digits or hyphens; start with a letter",
-      }),
-    line: (message) => console.log(message),
+      });
+    },
+    line: (message) => {
+      clear();
+      console.log(message);
+    },
   };
 }
 export const FAILURE_CHOICES: Choice[] = [
@@ -160,10 +201,10 @@ export function correctionDiff(
     ui.badge("Changes"),
     reductionMetrics(run, color),
     ...changeDetails(stages).map((line) =>
-      line.startsWith("−") ? ui.red(line) : ui.yellow(line),
+      line.startsWith("−") ? ui.dim(line) : safe(line),
     ),
     ui.dim("Owner authorization retained · edited candidates re-signed"),
-    ui.green("Final local control passes · exact signed replay verified"),
+    ui.green("Corrected local check passes · signed replay verified"),
   ];
 }
 export function evaluationLine(
@@ -179,7 +220,12 @@ export function evaluationLine(
       ? `remove frame ${edit.ids.join(", ")}`
       : edit?.kind === "remove-values"
         ? `remove ${edit.count} input value${edit.count === 1 ? "" : "s"} from ${edit.id}`
-        : event.phase;
+        : {
+            baseline: "original failure",
+            repeat: "repeat original",
+            control: "corrected check",
+            candidate: "candidate",
+          }[event.phase];
   const verdict =
     event.phase === "control"
       ? event.status === "accepted"
@@ -187,11 +233,16 @@ export function evaluationLine(
         : ui.red("control failed")
       : event.phase === "baseline"
         ? event.cause === failure
-          ? ui.yellow(failureLabel(failure) + " reproduced")
+          ? ui.cyan(failureLabel(failure) + " reproduced")
           : ui.red(event.cause ?? "baseline did not reproduce")
         : event.sameFailure
-          ? ui.yellow("same failure")
-          : ui.red(event.cause ?? "failure no longer reproduced");
+          ? ui.cyan("same failure")
+          : ui.dim(
+              "discarded · " +
+                (event.cause
+                  ? failureLabel(event.cause)
+                  : "failure no longer reproduced"),
+            );
   return `${ui.dim(`[${stage}.${event.evaluation}]`)} ${label} · ${verdict} · ${event.bytes} bytes`;
 }
 export type WizardServices = {
@@ -207,6 +258,7 @@ export type WizardServices = {
   resume: typeof resumeDemo;
   directory: typeof defaultDemoDirectory;
   openEditor?: typeof openPreview;
+  openBrowser?: (url: string) => Promise<void>;
 };
 const defaults: WizardServices = {
   wallets: listWallets,
@@ -218,15 +270,36 @@ const defaults: WizardServices = {
   resume: resumeDemo,
   directory: defaultDemoDirectory,
   openEditor: openPreview,
+  openBrowser: async (url) => {
+    const result = await openExplorer(url);
+    if (result.warning) throw new Error(result.warning);
+  },
 };
 
 export async function startTransaction(
   prompts: WizardUI = promptUI(),
   services: WizardServices = defaults,
-  options: { color?: boolean; directory?: string; resume?: string } = {},
+  options: {
+    color?: boolean;
+    directory?: string;
+    resume?: string;
+    openLinks?: boolean;
+    verbose?: boolean;
+  } = {},
 ): Promise<DemoRun[]> {
   const ui = terminal(options.color),
     print = prompts.line;
+  const openLinks = options.openLinks ?? browserEnabled();
+  const opened = new Set<string>();
+  const openLink = async (url: string) => {
+    if (!openLinks || opened.has(url)) return;
+    opened.add(url);
+    try {
+      await (services.openBrowser ?? defaults.openBrowser!)(url);
+    } catch {
+      print(ui.warn("Browser unavailable · use the link above"));
+    }
+  };
   print(ui.badge("FrameShrink") + ui.dim(" · devnet 1337"));
   const saved = options.resume
     ? await services.load(options.resume)
@@ -287,22 +360,46 @@ export async function startTransaction(
         services.status(),
       );
       print(ui.dim(balanceLabel(status.balanceEth)));
-      // Reserve setup funding plus the maximum fixed deployment gas charge.
-      while (BigInt(status.balanceWei ?? "0") < 60000000000000000n) {
-        const action = await prompts.choose("Fund wallet", [
-          { value: "faucet", name: "Request faucet" },
-          { value: "address", name: "Show address & faucet link" },
-          { value: "check", name: "Recheck balance" },
-          { value: "cancel", name: "Exit" },
-        ]);
+      // A failed RPC read is not evidence of an empty wallet.
+      while (
+        status.balanceWei === null ||
+        BigInt(status.balanceWei) < 60000000000000000n
+      ) {
+        if (status.balanceWei === null) {
+          const action = await prompts.choose(
+            "Balance unavailable",
+            [
+              { value: "retry", name: "Retry balance check" },
+              { value: "cancel", name: "Exit" },
+            ],
+            { transient: true },
+          );
+          if (action !== "retry") return [];
+          status = await busy("Checking wallet balance", () =>
+            services.status(),
+          );
+          if (status.balanceWei !== null)
+            print(ui.dim(balanceLabel(status.balanceEth)));
+          continue;
+        }
+        const action = await prompts.choose(
+          "Fund wallet",
+          [
+            { value: "faucet", name: "Request faucet" },
+            {
+              value: "address",
+              name: openLinks ? "Open faucet in browser" : "Show faucet link",
+            },
+            { value: "check", name: "Recheck balance" },
+            { value: "cancel", name: "Exit" },
+          ],
+          { transient: true },
+        );
         if (action === "cancel") return [];
         if (action === "address") {
-          print(ui.cyan(wallet.address));
-          print(
-            ui.cyan(
-              `https://explorer.altmempool.wtf/?node=${encodeURIComponent(DEVNET.rpc)}`,
-            ),
-          );
+          const url = `https://explorer.altmempool.wtf/?node=${encodeURIComponent(DEVNET.rpc)}`;
+          print(ui.cyan(url));
+          await openLink(url);
         } else if (action === "faucet") {
           const funding = await busy("Confirming faucet funding", () =>
             services.fund(),
@@ -315,8 +412,10 @@ export async function startTransaction(
           if (funding.faucet.txHash) print(ui.dim(funding.faucet.txHash));
           if (funding.faucet.error) print(ui.warn(funding.faucet.error));
         }
+        const previousBalance = status.balanceWei;
         status = await busy("Checking wallet balance", () => services.status());
-        print(ui.dim(balanceLabel(status.balanceEth)));
+        if (status.balanceWei !== previousBalance)
+          print(ui.dim(balanceLabel(status.balanceEth)));
       }
     }
     const selected = saved
@@ -336,24 +435,12 @@ export async function startTransaction(
       const directory =
         options.resume ??
         (plan.length > 1 ? path.join(base, `case-${index + 1}`) : base);
-      let indicator: ReturnType<typeof activity> | undefined;
       const hooks: DemoOptions = {
-        onActivity: (label) => {
-          indicator?.stop();
-          indicator = label
-            ? activity(label, { color: options.color })
-            : undefined;
-        },
+        onActivity: (label) => prompts.progress?.(label),
         opcodeMask: mask && mask <= 3 ? (mask as 1 | 2 | 3) : undefined,
         failureMask: mask && mask > 3 ? mask : undefined,
         resume: !!saved,
         beforeDeploy: async () => {
-          if (mask && mask > 3)
-            print(
-              ui.dim(
-                "Expanded cases use a new v3 test validator; existing validators are kept",
-              ),
-            );
           print(
             ui.dim(
               "Test validator · verifies your signature and triggers selected failures",
@@ -361,7 +448,7 @@ export async function startTransaction(
           );
           print(
             ui.dim(
-              "One-time setup · 0.01 devnet ETH funding + deployment gas ≤ 0.05 ETH",
+              "Setup cost · 0.01 devnet ETH funding + deployment gas ≤ 0.05 ETH",
             ),
           );
           return prompts.yes("Deploy test validator?");
@@ -387,8 +474,11 @@ export async function startTransaction(
             ),
           );
         },
-        onEvaluation: (stage, failure, event) =>
-          print(evaluationLine(stage, failure, event, options.color)),
+        onEvaluation: (stage, failure, event) => {
+          if (options.verbose)
+            print(evaluationLine(stage, failure, event, options.color));
+          else prompts.progress?.(evaluationLine(stage, failure, event, false));
+        },
         beforeDebug: async () => {
           print(
             ui.dim(
@@ -438,13 +528,24 @@ export async function startTransaction(
         }
         throw e;
       } finally {
-        indicator?.stop();
+        prompts.progress?.(null);
+      }
+      const resultLink = () =>
+        run.explorer ??
+        `https://explorer.altmempool.wtf/tx/${run.correctedHash}?node=${encodeURIComponent(DEVNET.primary)}`;
+      if (run.state === "pending" && run.correctedHash) {
+        print(transactionResult(run, options.color));
+        print(ui.cyan(resultLink()));
       }
       while (run.state === "pending") {
-        const next = await prompts.choose("Receipt pending", [
-          { value: "check", name: "Check again" },
-          { value: "exit", name: "Save & exit" },
-        ]);
+        const next = await prompts.choose(
+          "Receipt pending",
+          [
+            { value: "check", name: "Check again" },
+            { value: "exit", name: "Save & exit" },
+          ],
+          { transient: true },
+        );
         if (next !== "check") break;
         run = await busy("Checking public receipt", () =>
           services.resume(directory),
@@ -453,13 +554,11 @@ export async function startTransaction(
       if (run.error && run.state === "inconclusive") print(ui.warn(run.error));
       runs.push(run);
       if (run.correctedHash) {
-        print(transactionResult(run, options.color));
-        print(
-          ui.cyan(
-            run.explorer ??
-              `https://explorer.altmempool.wtf/tx/${run.correctedHash}?node=${encodeURIComponent(DEVNET.primary)}`,
-          ),
-        );
+        if (run.state !== "pending") {
+          print(transactionResult(run, options.color));
+          print(ui.cyan(resultLink()));
+        }
+        if (run.state === "complete") await openLink(resultLink());
       }
       if (run.state === "rejected" || run.state === "reduced") {
         print(
@@ -476,7 +575,14 @@ export async function startTransaction(
               `Pending · frameshrink demo resume ${demoReference(run.directory)}`,
             ),
           );
-        else print(ui.dim("Saved · no further submission"));
+        else
+          print(
+            ui.dim(
+              run.state === "preparing"
+                ? "Not submitted"
+                : "Saved · no further submission",
+            ),
+          );
         break;
       }
     }

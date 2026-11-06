@@ -6,11 +6,11 @@ This release is a downloadable npm tarball. Nothing is published to npm or a rem
 
 ## Try the download
 
-Requires Node.js 22.13+ (22.x) or 24+. Download `frameshrink-0.1.1.tgz`, then run:
+Requires Node.js 22.13+ (22.x) or 24+. Download `frameshrink-0.1.2.tgz`, then run:
 
 ```sh
-npm exec --yes --package=./frameshrink-0.1.1.tgz -- frameshrink --help
-npm exec --yes --package=./frameshrink-0.1.1.tgz -- frameshrink demo local
+npm exec --yes --package=./frameshrink-0.1.2.tgz -- frameshrink --help
+npm exec --yes --package=./frameshrink-0.1.2.tgz -- frameshrink demo local
 ```
 
 `npm exec` uses npm's cache without a global installation. The local demo verifies each of five failure stages, shows the captured reduction, and checks the corrected control. `frameshrink demo` is shorthand for this local replay. It needs Docker, but no wallet, faucet funds, Git, Bun, or public submission. Docker may download the pinned execution image on first use. On Apple Silicon, enable Docker Desktop Rosetta support for that amd64 image.
@@ -20,12 +20,12 @@ npm exec --yes --package=./frameshrink-0.1.1.tgz -- frameshrink demo local
 ## Install
 
 ```sh
-npm install --global ./frameshrink-0.1.1.tgz
+npm install --global ./frameshrink-0.1.2.tgz
 frameshrink --version
 frameshrink start transaction
 ```
 
-The interactive workflow selects or creates a CLI wallet, obtains faucet funds, chooses combined or separate failures, confirms the original submission, reduces locally, shows changes, and confirms the correction. Previews open with O + Enter in `VISUAL`, `EDITOR`, or the system default; C + Enter continues. Live local checks show whether each candidate preserves the failure. Activity indicators cover network, deployment and simulation waits; compact status labels distinguish accepted, pending and unconfirmed outcomes. Successful output ends with the corrected hash/link.
+The interactive workflow selects or creates a CLI wallet, obtains faucet funds, chooses combined or separate failures, confirms the original submission, reduces locally, shows changes, and confirms the correction. Previews open with O + Enter in `VISUAL`, `EDITOR`, or the system default; C + Enter continues. Candidate checks update one live row; stage summaries stay visible. Use `--verbose` to retain every check in terminal output. Activity indicators cover network, deployment and simulation waits; status labels distinguish confirmed execution, pending receipts and unconfirmed outcomes. Successful output ends with the corrected hash/link and opens it once in your default browser. Use `--no-open` or `FRAMESHRINK_NO_OPEN=1` to keep links in the terminal.
 
 Supported controlled cases:
 

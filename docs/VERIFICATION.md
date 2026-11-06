@@ -1,6 +1,6 @@
 # Verification report
 
-Prepared 6 November 2026. All outcomes below are observations from this build, not guarantees about future runtime or network behavior.
+Updated 7 November 2026. All outcomes below are observations from this build, not guarantees about future runtime or network behavior.
 
 ## Local implementation
 
@@ -8,7 +8,7 @@ Prepared 6 November 2026. All outcomes below are observations from this build, n
 |---|---|
 | Fresh pinned dependency checkout and build | Passed; own `.vendor/sidecar`, no dependency on the research checkout |
 | TypeScript strict type checking | Passed |
-| Core/CLI/wallet/signing/wizard test suite | 42 passed, 0 failed |
+| Core/CLI/wallet/signing/wizard test suite | 59 passed, 0 failed |
 | Real ethrex integration suite | 5 scenarios passed, including v2 combined TIMESTAMP → NUMBER → passing control: original fixture families, captured EOA and captured owner-bound validator; includes clean replay and canonical-authorization checks |
 | Browser end-to-end suite | 1 scenario passed, covering both families, export/replay, invalid imports, mobile layout and request guards |
 | Formatting | Passed |
@@ -98,3 +98,18 @@ Source type checking, 37 unit tests, five real-runtime integration scenarios, th
 The local replay now emits verified stage results and reports the captured frame/byte reduction. It does not claim a new reduction search occurred during replay. Activity indicators cover real asynchronous work, pause before interactive prompts, and are excluded from JSON. Missing Docker stops before artifact creation or validator deployment; first-run image preparation uses the pinned digest. `demo` without a subcommand selects local replay rather than public automation.
 
 Five additional unit scenarios cover compact balance/byte presentation, correct inconclusive labels, Docker prerequisites/image download, and duplicate wallet names. The real v3 replay test now also refuses a forged display label even when a bundle's checksums were recomputed. Clean-folder package tests cover actionable Docker failure without creating a state directory and both explicit/local-default replay. Source strict typing, 42 unit tests, five real-runtime integration scenarios, the browser scenario, package install/npm-exec replay, and formatting checks passed during the review. Public test submissions were not needed for this visual/flow update.
+
+
+## 0.1.2 independent review
+
+Three independent agents reviewed visual hierarchy/wording, interaction flow, and technical reliability. All three approved after implementation and focused checks: 100% agreement against the requested 60% threshold. The visual reviewer also inspected both rendered native PTY captures. The decision record is in `evidence/ux-review.json`.
+
+Candidate checks now occupy a bounded transient row. Repeated preview/funding/receipt prompts clear themselves, while deployment/submission confirmations and per-failure summaries remain. Full local check events are saved in checksum-covered case evidence and can be printed with `--verbose`. Corrections use human names in the terminal and preserve exact technical masks in editor previews. `CONFIRMED` requires successful public execution evidence; normal discarded candidates do not use error colors.
+
+Confirmed corrections open once in the default browser, while original rejection links stay in the terminal so debugging is uninterrupted. Browser launch is shell-free, restricted to supported explorer URLs, bounded to four seconds, nonfatal, and suppressed by `--no-open`, `FRAMESHRINK_NO_OPEN`, JSON, CI and noninteractive output. Tests inject launchers and do not open desktop browsers.
+
+New runtime locking was tested against an actually killed child process, concurrent stale-owner recovery, legacy PID locks, permission errors, and replacement ownership. Unknown/live owners remain protected. An unavailable wallet balance offers retry/exit instead of being treated as an empty wallet.
+
+Strict typing, all 59 unit tests, five real-runtime integration scenarios, the browser scenario, clean-folder npm installation/npm-exec replay, and formatting passed. Native PTY checks exercised the five-stage local replay and a saved-case correction preview with submission declined. Screenshots in `evidence/cli-demo.png` and `evidence/cli-changes.png` show the settled output. No new public transactions were needed for this review.
+
+Review criteria were checked against the primary [CLI guidelines](https://clig.dev/) and [Node process-spawning documentation](https://nodejs.org/api/child_process.html). macOS execution was verified; Windows/Linux browser command construction is unit-tested rather than desktop-tested. The remote Linux CI limitation above remains.

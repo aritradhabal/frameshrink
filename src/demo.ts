@@ -73,6 +73,7 @@ const FILES = new Set([
   "README.txt",
   "validator-deployment.json",
   "debug-stages.json",
+  "evaluation-log.json",
 ]);
 const CAUSE = "MAX_VERIFY_GAS:declared-prefix-plus-signatures";
 export const expectedCause = (recipe: Recipe) =>
@@ -660,7 +661,7 @@ export async function runDemo(
             throw new FrameShrinkError("Captured replay profile changed", 3);
         } else await saveJSON(path.join(directory, "profile.json"), profile);
         if (run.state === "preparing") {
-          const baseline = await task("Checking failing baseline", () =>
+          const baseline = await task("Reproducing original failure", () =>
             evaluateSigned(original, context, profile),
           );
           const control = await buildSignedCase(
@@ -671,7 +672,7 @@ export async function runDemo(
             baseline.fingerprint?.normalizedCause !==
               expectedCause(original.recipe) ||
             (
-              await task("Checking corrected control", () =>
+              await task("Checking corrected transaction", () =>
                 evaluateSigned(control, context, profile),
               )
             ).status !== "accepted"
@@ -681,7 +682,7 @@ export async function runDemo(
               5,
             );
           onProgress(
-            "Local checks passed · original rejects, corrected control passes",
+            "Local checks passed · failure reproduced, corrected check passes",
           );
           if (
             options.beforeOriginal &&
@@ -747,7 +748,13 @@ export async function runDemo(
           if (budget === false) return run;
           let current = original;
           const stages: DebugStage[] = [];
+          const evaluationLog: {
+            stage: number;
+            failure: string;
+            event: EvaluationEvent;
+          }[] = [];
           do {
+            let localCheck = 0;
             const evaluations = new Map<string, SignedCase>([
               [hash(current.recipe), current],
             ]);
@@ -757,23 +764,38 @@ export async function runDemo(
                 item = await buildSignedCase(r, context);
                 evaluations.set(hash(r), item);
               }
-              return task("Simulating reduction candidate", () =>
-                evaluateSigned(item!, context, p),
+              return task(
+                `Check ${stages.length + 1}.${++localCheck} · ${failureLabel(expectedCause(current.recipe))}`,
+                () => evaluateSigned(item!, context, p),
               );
             };
-            const result = await reduce(
-              current.recipe,
-              profile,
-              budget,
-              undefined,
-              evaluator,
-              (event) =>
-                options.onEvaluation?.(
-                  stages.length + 1,
-                  expectedCause(current.recipe),
-                  event,
-                ),
-            );
+            let result: Awaited<ReturnType<typeof reduce>>;
+            try {
+              result = await reduce(
+                current.recipe,
+                profile,
+                budget,
+                undefined,
+                evaluator,
+                (event) => {
+                  evaluationLog.push({
+                    stage: stages.length + 1,
+                    failure: expectedCause(current.recipe),
+                    event,
+                  });
+                  options.onEvaluation?.(
+                    stages.length + 1,
+                    expectedCause(current.recipe),
+                    event,
+                  );
+                },
+              );
+            } finally {
+              await saveJSON(
+                path.join(directory, "evaluation-log.json"),
+                evaluationLog,
+              );
+            }
             const smaller = evaluations.get(hash(result.reduced));
             if (
               !smaller ||
@@ -818,7 +840,7 @@ export async function runDemo(
               run.reducedBytes = result.result.bytes;
             }
             onProgress(
-              `Debug ${stages.length} · ${failureLabel(stage.failure)} · ${current.frameIds.length} → ${smaller.frameIds.length} frames · ${result.evaluations} evaluations`,
+              `Debug ${stages.length} · ${failureLabel(stage.failure)} · ${current.frameIds.length} → ${smaller.frameIds.length} frames · ${result.evaluations} local checks`,
             );
             current = correction;
             if (!remaining) break;

@@ -43,12 +43,13 @@ import {
 } from "./presentation.js";
 import { prepareRuntime } from "./environment.js";
 import { terminal, safe } from "./terminal.js";
+import { browserEnabled } from "./browser.js";
 const input = process.argv.slice(2),
   machine = input.includes("--json"),
   verbose = input.includes("--verbose");
 const ui = terminal(input.includes("--no-color") ? false : undefined);
 const [command, arg, ...rest] = input.filter(
-  (v) => !["--json", "--verbose", "--no-color"].includes(v),
+  (v) => !["--json", "--verbose", "--no-color", "--no-open"].includes(v),
 );
 const help = [
   ui.badge("FrameShrink") + "  Ethereum frame transaction debugger",
@@ -67,7 +68,7 @@ const help = [
   "  inspect <file> · explain <case> · compare <a> <b>",
   "  whoami · doctor · failures · serve",
   ui.dim(
-    "  --out <dir> where supported · --json · --verbose · --no-color · --version",
+    "  --json · --no-color · --no-open · --verbose (every local check) · --version",
   ),
 ].join("\n");
 function failUsage(): never {
@@ -148,7 +149,7 @@ function demoLines(run: DemoRun) {
   ];
 }
 try {
-  for (const flag of ["--json", "--verbose", "--no-color"])
+  for (const flag of ["--json", "--verbose", "--no-color", "--no-open"])
     if (input.filter((v) => v === flag).length > 1) failUsage();
   if (command === "--version" || command === "-v") {
     if (arg || rest.length) failUsage();
@@ -187,23 +188,35 @@ try {
         "Interactive wizard requires a terminal; omit --json",
         2,
       );
-    if (!process.stdin.isTTY || !process.stdout.isTTY)
+    if (
+      !process.stdin.isTTY ||
+      !process.stdout.isTTY ||
+      process.env.TERM === "dumb"
+    )
       throw new FrameShrinkError(
         "Run frameshrink start in an interactive terminal",
         2,
       );
     const { startTransaction, promptUI } = await import("./wizard.js");
     const color = input.includes("--no-color") ? false : undefined;
+    const openLinks = browserEnabled({
+      disabled: input.includes("--no-open"),
+      machine,
+    });
     let runs: DemoRun[];
     if (arg === "transaction")
       runs = await startTransaction(promptUI(color), undefined, {
         color,
         directory: outOption(rest),
+        openLinks,
+        verbose,
       });
     else if (arg === "debug" && rest.length === 1)
       runs = await startTransaction(promptUI(color), undefined, {
         color,
         resume: resolveDemoDirectory(rest[0]),
+        openLinks,
+        verbose,
       });
     else failUsage();
     if (runs.some((run) => ["pending", "inconclusive"].includes(run.state)))
@@ -289,7 +302,7 @@ try {
       out(result, [
         "",
         ui.badge("PASSED", "green") +
-          " Five failure stages + corrected control",
+          " Five failures reproduced · corrected check passes",
         reductionMetrics(
           result,
           input.includes("--no-color") ? false : undefined,

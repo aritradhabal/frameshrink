@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "package": "frameshrink-0.1.1.tgz",
-  "compressedBytes": 2088214,
-  "unpackedBytes": 11615095,
+  "package": "frameshrink-0.1.2.tgz",
+  "compressedBytes": 2032604,
+  "unpackedBytes": 11563662,
   "installedWithScriptsDisabled": true,
   "noGitOrBunRequired": true,
   "execWithoutGlobalInstall": true,
@@ -47,5 +47,6 @@
     "package.json",
     "scripts/runtime.mjs",
     "src/ui.html"
-  ]
+  ],
+  "sha256": "45665292fbdbd499314a57f52c13ffe07b303844dc1a11138706edc07015c12f"
 }

@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-11-06T18:41:30.582010+00:00",
+  "verifiedAt": "2026-11-06T19:00:47.960311+00:00",
   "platform": "macOS arm64; Docker amd64 image through Rosetta",
   "sidecarCommit": "2e22ff0a2898e69ea4bf5275bce1be8581a8582a",
   "typecheck": "passed",
   "coreTests": {
-    "passed": 42,
+    "passed": 59,
     "failed": 0
   },
   "realRuntimeIntegration": {
@@ -75,7 +75,13 @@
     "trailingCasePath": false,
     "stageByStageLocalReplay": true,
     "activeWorkIndicators": true,
-    "inconclusiveLabel": "UNCONFIRMED"
+    "inconclusiveLabel": "UNCONFIRMED",
+    "confirmedLabel": "CONFIRMED",
+    "boundedCandidateOutput": true,
+    "transientRepeatPrompts": true,
+    "confirmedExplorerAutoOpen": true,
+    "browserOptOut": "--no-open or FRAMESHRINK_NO_OPEN=1",
+    "allStagesEvaluationLog": true
   },
   "wizardCombined": {
     "schemaVersion": 1,
@@ -173,12 +179,25 @@
   },
   "npmPackage": {
     "name": "frameshrink",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "published": false,
     "installAndExec": "passed",
     "realLocalReplay": "passed",
     "modifiedBundleRefused": true,
     "recipientBuildToolsRequired": false,
     "dockerPreflight": "passed"
+  },
+  "reviewConsensus": {
+    "reviewers": 3,
+    "approved": 3,
+    "requiredFraction": 0.6,
+    "agreement": 1.0,
+    "report": "ux-review.json"
+  },
+  "runtimeLock": {
+    "crashRecovery": "passed",
+    "concurrentRecovery": "passed",
+    "legacyCompatibility": "passed",
+    "liveAndUnknownOwners": "preserved"
   }
 }

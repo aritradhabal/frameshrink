@@ -28,7 +28,7 @@ export function transactionResult(run: DemoRun, color?: boolean): string {
   const ui = terminal(color);
   const label =
     run.state === "complete"
-      ? "ACCEPTED"
+      ? "CONFIRMED"
       : run.state === "pending"
         ? "PENDING"
         : "UNCONFIRMED";
@@ -69,21 +69,37 @@ export function fitChoiceLabel(
 // Only animate genuine work. The content is always sanitized; ANSI here is renderer-owned.
 export function activity(
   initial: string,
-  options: { color?: boolean; enabled?: boolean } = {},
+  options: {
+    color?: boolean;
+    enabled?: boolean;
+    output?: {
+      write(value: string): unknown;
+      isTTY?: boolean;
+      columns?: number;
+    };
+    env?: NodeJS.ProcessEnv;
+  } = {},
 ) {
   const ui = terminal(options.color);
-  const animate = options.enabled !== false && !!process.stdout.isTTY;
+  const output = options.output ?? process.stderr;
+  const env = options.env ?? process.env;
+  const animate =
+    options.enabled !== false &&
+    !!output.isTTY &&
+    (options.output !== undefined || !!process.stdout.isTTY) &&
+    env.TERM !== "dumb" &&
+    !env.CI;
   const frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
   let label = initial,
     index = 0,
     active = true;
   const clear = () => {
-    if (animate) process.stdout.write("\r\x1b[2K");
+    if (animate) output.write("\r\x1b[2K");
   };
   const render = () => {
     if (animate && active)
-      process.stdout.write(
-        `\r\x1b[2K${ui.cyan(frames[index++ % frames.length])} ${safe(label)}`,
+      output.write(
+        `\r\x1b[2K${ui.cyan(frames[index++ % frames.length])} ${fitStatus(label, output.columns || 80)}`,
       );
   };
   render();
@@ -105,6 +121,14 @@ export function activity(
       clear();
     },
   };
+}
+export function fitStatus(value: string, columns: number): string {
+  const characters = [...safe(value)];
+  // Leave room for the spinner and one spare cell to prevent terminal wrapping.
+  const limit = Math.max(1, columns - 3);
+  return characters.length > limit
+    ? characters.slice(0, limit - 1).join("") + "…"
+    : characters.join("");
 }
 export async function withActivity<T>(
   label: string,

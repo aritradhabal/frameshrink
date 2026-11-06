@@ -156,7 +156,10 @@ export function transactionPreview(
     "",
   ].join("\n");
 }
-export function changeDetails(stages: DebugStage[]): string[] {
+export function changeDetails(
+  stages: DebugStage[],
+  options: { technical?: boolean } = {},
+): string[] {
   if (!stages.length) return [];
   const before = stages[0].original.recipe;
   const after = stages.at(-1)!.correction.recipe;
@@ -178,7 +181,9 @@ export function changeDetails(stages: DebugStage[]): string[] {
       FAILURE_MODES.find((failure) => failure.cause === stage.failure)
         ?.correction ?? failureLabel(stage.failure);
     lines.push(
-      `~ validation mode ${mode(stage.original)} → ${mode(stage.correction)} · ${correction}`,
+      options.technical
+        ? `~ validation mode ${mode(stage.original)} → ${mode(stage.correction)} · ${correction}`
+        : `~ ${failureLabel(stage.failure)} · ${correction}`,
     );
   }
   return lines;
@@ -194,7 +199,7 @@ export function changesPreview(
     "",
     "View-only copies. Editing this file does not change the correction.",
     "",
-    ...changeDetails(stages),
+    ...changeDetails(stages, { technical: true }),
     "",
     "Owner authorization remains enabled. Edited candidates are signed again.",
     "Each reduction preserves its own failure fingerprint. Intermediate fixes expose the next failure; the final control passes locally.",

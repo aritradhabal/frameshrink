@@ -423,7 +423,7 @@ test("editor reviews and original evidence precede debug; final output contains 
       .slice(debug)
       .some(
         (line) =>
-          line.includes("ACCEPTED") && line.includes(run.correctedHash!),
+          line.includes("CONFIRMED") && line.includes(run.correctedHash!),
       ),
   );
   assert(lines.at(-1)!.includes(run.correctedHash!));

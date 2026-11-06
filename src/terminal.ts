@@ -7,6 +7,7 @@ export function terminal(enabled?: boolean) {
   const color =
     enabled ??
     (!("NO_COLOR" in process.env) &&
+      process.env.TERM !== "dumb" &&
       process.env.FORCE_COLOR !== "0" &&
       (!!process.stdout.isTTY || !!process.env.FORCE_COLOR));
   const wrap = (code: number, value: unknown) =>
@@ -25,7 +26,7 @@ export function terminal(enabled?: boolean) {
     red: (v: unknown) => wrap(31, v),
     yellow: (v: unknown) => wrap(33, v),
     cyan: (v: unknown) => wrap(36, v),
-    dim: (v: unknown) => wrap(90, v),
+    dim: (v: unknown) => wrap(2, v),
     bold: (v: unknown) => wrap(1, v),
     ok: (v: unknown) => `${wrap(32, "✓")} ${safe(v)}`,
     warn: (v: unknown) => `${wrap(33, "!")} ${safe(v)}`,

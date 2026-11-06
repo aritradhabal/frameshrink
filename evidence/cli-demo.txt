@@ -6,6 +6,6 @@ Captured signed case · five failure stages
   4/5 Forbidden NUMBER                       ✓ verified
   5/5 Code access to an undeployed account   ✓ verified
 
- PASSED  Five failure stages + corrected control
+ PASSED  Five failures reproduced · corrected check passes
 Frames 4 → 2  Bytes 767 → 282 · 63.2% smaller
 Captured reduction · exact signed replay · no public submissions
