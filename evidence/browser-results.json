@@ -118,12 +118,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3652,
+                  "duration": 3828,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T18:58:49.276Z",
+                  "startTime": "2026-11-06T19:12:07.746Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -133,7 +133,7 @@
           ],
           "id": "d425444c687fa36b5882-96afc3a923c36503711f",
           "file": "ui.spec.ts",
-          "line": 2,
+          "line": 4,
           "column": 1
         }
       ]
@@ -141,8 +141,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-06T18:58:49.104Z",
-    "duration": 4145.6089999999995,
+    "startTime": "2026-11-06T19:12:07.547Z",
+    "duration": 5174.775,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

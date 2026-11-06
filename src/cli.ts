@@ -1,4 +1,5 @@
-import { execFileSync } from "node:child_process";
+import { manageRuntime } from "../scripts/runtime.mjs";
+import { RuntimeLockError } from "../scripts/runtime-lock.mjs";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
 import { ROOT, json, readJSON, FrameShrinkError, hash } from "./shared.js";
@@ -252,10 +253,10 @@ try {
     if (rest.length || !["up", "down"].includes(arg)) failUsage();
     if (arg === "up") await prepareRuntime();
     try {
-      execFileSync(process.execPath, [ROOT + "scripts/runtime.mjs", arg], {
-        stdio: ["ignore", "pipe", "pipe"],
-      });
-    } catch {
+      await manageRuntime(arg as "up" | "down");
+    } catch (error) {
+      if (error instanceof RuntimeLockError)
+        throw new FrameShrinkError(error.message, 4);
       throw new FrameShrinkError(
         arg === "up"
           ? "Runtime could not start. Check Docker and port 18545; inspect docker logs frameshrink-ethrex."
@@ -433,11 +434,7 @@ try {
         ? await replayDemo(arg)
         : await exclusive(async () => {
             await verifyBundle(arg);
-            execFileSync(
-              process.execPath,
-              [ROOT + "scripts/runtime.mjs", "up"],
-              { stdio: ["ignore", "ignore", "pipe"], timeout: 45000 },
-            );
+            await manageRuntime("up");
             return replay(arg);
           });
     out(result, [
@@ -466,8 +463,18 @@ try {
       `Predicate · ${result.samePredicate ? "same" : "different"}`,
     ]);
   } else if (command === "serve") {
-    if (arg || rest.length) failUsage();
-    await import("./server.js");
+    const port =
+      arg === undefined
+        ? 4317
+        : arg === "--port" &&
+            rest.length === 1 &&
+            /^\d{1,5}$/.test(rest[0]) &&
+            Number(rest[0]) <= 65535
+          ? Number(rest[0])
+          : undefined;
+    if (port === undefined || (!arg && rest.length)) failUsage();
+    const { startWorkbench } = await import("./server.js");
+    await startWorkbench({ machine, port });
   } else failUsage();
 } catch (e) {
   const cancelled =

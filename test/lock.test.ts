@@ -16,6 +16,14 @@ import {
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { exclusive } from "../src/lock.js";
+import {
+  withRuntimeLock,
+  RUNTIME_LOCK_DIRECTORY,
+} from "../scripts/runtime-lock.mjs";
+import { ROOT } from "../src/shared.js";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+const execute = promisify(execFile);
 
 async function isolated(fn: (directory: string) => Promise<void>) {
   const directory = await mkdtemp(path.join(tmpdir(), "frameshrink-lock-"));
@@ -194,5 +202,53 @@ test("filesystem access errors do not masquerade as runtime contention", async (
         /Could not access the runtime lock \(EACCES\)/,
       );
     }
+  });
+});
+
+test("separate data directories and runtime management share one default process lock", async () => {
+  await exclusive(async () => {
+    for (const state of ["source-data", "installed-data"]) {
+      const result = await execute(
+        process.execPath,
+        [
+          "--import",
+          "tsx",
+          "--input-type=module",
+          "-e",
+          `import { exclusive } from ${JSON.stringify(new URL("../src/lock.ts", import.meta.url).href)};
+         import { DATA_DIRECTORY } from ${JSON.stringify(new URL("../src/shared.ts", import.meta.url).href)};
+         try { await exclusive(async () => console.log("entered")); }
+         catch (error) { console.log(JSON.stringify({message:error.message, directory: DATA_DIRECTORY})); }`,
+        ],
+        {
+          env: { ...process.env, FRAMESHRINK_HOME: path.join(tmpdir(), state) },
+        },
+      );
+      const record = JSON.parse(result.stdout);
+      assert.match(record.message, /Another FrameShrink job/);
+      assert(record.directory.endsWith(state));
+    }
+    await assert.rejects(
+      () => execute(process.execPath, [ROOT + "scripts/runtime.mjs", "down"]),
+      (error: unknown) => {
+        assert.match(
+          (error as { stderr: string }).stderr,
+          /Another FrameShrink job/,
+        );
+        return true;
+      },
+    );
+    // In-process reconstruction can reset the fixture while retaining ownership.
+    await withRuntimeLock(async () =>
+      assert.equal(
+        JSON.parse(
+          await readFile(
+            path.join(RUNTIME_LOCK_DIRECTORY, "runtime.lock"),
+            "utf8",
+          ),
+        ).pid,
+        process.pid,
+      ),
+    );
   });
 });

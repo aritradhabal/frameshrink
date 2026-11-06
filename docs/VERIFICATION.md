@@ -8,7 +8,7 @@ Updated 7 November 2026. All outcomes below are observations from this build, no
 |---|---|
 | Fresh pinned dependency checkout and build | Passed; own `.vendor/sidecar`, no dependency on the research checkout |
 | TypeScript strict type checking | Passed |
-| Core/CLI/wallet/signing/wizard test suite | 59 passed, 0 failed |
+| Core/CLI/wallet/signing/wizard test suite | 62 passed, 0 failed |
 | Real ethrex integration suite | 5 scenarios passed, including v2 combined TIMESTAMP → NUMBER → passing control: original fixture families, captured EOA and captured owner-bound validator; includes clean replay and canonical-authorization checks |
 | Browser end-to-end suite | 1 scenario passed, covering both families, export/replay, invalid imports, mobile layout and request guards |
 | Formatting | Passed |
@@ -113,3 +113,16 @@ New runtime locking was tested against an actually killed child process, concurr
 Strict typing, all 59 unit tests, five real-runtime integration scenarios, the browser scenario, clean-folder npm installation/npm-exec replay, and formatting passed. Native PTY checks exercised the five-stage local replay and a saved-case correction preview with submission declined. Screenshots in `evidence/cli-demo.png` and `evidence/cli-changes.png` show the settled output. No new public transactions were needed for this review.
 
 Review criteria were checked against the primary [CLI guidelines](https://clig.dev/) and [Node process-spawning documentation](https://nodejs.org/api/child_process.html). macOS execution was verified; Windows/Linux browser command construction is unit-tested rather than desktop-tested. The remote Linux CI limitation above remains.
+
+
+## 0.1.3 review fixes and portability
+
+The previously identified runtime collision is fixed for updated copies: source checkouts, packaged installs and custom case/wallet directories now use one user-wide runtime lock. Direct runtime up/down also uses that lock, with same-process nested reconstruction retaining ownership. Multi-process tests prove different FRAMESHRINK_HOME values cannot enter while another copy owns the runtime; installed-package checks prove runtime management is refused before Docker runs. Killed-process, concurrent recovery, ownership replacement and filesystem-error checks still pass. Releases older than 0.1.3 do not cooperate with this shared protocol, and separate OS users are outside its scope.
+
+Workbench startup now awaits the listener and translates an occupied port to exit code 3 with an actionable message. JSON mode emits a structured ready record or structured startup error. `serve --port <number>` selects a port and `--port 0` chooses a free port. Two new server tests verify an actual occupied socket and successful JSON startup/HTTP response. The browser scenario ran against a newly started updated workbench on an isolated port; the existing workbench was not replaced.
+
+The current quick-start is centralized in README. The overview and demo guide now link to it and describe current output, while earlier public evidence remains explicitly historical. A local release script requires a clean tagged commit, builds the npm tarball, archives older release files, produces a source ZIP/Git bundle and checksums, and verifies the bundle via a clean clone. No upload step exists.
+
+Observed checks: 62 unit tests, five real-ethrex integration scenarios, the browser scenario, strict typing (including the shared JavaScript lock), format, and clean-folder package install/npm-exec real replay passed. Packaged smoke checks also passed on native macOS arm64 Node 26 and Linux arm64 containers using Node 22.23.4 and 24.22.2. Both Linux versions passed eight focused browser-command/lock tests. Package checks cover install without build hooks, private wallet creation, cross-directory lock contention, JSON workbench readiness and occupied-port errors. Reports are in `evidence/portability-*.json` and `evidence/review-fixes.json`.
+
+The Linux container checks did not exercise nested Docker execution or a desktop browser; real simulation remains locally verified on macOS. Windows desktop execution remains unobserved. A six-job Linux/macOS/Windows × Node22/24 CI matrix is provided, consuming the Linux-built tarball without source bootstrap; it has not run remotely because no remote repository was published. These limits are retained rather than reported as passing tests. No public transactions were submitted for these changes.

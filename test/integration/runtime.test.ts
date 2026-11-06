@@ -1,7 +1,7 @@
+import { manageRuntime } from "../../scripts/runtime.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile, mkdtemp, writeFile, rm, cp } from "node:fs/promises";
-import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { ROOT, hash } from "../../src/shared.js";
@@ -65,10 +65,7 @@ test("real ethrex: two reductions, signatures, clean reconstruction, tamper chec
     try {
       await exportBundle(saved[0], out);
       await verifyBundle(out);
-      execFileSync(process.execPath, [ROOT + "scripts/runtime.mjs", "up"], {
-        stdio: "pipe",
-        timeout: 45000,
-      });
+      await manageRuntime("up");
       const replayed = await replay(out);
       assert.equal(replayed.status, "reproduced");
       await writeFile(path.join(out, "recipe.reduced.json"), "{}");

@@ -1,11 +1,13 @@
 import { test, expect } from "@playwright/test";
+const workbench =
+  process.env.FRAMESHRINK_WORKBENCH_URL ?? "http://127.0.0.1:4317";
 test("local reducer, bundle export, clean replay and read-only import", async ({
   page,
   request,
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("http://127.0.0.1:4317");
+  await page.goto(workbench);
   await expect(
     page.getByText("Local runtime ready", { exact: true }),
   ).toBeVisible();
@@ -53,11 +55,11 @@ test("local reducer, bundle export, clean replay and read-only import", async ({
     ),
   ).toBe(true);
   expect(errors).toEqual([]);
-  const csrf = await request.post("http://127.0.0.1:4317/api/reduce", {
+  const csrf = await request.post(workbench + "/api/reduce", {
     data: {},
   });
   expect(csrf.status()).toBe(400);
-  const host = await request.get("http://127.0.0.1:4317/api/info", {
+  const host = await request.get(workbench + "/api/info", {
     headers: { host: "attacker.example" },
   });
   expect(host.status()).toBe(403);

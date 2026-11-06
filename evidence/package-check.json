@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "package": "frameshrink-0.1.2.tgz",
-  "compressedBytes": 2032604,
-  "unpackedBytes": 11563662,
+  "package": "frameshrink-0.1.3.tgz",
+  "compressedBytes": 2035873,
+  "unpackedBytes": 11579847,
   "installedWithScriptsDisabled": true,
   "noGitOrBunRequired": true,
   "execWithoutGlobalInstall": true,
@@ -10,6 +10,7 @@
   "secretsExcluded": true,
   "modifiedBundleRefused": true,
   "dockerFailureActionable": true,
+  "runtimeJsonReady": "passed",
   "files": [
     "CHANGELOG.md",
     "LICENSE",
@@ -45,8 +46,9 @@
     "fixtures/genesis.upstream.json",
     "fixtures/verify-gas.json",
     "package.json",
+    "scripts/runtime-lock.mjs",
     "scripts/runtime.mjs",
     "src/ui.html"
   ],
-  "sha256": "45665292fbdbd499314a57f52c13ffe07b303844dc1a11138706edc07015c12f"
+  "sha256": "84009b31cfd877bb81a4e1ce879353cbb94e9d048472152f73f3ff9e5c1c777e"
 }

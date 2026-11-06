@@ -6,11 +6,11 @@ This release is a downloadable npm tarball. Nothing is published to npm or a rem
 
 ## Try the download
 
-Requires Node.js 22.13+ (22.x) or 24+. Download `frameshrink-0.1.2.tgz`, then run:
+Requires Node.js 22.13+ (22.x) or 24+. Download `frameshrink-0.1.3.tgz`, then run:
 
 ```sh
-npm exec --yes --package=./frameshrink-0.1.2.tgz -- frameshrink --help
-npm exec --yes --package=./frameshrink-0.1.2.tgz -- frameshrink demo local
+npm exec --yes --package=./frameshrink-0.1.3.tgz -- frameshrink --help
+npm exec --yes --package=./frameshrink-0.1.3.tgz -- frameshrink demo local
 ```
 
 `npm exec` uses npm's cache without a global installation. The local demo verifies each of five failure stages, shows the captured reduction, and checks the corrected control. `frameshrink demo` is shorthand for this local replay. It needs Docker, but no wallet, faucet funds, Git, Bun, or public submission. Docker may download the pinned execution image on first use. On Apple Silicon, enable Docker Desktop Rosetta support for that amd64 image.
@@ -20,7 +20,7 @@ npm exec --yes --package=./frameshrink-0.1.2.tgz -- frameshrink demo local
 ## Install
 
 ```sh
-npm install --global ./frameshrink-0.1.2.tgz
+npm install --global ./frameshrink-0.1.3.tgz
 frameshrink --version
 frameshrink start transaction
 ```
@@ -38,6 +38,8 @@ These are owned fixtures, not arbitrary-contract repair. Other failure categorie
 
 Installed/npm-exec copies keep wallet data and cases in `~/.frameshrink`. Use `FRAMESHRINK_HOME=/absolute/path` to choose another location. Source checkout commands preserve their `.runs` directory. Keys are excluded from packages, examples and Git history.
 
+Runtime ownership is shared across updated installations at `~/.frameshrink/runtime`, independently of wallet/case storage. Simulation, replay and runtime start/stop cannot replace another updated copy's active Docker runtime. Close older releases before running this version alongside other copies.
+
 ## Source development
 
 ```sh
@@ -53,3 +55,5 @@ npm pack --pack-destination artifacts
 Create `artifacts` before the final command. Bootstrap is a maintainer step that builds the pinned upstream dependency. Recipients of the tarball do not need it. `private: true` and `prepublishOnly` block registry publication.
 
 The source repository also contains a browser workbench (`npm run runtime:up`, then `npm start`), full verification evidence and design notes. [Installation and packaging details](docs/PACKAGING.md) explain source builds, recovery commands and distribution. [Attribution](docs/ATTRIBUTION.md) records upstream reuse, prior work and AI assistance. MIT licensed, with bundled dependency notices included.
+
+`frameshrink serve --json` prints one ready record or a structured startup error. Use `serve --port <number>` to select another port; `--port 0` chooses a free port. The [project overview](docs/PROJECT-OVERVIEW.md) describes the supported scope without duplicating this quick-start.

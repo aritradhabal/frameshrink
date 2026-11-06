@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-11-06T19:00:47.960311+00:00",
+  "verifiedAt": "2026-11-06T19:13:06.304100+00:00",
   "platform": "macOS arm64; Docker amd64 image through Rosetta",
   "sidecarCommit": "2e22ff0a2898e69ea4bf5275bce1be8581a8582a",
   "typecheck": "passed",
   "coreTests": {
-    "passed": 59,
+    "passed": 62,
     "failed": 0
   },
   "realRuntimeIntegration": {
@@ -179,7 +179,7 @@
   },
   "npmPackage": {
     "name": "frameshrink",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "published": false,
     "installAndExec": "passed",
     "realLocalReplay": "passed",
@@ -198,6 +198,20 @@
     "crashRecovery": "passed",
     "concurrentRecovery": "passed",
     "legacyCompatibility": "passed",
-    "liveAndUnknownOwners": "preserved"
+    "liveAndUnknownOwners": "preserved",
+    "scope": "user-wide; independent of case/wallet directories",
+    "directRuntimeCommands": "same shared lock",
+    "crossDataDirectoryContention": "passed"
+  },
+  "workbenchStartup": {
+    "jsonReady": "passed",
+    "occupiedPortStructuredError": "passed",
+    "alternatePort": "passed"
+  },
+  "portability": {
+    "macOS": "arm64 Node26 package checks passed",
+    "linux": "arm64 Node22 and Node24 container checks passed",
+    "windows": "CI matrix configured; native execution not observed",
+    "desktopLaunch": "not exercised outside macOS; command construction unit-tested"
   }
 }

@@ -157,6 +157,17 @@ try {
   await assert.rejects(() => access(missingState));
   await rm(brokenDocker);
   if (runtime) {
+    const runtimeReady = JSON.parse(
+      execFileSync(process.execPath, [cli, "runtime", "up", "--json"], {
+        cwd: installed,
+        env,
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "pipe"],
+        timeout: 60000,
+      }),
+    );
+    assert.equal(runtimeReady.status, "ready");
+    assert.equal(runtimeReady.chainId, 9);
     const sampleState = path.join(temporary, "sample-state");
     const sample = JSON.parse(
       execFileSync("npm", [...execArgs, "demo", "local", "--json"], {
@@ -217,6 +228,7 @@ try {
     secretsExcluded: true,
     modifiedBundleRefused: true,
     dockerFailureActionable: true,
+    runtimeJsonReady: runtime ? "passed" : "not run",
     files: report.files.map((file) => file.path),
   };
   await writeFile(

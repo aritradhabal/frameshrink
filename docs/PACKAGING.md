@@ -1,15 +1,15 @@
 # Download and run
 
-Downloadable artifacts are `frameshrink-0.1.2.tgz` (installable CLI), `frameshrink-source.zip` (source), and `frameshrink.git.bundle` (Git history). It is not published to npm. Use the actual tarball path in these commands so npm never substitutes an unrelated registry package.
+Downloadable artifacts are `frameshrink-0.1.3.tgz` (installable CLI), `frameshrink-source.zip` (source), and `frameshrink.git.bundle` (Git history). It is not published to npm. Use the actual tarball path in these commands so npm never substitutes an unrelated registry package.
 
 Requires Node.js 22.13+ (22.x) or Node.js 24+. Docker is required only for simulation and replay. On Apple Silicon, enable Docker Desktop Rosetta support for the pinned amd64 ethrex image.
 
 ## Try without a global installation
 
 ```sh
-npm exec --yes --package=./frameshrink-0.1.2.tgz -- frameshrink --help
-npm exec --yes --package=./frameshrink-0.1.2.tgz -- frameshrink demo local
-npm exec --yes --package=./frameshrink-0.1.2.tgz -- frameshrink start transaction
+npm exec --yes --package=./frameshrink-0.1.3.tgz -- frameshrink --help
+npm exec --yes --package=./frameshrink-0.1.3.tgz -- frameshrink demo local
+npm exec --yes --package=./frameshrink-0.1.3.tgz -- frameshrink start transaction
 ```
 
 `npm exec` downloads the package's runtime dependencies into npm's cache. It does not require a global install. `demo local` reconstructs the included five-failure case, verifies exact signed replay and its corrected control, and makes no public submissions. It needs no wallet, faucet funds, Git, Bun, or sidecar checkout. Docker can download the pinned execution image on first use.
@@ -25,15 +25,17 @@ Local checks reuse one live terminal row and preserve a summary per failure. Reo
 ## Install the downloaded package
 
 ```sh
-npm install --global ./frameshrink-0.1.2.tgz
+npm install --global ./frameshrink-0.1.3.tgz
 frameshrink --version
 frameshrink demo local
 frameshrink start transaction
 ```
 
-A project-local install also works: `npm install ./frameshrink-0.1.2.tgz`, then `npx frameshrink --help` from that project.
+A project-local install also works: `npm install ./frameshrink-0.1.3.tgz`, then `npx frameshrink --help` from that project.
 
 Installed and npm-exec copies store wallets, faucet history, cases and previews in `~/.frameshrink`. Set `FRAMESHRINK_HOME=/absolute/path` to choose another persistent directory. Source checkout commands retain their existing `.runs` directory unless that variable is set. Package updates and npm-cache cleanup do not delete your default wallet data.
+
+Updated copies coordinate the fixed Docker containers and ports through `~/.frameshrink/runtime`, regardless of `FRAMESHRINK_HOME` or source/package location. Direct `npm run runtime:up` / `runtime:down` commands obey the same lock. A verified dead process can be recovered; live or unknown ownership is preserved. Close releases older than 0.1.3 before concurrent use: they do not participate in the shared protocol. The lock coordinates one OS user, not different users sharing a Docker daemon.
 
 The normal successful wizard output ends with the corrected transaction hash/link, without an absolute case-directory line. Saved and pending runs show a recovery command using a case ID. `frameshrink start debug <case-id>` and `frameshrink demo resume <case-id>` resolve IDs inside the data directory; explicit case paths also work. JSON retains full artifact metadata.
 
@@ -62,3 +64,9 @@ cd frameshrink
 ```
 
 The bundle contains the real initial commit and main branch. No remote host or registry upload is needed.
+
+## Local release maintenance
+
+After verification, commit the source and create an annotated `v<package-version>` tag. Run `npm run release:local -- /absolute/output/directory` from a clean working tree. It builds the tarball, archives earlier release files under `archive/<version>/`, produces a source ZIP and complete Git bundle, checks the bundle through a clean clone, and writes `SHA256SUMS` plus `RELEASE.txt`. It never publishes. The release tag must point to the current commit and cannot silently move to another commit.
+
+Run `npm run test:portability -- /absolute/path/to/frameshrink.tgz` to check installation, a private test wallet, shared locking, JSON workbench startup and occupied-port errors without Docker or desktop launching. The CI matrix repeats packaged checks and focused browser/lock tests on Linux, macOS and Windows with Node 22 and 24. CI configuration alone is not evidence of a successful remote run; consult the verification report for observed platforms. Source bootstrap currently supports macOS/Linux, while Windows CI consumes the already built tarball.

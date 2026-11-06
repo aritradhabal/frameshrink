@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.3 — review findings resolved
+
+- Share runtime ownership across updated source/package copies and custom data directories; runtime management uses the same crash-recoverable lock.
+- Handle occupied workbench ports without stack traces, return structured JSON startup results, and support an explicit or automatically allocated port.
+- Consolidate current setup instructions, refresh the demo/overview, and distinguish earlier recorded evidence from current behavior.
+- Add repeatable packaged portability checks and a Linux/macOS/Windows, Node 22/24 CI matrix; record actual platform checks separately from unrun CI.
+- Produce tagged local releases with verified Git bundles, checksums and archived earlier downloads; publishing remains disabled.
+
 ## 0.1.2 — reviewed interactive experience
 
 - Reuse a single live row for candidate checks and clear repeatable preview, funding and receipt prompts; preserve stage summaries and explicit submission confirmations.

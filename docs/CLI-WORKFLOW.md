@@ -35,7 +35,7 @@ frameshrink debug 'https://explorer.altmempool.wtf/tx/0xf5b65c96057977aaab766eb0
 
 `debug` reads the selected sponsor RPC, decodes standard Solidity errors, identifies the reported failure stage/frame, checks whether the signed transaction is available, and collects available code, code hashes, balances and nonces for up to eight referenced accounts at an explicit observation block. It checks the block hash and explorer boot identity around capture. It performs no signing, transaction submission or simulation.
 
-The default export is a new directory under `.runs/cases/`. `--out <new-directory>` selects another destination; existing directories are not overwritten. `--json` produces machine-readable output. Cases contain the report, raw RPC responses, observed account data, a plain-text explanation and checksums. Only the two known sponsor endpoints are accepted; URL credentials, arbitrary endpoints and redirects are refused.
+The default export is a new directory under the data directory’s `cases/` folder (`.runs/cases/` in a checkout, `~/.frameshrink/cases/` when installed). `--out <new-directory>` selects another destination; existing directories are not overwritten. `--json` produces machine-readable output. Cases contain the report, raw RPC responses, observed account data, a plain-text explanation and checksums. Only the two known sponsor endpoints are accepted; URL credentials, arbitrary endpoints and redirects are refused.
 
 ```sh
 frameshrink explain /absolute/path/to/saved-case
@@ -109,7 +109,7 @@ A missing or uncertain response stops the workflow rather than fabricating succe
 
 The initial high-gas EOA attempt was accepted by the public node while the pinned local policy rejected it. That profile difference is retained in `evidence/public-profile-difference.json`; the tool stopped instead of treating acceptance as a rejection. The verified unified case uses the owner-bound TIMESTAMP validator.
 
-The current completed case is `evidence/unified-demo`: rejected `0xb20cc4daaf82ccd0f8bfde27be1e65843c1a1e7b873859a297ae8cdaa61b73c5`, corrected `0x048c1d34c9bbc3a37bf222614fe4001f2717b30b814766efc1d3edaa999c8ed1`, 767 → 282 bytes, successful correction in block 5291. This is one owned case all the way through; arbitrary external explorer cases still require their missing artifacts.
+The earlier single-failure case is `evidence/unified-demo`: rejected `0xb20cc4daaf82ccd0f8bfde27be1e65843c1a1e7b873859a297ae8cdaa61b73c5`, corrected `0x048c1d34c9bbc3a37bf222614fe4001f2717b30b814766efc1d3edaa999c8ed1`, 767 → 282 bytes, successful correction in block 5291. This is one owned case all the way through; arbitrary external explorer cases still require their missing artifacts.
 
 `debug`/`explain` now show a short diagnosis by default; append `--verbose` for the complete missing-artifact checklist, inference and next steps. Noninteractive CLI output supports `--json`. Colors follow TTY/`FORCE_COLOR`, `NO_COLOR` and `--no-color`; machine JSON is never decorated.
 
@@ -121,11 +121,11 @@ Before confirming the failing transaction, the wizard offers **O** to open the t
 VISUAL='zed --wait' frameshrink start transaction
 ```
 
-The preview includes frame indices and stable IDs, validation/execution mode, target, calldata and decoded arrays, execution/state gas limits, ETH value, chain/nonce/fees, signatures and the exact encoded payload. It is a read-only copy under `.runs/previews`, outside the replay bundle. Edits to the preview never alter a signed transaction or the proposed correction. Close a waiting editor to return to the prompt; GUI editors without a wait flag return immediately.
+The preview includes frame indices and stable IDs, validation/execution mode, target, calldata and decoded arrays, execution/state gas limits, ETH value, chain/nonce/fees, signatures and the exact encoded payload. It is a read-only copy under the data directory’s `previews/` folder, outside the replay bundle. Edits to the preview never alter a signed transaction or the proposed correction. Close a waiting editor to return to the prompt; GUI editors without a wait flag return immediately.
 
 After reduction, the terminal names removed frames, retained-call input changes and each validation-mode correction. The same O/C prompt opens a full change report with per-stage original/reduced/correction recipes, failure fingerprints and before/after decoded transactions. Every public submission still requires its separate default-no confirmation.
 
-Each reduction evaluation streams as it completes: stage/evaluation number, baseline/repeat/control or attempted edit, whether it reproduces the same failure, and encoded byte size. One evaluation runs a signed candidate through ethrex and policy checks. New edits are rebuilt and signed before evaluation; the repeat check reuses the exact baseline payload. Cached candidates do not count as new evaluations or appear as fresh simulations. The 80/20 choice is a maximum per selected failure, including baseline, repeat and passing-control checks; public capture and clean replay are additional verification steps. Candidates are never submitted publicly.
+With `--verbose`, each reduction evaluation prints as it completes: stage/evaluation number, baseline/repeat/control or attempted edit, whether it reproduces the same failure, and encoded byte size. One evaluation runs a signed candidate through ethrex and policy checks. New edits are rebuilt and signed before evaluation; the repeat check reuses the exact baseline payload. Cached candidates do not count as new evaluations or appear as fresh simulations. The 80/20 choice is a maximum per selected failure, including baseline, repeat and passing-control checks; public capture and clean replay are additional verification steps. Candidates are never submitted publicly. Normal terminal output reuses one transient check row and retains the per-failure summaries; newly generated cases preserve all check events in checksum-covered `evaluation-log.json`.
 
 The original rejected hash and explorer link appear immediately after public rejection capture, before debugging. The final transaction summary shows only the corrected hash/link and its actual public outcome. Admission rejection has an identifiable transaction hash/report but no successful block execution receipt.
 
