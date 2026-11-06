@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "kind": "frameshrink-devnet-case",
+  "checksums": {
+    "README.txt": "db1b2ef66da9d77fad9bac36043a4d7f5f9fa95c74987b9fc7efe455d4b59e6f",
+    "context.json": "25965fc082c542f04e9d1c0caf309aded427804a54a6456b884bed9cc6e65977",
+    "corrected.json": "811d6358d9a2cfb21713b382a358f1fad2fa2b229dc20bb18db3c5c6bddcf605",
+    "debug-stages.json": "f850f5328d39ba5b72ad7d8635d53b729c88122a52434119a46aca8220bddb3b",
+    "genesis.json": "7340745870f5932223b47e818953656992d5d3762baa0024de39ea847800a954",
+    "local-replay.json": "2dc44a2cae675b19643ecfdefe8716abd10a9a275daaea794ed002633a7af905",
+    "original.json": "1cbc41a2c5150b94a68695c1555af42ff89801663f1d0ca64ad6a72e020fe6f5",
+    "profile.json": "94b261b7f482f76709a991886527b0076f40c7c5a7b95504e87aeab5c0b4dfe3",
+    "public-correction.json": "0d5f2c02436694f9a8d7e18280618f12793a1dbaf0de5a85b989075181e8f17a",
+    "public-rejection.json": "db0b350b9e43b4b7e18ffbbcfae91f3d6c511831c83f38d46219b08e60c322e5",
+    "reduced.json": "3ecf5405111e0d897eb8dad77ddbd60f47e1630139a8cfecbab7a9bbc1e70467",
+    "reduction.json": "9bee6e41e5db79ce12978ba1d488d9584b706ac165896d965d9bd1b9722a88ff",
+    "run.json": "99f3ad703a66e289ceefb3f93767a330787f792b2b624a92efc81e165783f8d7",
+    "validator-deployment.json": "541976d0d2672699f0f3e5d81c88094cd0ad53b88dedc49c991686512dd0258f"
+  }
+}
