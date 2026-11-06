@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "reproduced",
+  "exactSignedPayloads": true,
+  "profileHash": "282060ae05b97fd08c520e2a044684383758242516ca107690e0acf17ac58bad",
+  "stateHash": "44740ebeb9ad5305971cd9e8339fbdec45dbfd8ccd2ad839e84d7a2a12a230ed",
+  "results": [
+    {
+      "name": "original",
+      "status": "rejected",
+      "bytes": 767,
+      "message": "payer uses banned opcode: TIMESTAMP"
+    },
+    {
+      "name": "reduced",
+      "status": "rejected",
+      "bytes": 282,
+      "message": "payer uses banned opcode: TIMESTAMP"
+    },
+    {
+      "name": "corrected",
+      "status": "accepted",
+      "bytes": 282,
+      "message": "Accepted by local simulation and covered policy checks"
+    }
+  ]
+}

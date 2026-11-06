@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "kind": "frameshrink-devnet-case",
+  "state": "complete",
+  "wallet": "0xebF00143AC1A763922A65b887e2d1B66233eFDaB",
+  "createdAt": "2026-11-06T15:17:51.451Z",
+  "directory": "/Users/aritra/Documents/project/frameshrink/.runs/demos/validator-case",
+  "originalHash": "0xb20cc4daaf82ccd0f8bfde27be1e65843c1a1e7b873859a297ae8cdaa61b73c5",
+  "originalFrames": 4,
+  "originalAttemptedAt": "2026-11-06T15:17:52.278Z",
+  "reducedFrames": 2,
+  "originalBytes": 767,
+  "reducedBytes": 282,
+  "replay": "reproduced",
+  "correctedHash": "0x048c1d34c9bbc3a37bf222614fe4001f2717b30b814766efc1d3edaa999c8ed1",
+  "correctedAttemptedAt": "2026-11-06T15:17:54.575Z",
+  "blockNumber": "0x14ab",
+  "explorer": "https://explorer.altmempool.wtf/tx/0x048c1d34c9bbc3a37bf222614fe4001f2717b30b814766efc1d3edaa999c8ed1?node=https%3A%2F%2Faltmempool.forshtat.com%2Frpc"
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "kind": "frameshrink-devnet-case",
+  "checksums": {
+    "README.txt": "3742c6f46149d4ccdbf040ab265da994bde9a8beba09475faa1c06296fe1ee8e",
+    "context.json": "ee553073a55ee176e80b63b62ee72349fe95241347f52cb0fd6702c8f7fbddc8",
+    "corrected.json": "2d6be09133c74d4fb493ec398d3884f626fa7cc358251e8ca37c0b66ca28e489",
+    "genesis.json": "0ebf35ebb5b454e66cd20eab2041403f7d9696e6db85cbc0db4436924542406a",
+    "local-replay.json": "79f44f146c1db5cb454ac3994bf2cdd2ad3e4b6e57540702ca2a5c9f16d2652a",
+    "original.json": "d08f418f30b1cc7241a00f10eb27cabc1eb3d8267025f8e3c1b39dc555920aa8",
+    "profile.json": "cb799b35d45edb14a794bed8a0209254b1beb6a4a4416456f749cbc921ff7e24",
+    "public-correction.json": "a181b0754262a526acd9a422302f2bf5f37cbc3aa0e2cd54049c7a41e43a339f",
+    "public-rejection.json": "d50be2304661bef4618f83ad40195ed29dc7f1d721e021cb9228ffb3767cd0b5",
+    "reduced.json": "198668a614a7aa56c3b564ce3b280eba85d3aa6ba057ffc208bbc674045cb306",
+    "reduction.json": "1a49a222914c72066747a8e02a31775b8d32d6dd644fe5bef92df68799cafef6",
+    "run.json": "0682b8f9c327ab668f9b9b12080714a51152c5be0eddd4fb21bcf283d0006b4f"
+  }
+}
