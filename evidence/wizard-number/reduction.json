@@ -1,0 +1,737 @@
+{
+  "schemaVersion": 1,
+  "status": "reduced",
+  "profile": {
+    "schemaVersion": 1,
+    "sidecarCommit": "2e22ff0a2898e69ea4bf5275bce1be8581a8582a",
+    "ethrexCommit": "9aa3645d795945c64400f41a70aace0edfa7f383",
+    "image": "ghcr.io/forshtat/eip8141-devnet@sha256:09e0871af79cb06ee3cf3f7bc760a39bdcb539bc9c8d1ef1fe8a1bf57962030e",
+    "genesisFileHash": "7340745870f5932223b47e818953656992d5d3762baa0024de39ea847800a954",
+    "genesisHash": "0x4c2e02d11efca8c79d8e6f5660f278e92d1a84dc0aff2c17df9955a9f1b79e0a",
+    "headHash": "0x4c2e02d11efca8c79d8e6f5660f278e92d1a84dc0aff2c17df9955a9f1b79e0a",
+    "headNumber": "0x0",
+    "chainId": "0x539",
+    "clientVersion": "ethrex/v23.0.0-eip8141-tracer-9aa3645d795945c64400f41a70aace0edfa7f383/x86_64-unknown-linux-gnu/rustc-v1.93.1",
+    "accounts": {
+      "0x497a1a3318060016EF70A32989e69b9695e5fc22": {
+        "code": "0x",
+        "balance": "0xdbbe4d72f1c7b24",
+        "nonce": "0x1"
+      },
+      "0x67f130c44928CCDb8aA3095dC02aD7a855ef6Cd2": {
+        "code": "0x3360aa14600857005b60006000b473497a1a3318060016ef70a32989e69b9695e5fc221415605f5760026000b41515605f5760016000b460011415605f5760003560011615604a5742505b6000356002161560575743505b600360006000aa5b60006000fd",
+        "balance": "0x2386f26fc10000",
+        "nonce": "0x1"
+      }
+    },
+    "policy": {
+      "stakingRegistry": "disabled",
+      "stake": "0x0",
+      "unstakeDelaySec": "0x0",
+      "whitelist": [],
+      "reputation": "all unlisted; insufficient stake",
+      "minStake": "0x2540be400",
+      "standardMempoolId": "FrameShrink-local-policy",
+      "scope": "upstream FrameTxValidationService; no mempool, fees, replacement, reputation admission or gossip"
+    },
+    "policyHash": "1553444f2cb8d58d76b835e530ac2462f6af2f75e7f78d37ce7527d7230d5f08",
+    "profileHash": "937ecadab79a5121e6ea91e42c936d121dc06484524e3bde8af7d28adb254aec",
+    "stateHash": "d21c01146d4fb817dabb28cc02317f433c2889330fac4f0e19fdab5a4ea22970"
+  },
+  "original": {
+    "schemaVersion": 1,
+    "mode": "owned",
+    "family": "banned-opcode",
+    "opcodeMask": 2,
+    "name": "banned-opcode",
+    "prefixGas": 30000,
+    "body": [
+      {
+        "id": "required-call",
+        "required": true,
+        "values": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "id": "extra-a",
+        "required": false,
+        "values": [
+          10,
+          20
+        ]
+      },
+      {
+        "id": "extra-b",
+        "required": false,
+        "values": [
+          30,
+          40,
+          50
+        ]
+      }
+    ]
+  },
+  "reduced": {
+    "schemaVersion": 1,
+    "mode": "owned",
+    "family": "banned-opcode",
+    "opcodeMask": 2,
+    "name": "banned-opcode",
+    "prefixGas": 30000,
+    "body": [
+      {
+        "id": "required-call",
+        "required": true,
+        "values": []
+      }
+    ]
+  },
+  "baseline": {
+    "status": "rejected",
+    "fingerprint": {
+      "stage": "local-policy",
+      "ruleId": "OP-011",
+      "normalizedCause": "BANNED_OPCODE:NUMBER",
+      "entityRole": "payer",
+      "stableFixtureFrameId": "validation",
+      "profileHash": "937ecadab79a5121e6ea91e42c936d121dc06484524e3bde8af7d28adb254aec",
+      "stateHash": "d21c01146d4fb817dabb28cc02317f433c2889330fac4f0e19fdab5a4ea22970"
+    },
+    "raw": "0x06f902fb820539c180019467f130c44928ccdb8aa3095dc02ad7a855ef6cd2f90271ea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000002f8e0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b8c0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000004f8a0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b88000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000014f8c0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b8a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000001e00000000000000000000000000000000000000000000000000000000000000280000000000000000000000000000000000000000000000000000000000000032f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84100999c276713a23d90145feda99dc86f025dda971fa7f03079e2ff8b5904075e8841bb60f8007612f1755d6a536a51becb819aa456ef3d462aa049bc939e438e7acb843b9aca00843b9aca0e80c0c0",
+    "frameIds": [
+      "validation",
+      "required-call",
+      "extra-a",
+      "extra-b"
+    ],
+    "checks": [
+      {
+        "rule": "prefix",
+        "verdict": "pass"
+      },
+      {
+        "rule": "structure",
+        "verdict": "pass"
+      },
+      {
+        "rule": "signature",
+        "verdict": "pass"
+      },
+      {
+        "rule": "simulation",
+        "verdict": "pass"
+      },
+      {
+        "rule": "trace-alignment",
+        "verdict": "pass"
+      },
+      {
+        "rule": "OP-061",
+        "verdict": "pass"
+      },
+      {
+        "rule": "execution",
+        "verdict": "pass"
+      },
+      {
+        "rule": "trace-alignment",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "out-of-gas",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "OP-011",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "fail",
+        "detail": "payer uses banned opcode: NUMBER"
+      },
+      {
+        "rule": "create",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "storage",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "COD-010",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "entrypoint-access",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "gas-limit",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "recent-root",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "mempool",
+        "verdict": "skipped"
+      }
+    ],
+    "simulation": {
+      "canonicalMempoolValid": false,
+      "canonicalMempoolViolation": "BannedOpcode(67)",
+      "erc7562Trace": [
+        {
+          "frameIndex": 0,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000000000aa",
+            "outOfGas": false,
+            "to": "0x67f130c44928ccdb8aa3095dc02ad7a855ef6cd2",
+            "type": "CALL",
+            "usedOpcodes": {
+              "51": 1,
+              "53": 2,
+              "67": 1,
+              "87": 6,
+              "91": 1,
+              "170": 1,
+              "180": 3
+            },
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 1,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x67f130c44928ccdb8aa3095dc02ad7a855ef6cd2",
+            "outOfGas": false,
+            "to": "0x497a1a3318060016ef70a32989e69b9695e5fc22",
+            "type": "CALL",
+            "usedOpcodes": {},
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 2,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x67f130c44928ccdb8aa3095dc02ad7a855ef6cd2",
+            "outOfGas": false,
+            "to": "0x497a1a3318060016ef70a32989e69b9695e5fc22",
+            "type": "CALL",
+            "usedOpcodes": {},
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 3,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x67f130c44928ccdb8aa3095dc02ad7a855ef6cd2",
+            "outOfGas": false,
+            "to": "0x497a1a3318060016ef70a32989e69b9695e5fc22",
+            "type": "CALL",
+            "usedOpcodes": {},
+            "value": "0x0"
+          }
+        }
+      ],
+      "erc7562TraceError": null,
+      "executionError": null,
+      "executionStatus": "success",
+      "frames": [
+        {
+          "gasUsed": "0x118",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0xbb8",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0x64",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0x64",
+          "succeeded": true
+        }
+      ],
+      "gasUsed": "0xd73c",
+      "maxCost": "0x13e9b5e9ce5b0",
+      "payer": "0x67f130c44928ccdb8aa3095dc02ad7a855ef6cd2",
+      "prefixShape": "SelfVerify"
+    },
+    "message": "payer uses banned opcode: NUMBER",
+    "bytes": 767
+  },
+  "result": {
+    "status": "rejected",
+    "fingerprint": {
+      "stage": "local-policy",
+      "ruleId": "OP-011",
+      "normalizedCause": "BANNED_OPCODE:NUMBER",
+      "entityRole": "payer",
+      "stableFixtureFrameId": "validation",
+      "profileHash": "937ecadab79a5121e6ea91e42c936d121dc06484524e3bde8af7d28adb254aec",
+      "stateHash": "d21c01146d4fb817dabb28cc02317f433c2889330fac4f0e19fdab5a4ea22970"
+    },
+    "raw": "0x06f90116820539c180019467f130c44928ccdb8aa3095dc02ad7a855ef6cd2f88dea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000002f860028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b84000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b8410013dff8c2433e2c94a5dc79630520c27f19e396578f2373d340c7613543fbe7da5f5cebf57193c0752ab6e3f3c03f80aecd5ec4e153d5a57e951c143376c8b06dcb843b9aca00843b9aca0e80c0c0",
+    "frameIds": [
+      "validation",
+      "required-call"
+    ],
+    "checks": [
+      {
+        "rule": "prefix",
+        "verdict": "pass"
+      },
+      {
+        "rule": "structure",
+        "verdict": "pass"
+      },
+      {
+        "rule": "signature",
+        "verdict": "pass"
+      },
+      {
+        "rule": "simulation",
+        "verdict": "pass"
+      },
+      {
+        "rule": "trace-alignment",
+        "verdict": "pass"
+      },
+      {
+        "rule": "OP-061",
+        "verdict": "pass"
+      },
+      {
+        "rule": "execution",
+        "verdict": "pass"
+      },
+      {
+        "rule": "trace-alignment",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "out-of-gas",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "OP-011",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "fail",
+        "detail": "payer uses banned opcode: NUMBER"
+      },
+      {
+        "rule": "create",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "storage",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "COD-010",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "entrypoint-access",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "gas-limit",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "recent-root",
+        "verdict": "skipped"
+      },
+      {
+        "rule": "mempool",
+        "verdict": "skipped"
+      }
+    ],
+    "simulation": {
+      "canonicalMempoolValid": false,
+      "canonicalMempoolViolation": "BannedOpcode(67)",
+      "erc7562Trace": [
+        {
+          "frameIndex": 0,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000000000aa",
+            "outOfGas": false,
+            "to": "0x67f130c44928ccdb8aa3095dc02ad7a855ef6cd2",
+            "type": "CALL",
+            "usedOpcodes": {
+              "51": 1,
+              "53": 2,
+              "67": 1,
+              "87": 6,
+              "91": 1,
+              "170": 1,
+              "180": 3
+            },
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 1,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x67f130c44928ccdb8aa3095dc02ad7a855ef6cd2",
+            "outOfGas": false,
+            "to": "0x497a1a3318060016ef70a32989e69b9695e5fc22",
+            "type": "CALL",
+            "usedOpcodes": {},
+            "value": "0x0"
+          }
+        }
+      ],
+      "erc7562TraceError": null,
+      "executionError": null,
+      "executionStatus": "success",
+      "frames": [
+        {
+          "gasUsed": "0x118",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0xbb8",
+          "succeeded": true
+        }
+      ],
+      "gasUsed": "0x6b86",
+      "maxCost": "0x86304c9f60b4",
+      "payer": "0x67f130c44928ccdb8aa3095dc02ad7a855ef6cd2",
+      "prefixShape": "SelfVerify"
+    },
+    "message": "payer uses banned opcode: NUMBER",
+    "bytes": 282
+  },
+  "control": {
+    "status": "accepted",
+    "fingerprint": null,
+    "raw": "0x06f902fb820539c180019467f130c44928ccdb8aa3095dc02ad7a855ef6cd2f90271ea010380c48275308080a00000000000000000000000000000000000000000000000000000000000000000f8e0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b8c0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000004f8a0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b88000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000014f8c0028094497a1a3318060016ef70a32989e69b9695e5fc22c5830186a08080b8a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000001e00000000000000000000000000000000000000000000000000000000000000280000000000000000000000000000000000000000000000000000000000000032f85cf85a0194497a1a3318060016ef70a32989e69b9695e5fc2280b84100e578b7f6e6c634943ac1a0077095517f1a600719153fa053a29c40646316ecac0c5909602bcf17dd811b3684462ef287e18a69df8c39147ab3442ad9f77188ffcb843b9aca00843b9aca0e80c0c0",
+    "frameIds": [
+      "validation",
+      "required-call",
+      "extra-a",
+      "extra-b"
+    ],
+    "checks": [
+      {
+        "rule": "prefix",
+        "verdict": "pass"
+      },
+      {
+        "rule": "structure",
+        "verdict": "pass"
+      },
+      {
+        "rule": "signature",
+        "verdict": "pass"
+      },
+      {
+        "rule": "simulation",
+        "verdict": "pass"
+      },
+      {
+        "rule": "trace-alignment",
+        "verdict": "pass"
+      },
+      {
+        "rule": "OP-061",
+        "verdict": "pass"
+      },
+      {
+        "rule": "execution",
+        "verdict": "pass"
+      },
+      {
+        "rule": "trace-alignment",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "out-of-gas",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "OP-011",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "create",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "storage",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "COD-010",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      },
+      {
+        "rule": "entrypoint-access",
+        "frameIndex": 0,
+        "entity": "payer",
+        "verdict": "pass"
+      }
+    ],
+    "simulation": {
+      "canonicalMempoolValid": true,
+      "canonicalMempoolViolation": null,
+      "erc7562Trace": [
+        {
+          "frameIndex": 0,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x00000000000000000000000000000000000000aa",
+            "outOfGas": false,
+            "to": "0x67f130c44928ccdb8aa3095dc02ad7a855ef6cd2",
+            "type": "CALL",
+            "usedOpcodes": {
+              "51": 1,
+              "53": 2,
+              "87": 6,
+              "170": 1,
+              "180": 3
+            },
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 1,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x67f130c44928ccdb8aa3095dc02ad7a855ef6cd2",
+            "outOfGas": false,
+            "to": "0x497a1a3318060016ef70a32989e69b9695e5fc22",
+            "type": "CALL",
+            "usedOpcodes": {},
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 2,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x67f130c44928ccdb8aa3095dc02ad7a855ef6cd2",
+            "outOfGas": false,
+            "to": "0x497a1a3318060016ef70a32989e69b9695e5fc22",
+            "type": "CALL",
+            "usedOpcodes": {},
+            "value": "0x0"
+          }
+        },
+        {
+          "frameIndex": 3,
+          "root": {
+            "accessedSlots": {
+              "reads": {},
+              "transientReads": {},
+              "transientWrites": {},
+              "writes": {}
+            },
+            "contractSize": {},
+            "extCodeAccessInfo": [],
+            "from": "0x67f130c44928ccdb8aa3095dc02ad7a855ef6cd2",
+            "outOfGas": false,
+            "to": "0x497a1a3318060016ef70a32989e69b9695e5fc22",
+            "type": "CALL",
+            "usedOpcodes": {},
+            "value": "0x0"
+          }
+        }
+      ],
+      "erc7562TraceError": null,
+      "executionError": null,
+      "executionStatus": "success",
+      "frames": [
+        {
+          "gasUsed": "0x114",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0xbb8",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0x64",
+          "succeeded": true
+        },
+        {
+          "gasUsed": "0x64",
+          "succeeded": true
+        }
+      ],
+      "gasUsed": "0xd73c",
+      "maxCost": "0x13e9b5e9ce5b0",
+      "payer": "0x67f130c44928ccdb8aa3095dc02ad7a855ef6cd2",
+      "prefixShape": "SelfVerify"
+    },
+    "message": "Accepted by local simulation and covered policy checks",
+    "bytes": 767
+  },
+  "attempts": [
+    {
+      "index": 1,
+      "edit": {
+        "kind": "remove-frames",
+        "ids": [
+          "extra-a"
+        ]
+      },
+      "accepted": true,
+      "cached": false,
+      "reason": "Preserves the exact baseline fingerprint and reduces canonical bytes",
+      "candidateHash": "f88807e91c3d304361a1a2251c7ba3ae21336a9e267610468b123e8c0aa20c8d",
+      "bytes": 605
+    },
+    {
+      "index": 2,
+      "edit": {
+        "kind": "remove-frames",
+        "ids": [
+          "extra-b"
+        ]
+      },
+      "accepted": true,
+      "cached": false,
+      "reason": "Preserves the exact baseline fingerprint and reduces canonical bytes",
+      "candidateHash": "ecb14e29649339fb48992e48bb434cc12e732cff2e3ba980d12d213707116ffb",
+      "bytes": 411
+    },
+    {
+      "index": 3,
+      "edit": {
+        "kind": "remove-values",
+        "id": "required-call",
+        "start": 0,
+        "count": 4
+      },
+      "accepted": true,
+      "cached": false,
+      "reason": "Preserves the exact baseline fingerprint and reduces canonical bytes",
+      "candidateHash": "7a63aeded104eb565cd3d7173273e48f8483b753b4321f01756609c87d98a0bd",
+      "bytes": 282
+    }
+  ],
+  "evaluations": 6,
+  "durationMs": 82,
+  "termination": "locally-minimal",
+  "locallyMinimal": true,
+  "editSet": [
+    "remove independent optional body frame",
+    "remove uint256[] element using ABI re-encoding"
+  ]
+}
