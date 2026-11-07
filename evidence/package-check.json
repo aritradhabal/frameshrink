@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "package": "frameshrink-0.1.5.tgz",
-  "compressedBytes": 2038596,
-  "unpackedBytes": 11589852,
+  "package": "frameshrink-0.1.6.tgz",
+  "compressedBytes": 2038968,
+  "unpackedBytes": 11591130,
   "installedWithScriptsDisabled": true,
   "noGitOrBunRequired": true,
   "execWithoutGlobalInstall": true,
@@ -50,5 +50,8 @@
     "scripts/runtime-lock.mjs",
     "scripts/runtime.mjs",
     "src/ui.html"
-  ]
+  ],
+  "sha256": "8a1402a7ea7448c0a27adeea5116a126935851af5de39aba66c95acba232ba71",
+  "registryPublication": "confirmed",
+  "cleanCacheRegistryNpx": "passed including real five-stage replay"
 }

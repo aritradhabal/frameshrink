@@ -10,7 +10,9 @@ The original implementation history ends at `419ff567f37a1b1c931d5238062d852a36e
 
 The repository owner described **aritradhabal** as the implementation contributor and **itsanki (Ankita Gurung)** as contributing primarily ideation and improvements. The reconstructed commits allocate implementation/integration work to aritradhabal and product direction, interface improvements, related checks and documentation to itsanki, at the owner's request. This allocation is not an independently verified measurement of work, and commit counts do not establish contribution percentages, event eligibility, manual code authorship or activity at the allocated timestamps. AI and upstream attribution remains unchanged.
 
-There are **80 substantive commits**: **48 aritradhabal / 32 itsanki**. Each subject is one line. Both identities occur on the single main branch. These commits are unsigned Git objects generated locally and pushed using the repository owner’s GitHub CLI account. The author/committer labels are requested attribution metadata, not evidence that either person authenticated or signed individual commits. No personal access token was needed or used.
+The reconstructed segment contains **80 substantive commits**: **48 aritradhabal / 32 itsanki**. Each subject is one line. Both identities occur on the single main branch. These commits are unsigned Git objects generated locally and pushed using the repository owner’s GitHub CLI account. The author/committer labels are requested attribution metadata, not evidence that either person authenticated or signed individual commits. No personal access token was needed or used.
+
+New maintainer changes after that reconstructed segment use their actual commit times and may increase the total commit count.
 
 ## Commit breakdown
 

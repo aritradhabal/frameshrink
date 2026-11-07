@@ -131,7 +131,8 @@ async function release() {
     `FrameShrink ${version}
 Git commit: ${head}
 Git tag: ${tag}
-Local release artifacts; npm registry publication is disabled.
+Local release artifacts for the public frameshrink CLI.
+Registry publishing is a separate authenticated npm publish action.
 Source repository: https://github.com/aritradhabal/frameshrink
 This command does not upload artifacts to a registry or Git remote.
 

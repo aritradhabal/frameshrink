@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.6 — public npm release preparation
+
+- Enable public publication of the unscoped `frameshrink` CLI, with repository metadata and fixed registry/access configuration.
+- Replace the publication block with build, unit-test and formatting checks; keep installation free of build hooks.
+- Document direct `npx frameshrink` and npm installation alongside downloadable tarballs.
+- Restore the checkout runtime after isolated package checks before the CI browser test validates its genesis mount.
+
 ## 0.1.5 — aligned reconstructed commit metadata
 
 - Align author and committer identities/dates on the 80-commit reconstructed main branch so repository labels use the requested contributor and timeline.

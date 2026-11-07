@@ -24,6 +24,9 @@ jobs:
           name: frameshrink-package
           path: artifacts/*.tgz
       - run: npx playwright install --with-deps chromium
+      # Package checks mount an isolated installed copy's genesis. Restore the
+      # checkout runtime before the source workbench validates its identity.
+      - run: npm run runtime:up
       - run: |
           npm start > /tmp/frameshrink-ui.log 2>&1 &
           for i in $(seq 1 40); do

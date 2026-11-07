@@ -6,4 +6,4 @@ Before submitting a change, run `npm test`, `npm run test:integration`, `npm run
 
 Keep fixture, signature, state and policy checks explicit. RPC errors and unknown halt reasons must never count as preserved failures. Public writes belong only in explicitly requested devnet workflows, not automatic tests or package installation.
 
-Do not commit `.runs`, wallets, private keys, `.env` files, installed dependencies or built distributions. Preserve upstream licenses and AI/provenance attribution. Distribution is through a locally built npm tarball; publishing is disabled.
+Do not commit `.runs`, wallets, private keys, `.env` files, installed dependencies or built distributions. Preserve upstream licenses and AI/provenance attribution. Maintain downloadable npm tarballs. Registry publication is an explicit authenticated maintainer action after release checks pass; do not add automatic publishing to ordinary test or push workflows.

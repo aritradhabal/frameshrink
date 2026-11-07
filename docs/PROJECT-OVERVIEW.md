@@ -2,7 +2,7 @@
 
 FrameShrink reduces a failing Ethereum frame transaction into a smaller reproducible test case while preserving the same evidenced failure.
 
-Use the [current README](../README.md) as the single quick-start and the [packaging guide](PACKAGING.md) for downloadable CLI installation and source builds. The source repository is public on GitHub; the npm package remains a downloadable, unpublished tarball.
+Use the [current README](../README.md) as the single quick-start and the [packaging guide](PACKAGING.md) for downloadable CLI installation and source builds. The source repository is public on GitHub. The unscoped `frameshrink` package supports npm registry publication and downloadable tarballs; the README is the canonical install guide.
 
 ## What is implemented
 

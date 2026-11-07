@@ -1,7 +1,6 @@
 {
   "name": "frameshrink",
-  "version": "0.1.5",
-  "private": true,
+  "version": "0.1.6",
   "type": "module",
   "license": "MIT",
   "engines": {
@@ -24,7 +23,7 @@
     "format:check": "prettier --check src scripts bin test playwright.config.ts",
     "typecheck": "tsc --noEmit",
     "prepack": "npm run build",
-    "prepublishOnly": "node -e \"throw new Error('Publishing is disabled for this local tarball release')\"",
+    "prepublishOnly": "npm run build && npm test && npm run format:check",
     "test:package": "node scripts/test-package.mjs",
     "test:portable": "tsx --test test/browser.test.ts test/lock.test.ts",
     "test:portability": "node scripts/test-portability.mjs",
@@ -74,5 +73,17 @@
     "evidence/cli-demo.png",
     "scripts/runtime-lock.mjs",
     "docs/HISTORY-RECONSTRUCTION.md"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aritradhabal/frameshrink.git"
+  },
+  "homepage": "https://github.com/aritradhabal/frameshrink#readme",
+  "bugs": {
+    "url": "https://github.com/aritradhabal/frameshrink/issues"
+  }
 }

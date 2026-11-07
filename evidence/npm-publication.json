@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "name": "frameshrink",
+  "version": "0.1.6",
+  "registry": "https://registry.npmjs.org/",
+  "packageUrl": "https://www.npmjs.com/package/frameshrink",
+  "publishedAt": "2026-11-07T01:00:47.854Z",
+  "verifiedAt": "2026-11-07T01:03:03.490Z",
+  "npmAccount": "ar1tra",
+  "integrity": "sha512-zOJtp2B1I5Dj7sYkJvI83nhm9qDsEc4SHcTO557RcxVkw854I6dvGUdspeGUMpqB2qH8XD/GVLHHMG0492NKNQ==",
+  "sha256": "8a1402a7ea7448c0a27adeea5116a126935851af5de39aba66c95acba232ba71",
+  "tarball": "https://registry.npmjs.org/frameshrink/-/frameshrink-0.1.6.tgz",
+  "latest": "0.1.6",
+  "registryArchiveMatchesLocal": true,
+  "cleanCacheNpxVersion": "0.1.6",
+  "cleanCacheNpxHelp": "passed",
+  "cleanCacheNpxRuntimeReplay": "passed; five failure stages and corrected control",
+  "networkWrites": false,
+  "installSource": "public npm registry",
+  "cliOnly": true
+}

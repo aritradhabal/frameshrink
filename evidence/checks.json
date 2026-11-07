@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-11-07T00:26:57.644788+00:00",
+  "verifiedAt": "2026-11-07T01:03:03.490Z",
   "platform": "macOS arm64; Docker amd64 image through Rosetta",
   "sidecarCommit": "2e22ff0a2898e69ea4bf5275bce1be8581a8582a",
   "typecheck": "passed",
@@ -179,13 +179,18 @@
   },
   "npmPackage": {
     "name": "frameshrink",
-    "version": "0.1.5",
-    "published": false,
+    "version": "0.1.6",
+    "published": true,
     "installAndExec": "passed",
     "realLocalReplay": "passed",
     "modifiedBundleRefused": true,
     "recipientBuildToolsRequired": false,
-    "dockerPreflight": "passed"
+    "dockerPreflight": "passed",
+    "publication": "confirmed on public npm registry",
+    "packageUrl": "https://www.npmjs.com/package/frameshrink",
+    "registryArchiveMatchesLocal": true,
+    "cleanCacheRegistryNpx": "passed including five-stage real replay",
+    "npmAccount": "ar1tra"
   },
   "reviewConsensus": {
     "reviewers": 3,
@@ -216,7 +221,6 @@
   },
   "historyReconstruction": {
     "kind": "documented editorial reconstruction",
-    "mainCommits": 80,
     "authorCredits": {
       "aritradhabal": 48,
       "itsanki": 32
@@ -229,6 +233,8 @@
     "tokenUsed": false,
     "documentation": "docs/HISTORY-RECONSTRUCTION.md",
     "originalTimeReconstructionTag": "v0.1.4",
-    "accountAuthentication": "Owner GitHub CLI pushed generated unsigned commits; per-commit identities are attribution metadata"
+    "accountAuthentication": "Owner GitHub CLI pushed generated unsigned commits; per-commit identities are attribution metadata",
+    "reconstructedCommits": 80,
+    "currentMainCommits": 81
   }
 }

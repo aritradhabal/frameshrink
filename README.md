@@ -2,16 +2,18 @@
 
 A terminal debugger that shrinks failing Ethereum frame transactions into reproducible test cases while preserving their failure evidence.
 
-This release is a downloadable npm tarball. Source is public at [aritradhabal/frameshrink](https://github.com/aritradhabal/frameshrink); the package is not published to npm.
+The CLI package is **`frameshrink`** (unscoped). Source is public at [aritradhabal/frameshrink](https://github.com/aritradhabal/frameshrink).
 
-## Try the download
+## Try without installing globally
 
-Requires Node.js 22.13+ (22.x) or 24+. Download `frameshrink-0.1.5.tgz`, then run:
+Requires Node.js 22.13+ (22.x) or 24+. Run:
 
 ```sh
-npm exec --yes --package=./frameshrink-0.1.5.tgz -- frameshrink --help
-npm exec --yes --package=./frameshrink-0.1.5.tgz -- frameshrink demo local
+npx frameshrink --help
+npx frameshrink demo
 ```
+
+A specific release can be selected with `npx frameshrink@0.1.6 demo`. Downloaded tarballs also work with `npm exec --yes --package=./frameshrink-0.1.6.tgz -- frameshrink demo`.
 
 `npm exec` uses npm's cache without a global installation. The local demo verifies each of five failure stages, shows the captured reduction, and checks the corrected control. `frameshrink demo` is shorthand for this local replay. It needs Docker, but no wallet, faucet funds, Git, Bun, or public submission. Docker may download the pinned execution image on first use. On Apple Silicon, enable Docker Desktop Rosetta support for that amd64 image.
 
@@ -20,7 +22,7 @@ npm exec --yes --package=./frameshrink-0.1.5.tgz -- frameshrink demo local
 ## Install
 
 ```sh
-npm install --global ./frameshrink-0.1.5.tgz
+npm install --global frameshrink
 frameshrink --version
 frameshrink start transaction
 ```
@@ -52,7 +54,7 @@ npm run test:package -- --runtime
 npm pack --pack-destination artifacts
 ```
 
-Create `artifacts` before the final command. Bootstrap is a maintainer step that builds the pinned upstream dependency. Recipients of the tarball do not need it. `private: true` and `prepublishOnly` block registry publication.
+Create `artifacts` before the final command. Bootstrap is a maintainer step that builds the pinned upstream dependency. Recipients of the tarball do not need it. Public npm publishing is enabled. The `prepublishOnly` check builds, typechecks, runs unit tests and checks formatting. Installation does not run build hooks.
 
 The source repository also contains a browser workbench (`npm run runtime:up`, then `npm start`), full verification evidence and design notes. [Installation and packaging details](docs/PACKAGING.md) explain source builds, recovery commands and distribution. [Attribution](docs/ATTRIBUTION.md) records upstream reuse, prior work and AI assistance. MIT licensed, with bundled dependency notices included.
 
