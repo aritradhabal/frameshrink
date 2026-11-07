@@ -54,6 +54,10 @@ test("simultaneous runtime contenders never enter together and leave no locks", 
     );
     assert.equal(maximum, 1);
     assert(results.some((result) => result.status === "fulfilled"));
+    for (const result of results) {
+      if (result.status === "rejected")
+        assert.match(result.reason.message, /Another FrameShrink job/);
+    }
     assert.deepEqual(await readdir(directory), []);
   });
 });

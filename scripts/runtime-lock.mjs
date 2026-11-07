@@ -118,7 +118,18 @@ export async function withRuntimeLock(fn, options = {}) {
         acquired = true;
         break;
       } catch (error) {
-        if (!["EEXIST", "ENOTEMPTY"].includes(code(error) ?? "")) throw error;
+        if (!["EEXIST", "ENOTEMPTY"].includes(code(error) ?? "")) {
+          // Windows reports EPERM when a directory rename meets an existing
+          // destination. Verify that destination before treating it as a lock;
+          // an absent or inaccessible destination is still a filesystem error.
+          if (process.platform !== "win32" || code(error) !== "EPERM")
+            throw error;
+          try {
+            await readdir(guard);
+          } catch {
+            throw error;
+          }
+        }
       }
       /** @type {string[]} */
       let entries;
