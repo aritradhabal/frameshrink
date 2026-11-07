@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.3",
+  "verifiedAt": "2026-11-06T19:13:06.304511+00:00",
+  "resolvedReviewFindings": [
+    {
+      "finding": "Independent data directories could concurrently reset shared Docker containers",
+      "resolution": "One home-based shared lock used by source, packaged CLI, replay and direct runtime management",
+      "evidence": [
+        "test/lock.test.ts",
+        "scripts/test-portability.mjs"
+      ],
+      "status": "verified"
+    },
+    {
+      "finding": "Occupied workbench port caused raw stack trace and invalid JSON mode",
+      "resolution": "Awaited startup with structured errors, JSON ready record, explicit or auto-allocated port",
+      "evidence": [
+        "test/server-start.test.ts",
+        "scripts/test-portability.mjs"
+      ],
+      "status": "verified"
+    },
+    {
+      "finding": "Old overview and workflow docs diverged from released behavior",
+      "resolution": "README is canonical quick-start; overview/demo/workflow aligned; earlier recorded cases labeled historical",
+      "status": "updated"
+    },
+    {
+      "finding": "Downloads were untagged and mixed old/current files",
+      "resolution": "Annotated version tags; repeatable local release builder with archive folders, checksums and verified bundle clone",
+      "status": "release builder prepared; release output verified after tagging"
+    },
+    {
+      "finding": "Portability had no Linux or Windows execution evidence",
+      "resolution": "Linux Node22/24 package smoke and eight focused browser/lock tests executed in containers; six-job OS/Node CI matrix added",
+      "status": "Linux verified; Windows native/remote CI pending"
+    }
+  ],
+  "verification": {
+    "unitTests": 62,
+    "realRuntimeIntegration": 5,
+    "browserScenarios": 1,
+    "typecheck": "passed",
+    "format": "passed",
+    "packageInstallAndExecReplay": "passed",
+    "portabilityReports": [
+      "portability-darwin-arm64.json",
+      "portability-linux-arm64.json",
+      "portability-linux-arm64-node24.json"
+    ],
+    "linuxFocusedTests": {
+      "node22": 8,
+      "node24": 8
+    },
+    "linuxImages": {
+      "node22": "node:22-bookworm-slim@sha256:5ec23b7c622b00547753bc6ffd78085dd868a68aeb41c8e0a1418f033e13d96d",
+      "node24": "node:24-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9"
+    },
+    "publicSubmissions": 0,
+    "packagedRuntimeJsonReady": "passed",
+    "releaseDirtyTreeRefusal": "passed",
+    "markdownLocalLinks": "all resolve"
+  },
+  "remainingLimits": [
+    "Windows desktop execution and the remote CI matrix have not run",
+    "Linux container checks did not launch a desktop browser or exercise nested Docker simulation",
+    "Shared lock coordinates one OS user; releases older than 0.1.3 must be stopped before concurrent use",
+    "No remote Git host or npm publication"
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-11-07T00:26:57.644788+00:00",
+  "platform": "macOS arm64; Docker amd64 image through Rosetta",
+  "sidecarCommit": "2e22ff0a2898e69ea4bf5275bce1be8581a8582a",
+  "typecheck": "passed",
+  "coreTests": {
+    "passed": 62,
+    "failed": 0
+  },
+  "realRuntimeIntegration": {
+    "passed": 5,
+    "failed": 0
+  },
+  "browser": {
+    "passed": 1,
+    "failed": 0
+  },
+  "format": "passed",
+  "rootNpmAudit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "publicReceipt": {
+    "status": "success",
+    "block": 4009,
+    "hash": "0x941622177fa644968fbebdb74112b2b4638b575e98c18a36ead9136a96921141"
+  },
+  "ciWorkflow": "provided; not run remotely",
+  "cliInvestigation": {
+    "liveURL": "0xf5b65c96057977aaab766eb055520a001b22662c8dffef555068e7e56899ef09",
+    "status": "diagnostic-only",
+    "decodedError": "AnonAI: root from an old generation",
+    "signedTransaction": "unavailable",
+    "historicalState": "unavailable",
+    "currentAccountCount": 3,
+    "cliLinked": true
+  },
+  "devnetWallet": {
+    "address": "0xebF00143AC1A763922A65b887e2d1B66233eFDaB",
+    "chainId": 1337,
+    "observedBalanceEth": "1",
+    "faucetState": "confirmed",
+    "faucetTxHash": "0x84f3c98634786265ee60f83760c65d3e2961c819f1e4a86268433d01b567a8df",
+    "keysExcluded": true
+  },
+  "unifiedDemo": {
+    "wallet": "0xebF00143AC1A763922A65b887e2d1B66233eFDaB",
+    "originalHash": "0xb20cc4daaf82ccd0f8bfde27be1e65843c1a1e7b873859a297ae8cdaa61b73c5",
+    "correctedHash": "0x048c1d34c9bbc3a37bf222614fe4001f2717b30b814766efc1d3edaa999c8ed1",
+    "originalFrames": 4,
+    "reducedFrames": 2,
+    "originalBytes": 767,
+    "reducedBytes": 282,
+    "blockNumber": "0x14ab",
+    "state": "complete",
+    "replay": "reproduced",
+    "explorer": "https://explorer.altmempool.wtf/tx/0x048c1d34c9bbc3a37bf222614fe4001f2717b30b814766efc1d3edaa999c8ed1?node=https%3A%2F%2Faltmempool.forshtat.com%2Frpc",
+    "exactSignedReplay": true
+  },
+  "terminal": {
+    "conciseDefault": true,
+    "color": "TTY/FORCE_COLOR with NO_COLOR and --no-color support",
+    "json": "uncolored",
+    "tests": "passed",
+    "interactivePty": "colors, --no-color, Ctrl-C verified",
+    "editorPreviews": "configured/default editor; read-only copies; shell-free launch",
+    "liveEvaluations": "baseline/repeat/control/candidates streamed and checked with real ethrex",
+    "transactionOutput": "original hash/link before debug; corrected-only final transaction summary",
+    "filledBadges": true,
+    "trailingCasePath": false,
+    "stageByStageLocalReplay": true,
+    "activeWorkIndicators": true,
+    "inconclusiveLabel": "UNCONFIRMED",
+    "confirmedLabel": "CONFIRMED",
+    "boundedCandidateOutput": true,
+    "transientRepeatPrompts": true,
+    "confirmedExplorerAutoOpen": true,
+    "browserOptOut": "--no-open or FRAMESHRINK_NO_OPEN=1",
+    "allStagesEvaluationLog": true
+  },
+  "wizardCombined": {
+    "schemaVersion": 1,
+    "kind": "frameshrink-devnet-case",
+    "state": "complete",
+    "wallet": "0xebF00143AC1A763922A65b887e2d1B66233eFDaB",
+    "createdAt": "2026-11-06T17:02:02.291Z",
+    "directory": "/Users/aritra/Documents/project/frameshrink/.runs/demos/wizard-combined",
+    "originalHash": "0x95759def90a973b03a4e850b29e6d16d8c10f3093e7cf42d2cf727911e64d5ce",
+    "originalFrames": 4,
+    "originalAttemptedAt": "2026-11-06T17:02:15.211Z",
+    "reducedFrames": 2,
+    "originalBytes": 767,
+    "reducedBytes": 282,
+    "replay": "reproduced",
+    "correctedHash": "0x1ec45e7e4b919c697eb88a42a6732c4fc3d4136178a47359b560d6d04a386b12",
+    "correctedAttemptedAt": "2026-11-06T17:04:18.144Z",
+    "blockNumber": "0x18d8",
+    "explorer": "https://explorer.altmempool.wtf/tx/0x1ec45e7e4b919c697eb88a42a6732c4fc3d4136178a47359b560d6d04a386b12?node=https%3A%2F%2Faltmempool.forshtat.com%2Frpc",
+    "exactSignedReplay": true,
+    "failureStages": [
+      "BANNED_OPCODE:TIMESTAMP",
+      "BANNED_OPCODE:NUMBER"
+    ],
+    "stageEvaluations": [
+      6,
+      3
+    ]
+  },
+  "wizardRelayerCancellation": {
+    "state": "inconclusive",
+    "hash": "0xc8b8c78f78512aa83fbed9706a1dc7c6b5ca810a57f27ac2bc4340490a3d3332",
+    "reason": "relayed 4 times without being included in a block",
+    "resent": false
+  },
+  "wizardNumber": {
+    "schemaVersion": 1,
+    "kind": "frameshrink-devnet-case",
+    "state": "complete",
+    "wallet": "0x497a1a3318060016EF70A32989e69b9695e5fc22",
+    "createdAt": "2026-11-06T17:15:01.941Z",
+    "directory": "/Users/aritra/Documents/project/frameshrink/.runs/demos/wizard-fresh-number",
+    "originalHash": "0x5b722fdea26b4a78e7246ef5fc84794df0b2f759776e4167ec00f7163c7bfad0",
+    "originalFrames": 4,
+    "originalAttemptedAt": "2026-11-06T17:15:46.541Z",
+    "reducedFrames": 2,
+    "originalBytes": 767,
+    "reducedBytes": 282,
+    "replay": "reproduced",
+    "correctedHash": "0xe09397d801116ba47aafdea5f036a51401e62ec7d11a01c7ab033ec2fca87f36",
+    "correctedAttemptedAt": "2026-11-06T17:16:32.457Z",
+    "blockNumber": "0x1950",
+    "explorer": "https://explorer.altmempool.wtf/tx/0xe09397d801116ba47aafdea5f036a51401e62ec7d11a01c7ab033ec2fca87f36?node=https%3A%2F%2Faltmempool.forshtat.com%2Frpc"
+  },
+  "expandedFailures": {
+    "enabledChoices": 5,
+    "newCategories": [
+      "controlled application revert",
+      "read-only validation state write",
+      "undeployed-owner code access"
+    ],
+    "allFive": {
+      "schemaVersion": 1,
+      "kind": "frameshrink-devnet-case",
+      "state": "complete",
+      "wallet": "0x497a1a3318060016EF70A32989e69b9695e5fc22",
+      "createdAt": "2026-11-06T17:58:21.182Z",
+      "directory": "/Users/aritra/Documents/project/frameshrink/.runs/demos/expanded-all-five",
+      "originalHash": "0x68626d69843238ffb114a2fd3f4aceb219543476bba97a4b68361c1d583c404f",
+      "originalFrames": 4,
+      "originalAttemptedAt": "2026-11-06T17:59:12.069Z",
+      "reducedFrames": 2,
+      "originalBytes": 767,
+      "reducedBytes": 282,
+      "replay": "reproduced",
+      "correctedHash": "0xd167ef14914854d92bfca7c87540c7cc28291d7ba3717f20ec1cd803c266b6ce",
+      "correctedAttemptedAt": "2026-11-06T18:01:08.604Z",
+      "blockNumber": "0x1b0b",
+      "explorer": "https://explorer.altmempool.wtf/tx/0xd167ef14914854d92bfca7c87540c7cc28291d7ba3717f20ec1cd803c266b6ce?node=https%3A%2F%2Faltmempool.forshtat.com%2Frpc"
+    },
+    "stageEvaluations": [
+      6,
+      3,
+      3,
+      3,
+      3
+    ],
+    "standaloneRejections": {
+      "static-write": "0x0635ee2acdffa83db4e95630c9cba17892ef245eedc0332c22153bc4dfa248ba",
+      "code-access": "0x03a90fd3a849248fa3bd49a4256cab4224c6bff726ffedaf335c54295c2dacc3"
+    },
+    "canonicalSignatureRequired": true,
+    "keylessReplay": true,
+    "genericErrorsRemainInconclusive": true
+  },
+  "npmPackage": {
+    "name": "frameshrink",
+    "version": "0.1.5",
+    "published": false,
+    "installAndExec": "passed",
+    "realLocalReplay": "passed",
+    "modifiedBundleRefused": true,
+    "recipientBuildToolsRequired": false,
+    "dockerPreflight": "passed"
+  },
+  "reviewConsensus": {
+    "reviewers": 3,
+    "approved": 3,
+    "requiredFraction": 0.6,
+    "agreement": 1.0,
+    "report": "ux-review.json"
+  },
+  "runtimeLock": {
+    "crashRecovery": "passed",
+    "concurrentRecovery": "passed",
+    "legacyCompatibility": "passed",
+    "liveAndUnknownOwners": "preserved",
+    "scope": "user-wide; independent of case/wallet directories",
+    "directRuntimeCommands": "same shared lock",
+    "crossDataDirectoryContention": "passed"
+  },
+  "workbenchStartup": {
+    "jsonReady": "passed",
+    "occupiedPortStructuredError": "passed",
+    "alternatePort": "passed"
+  },
+  "portability": {
+    "macOS": "arm64 Node26 package checks passed",
+    "linux": "arm64 Node22 and Node24 container checks passed",
+    "windows": "CI matrix configured; native execution not observed",
+    "desktopLaunch": "not exercised outside macOS; command construction unit-tested"
+  },
+  "historyReconstruction": {
+    "kind": "documented editorial reconstruction",
+    "mainCommits": 80,
+    "authorCredits": {
+      "aritradhabal": 48,
+      "itsanki": 32
+    },
+    "allocatedAuthorDateStart": "2026-11-05T23:29:32+05:30",
+    "allocatedAuthorDateEnd": "2026-11-07T05:45:00+05:30",
+    "committerDates": "allocated editorial timeline; matching author identities and dates",
+    "originalHead": "419ff567f37a1b1c931d5238062d852a36e7e589",
+    "originalReleaseTagsPreserved": true,
+    "tokenUsed": false,
+    "documentation": "docs/HISTORY-RECONSTRUCTION.md",
+    "originalTimeReconstructionTag": "v0.1.4",
+    "accountAuthentication": "Owner GitHub CLI pushed generated unsigned commits; per-commit identities are attribution metadata"
+  }
+}
