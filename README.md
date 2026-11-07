@@ -4,7 +4,16 @@ Shrink failing Ethereum frame transactions into reproducible tests.
 
 [![npm](https://img.shields.io/npm/v/frameshrink?color=0f766e)](https://www.npmjs.com/package/frameshrink) [![MIT license](https://img.shields.io/badge/license-MIT-475569)](https://github.com/aritradhabal/frameshrink/blob/main/LICENSE)
 
-<img src="https://raw.githubusercontent.com/aritradhabal/frameshrink/main/docs/images/workflow.png" alt="Workflow: capture the failing case, reproduce its failure, shrink it, then replay and check the correction." width="600">
+```text
++---------+     +-----------+
+| Capture | --> | Reproduce |
++---------+     +-----+-----+
+                     |
+                     v
++---------+     +-----------+
+| Replay  | <-- |  Shrink   |
++---------+     +-----------+
+```
 
 ## Quick start
 
@@ -26,7 +35,20 @@ Prefer a global install? `npm install -g frameshrink`
 
 ## How shrinking works
 
-<img src="https://raw.githubusercontent.com/aritradhabal/frameshrink/main/docs/images/reduction-loop.png" alt="Reduction loop: try a smaller candidate; keep it only if it is smaller and preserves the same failure, otherwise discard it." width="600">
+```text
+Current case
+     |
+     v
+Remove a piece --> Replay candidate
+                       |
+             Smaller + same failure?
+                /             \
+              Yes              No
+               |                |
+           Keep edit       Discard edit
+                \             /
+                 Try next edit
+```
 
 **Recorded result:** 4 → 2 frames · 767 → 282 bytes. [View the evidence](https://github.com/aritradhabal/frameshrink/tree/main/evidence/expanded-all-five).
 
