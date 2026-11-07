@@ -28,5 +28,15 @@
   },
   "artifactSha256": "e218d2a3dba7a584962e12ae1ffc82fa4400a3a93096d980f8edd8d5958ec8c5",
   "runtimeBehaviorChanges": false,
-  "npmReadmeUpdate": "requires new registry version"
+  "npmReadmeUpdate": "requires new registry version",
+  "published": true,
+  "publishedAt": "2026-11-07T01:15:40.759Z",
+  "verifiedAt": "2026-11-07T01:16:56.920Z",
+  "npmPackage": "https://www.npmjs.com/package/frameshrink",
+  "latest": "0.1.7",
+  "npmReadmeMatchesSource": true,
+  "publicDiagramFiles": "verified byte for byte",
+  "registryArchiveMatchesLocal": true,
+  "cleanCacheNpx": "version 0.1.7 and help passed",
+  "registryIntegrity": "sha512-xTUYY4H+9hGCjKtliz2BZwq4Om8BhdQrAExydQb70tiEHHEAihMbbyPPnGpwBGZUpegVyK4I0gl4O4zVP7tDkA=="
 }

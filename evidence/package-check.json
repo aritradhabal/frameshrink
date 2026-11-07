@@ -54,5 +54,9 @@
     "scripts/runtime-lock.mjs",
     "scripts/runtime.mjs",
     "src/ui.html"
-  ]
+  ],
+  "sha256": "e218d2a3dba7a584962e12ae1ffc82fa4400a3a93096d980f8edd8d5958ec8c5",
+  "registryPublication": "confirmed",
+  "cleanCacheRegistryNpx": "version 0.1.7 and help passed",
+  "readmeDiagrams": "both PNGs and editable SVGs included"
 }

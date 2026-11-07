@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-11-07T01:03:03.490Z",
+  "verifiedAt": "2026-11-07T01:16:56.920Z",
   "platform": "macOS arm64; Docker amd64 image through Rosetta",
   "sidecarCommit": "2e22ff0a2898e69ea4bf5275bce1be8581a8582a",
   "typecheck": "passed",
@@ -179,7 +179,7 @@
   },
   "npmPackage": {
     "name": "frameshrink",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "published": true,
     "installAndExec": "passed",
     "realLocalReplay": "passed",
@@ -189,7 +189,7 @@
     "publication": "confirmed on public npm registry",
     "packageUrl": "https://www.npmjs.com/package/frameshrink",
     "registryArchiveMatchesLocal": true,
-    "cleanCacheRegistryNpx": "passed including five-stage real replay",
+    "cleanCacheRegistryNpx": "version 0.1.7 and help passed; documentation-only change",
     "npmAccount": "ar1tra"
   },
   "reviewConsensus": {
@@ -234,7 +234,15 @@
     "documentation": "docs/HISTORY-RECONSTRUCTION.md",
     "originalTimeReconstructionTag": "v0.1.4",
     "accountAuthentication": "Owner GitHub CLI pushed generated unsigned commits; per-commit identities are attribution metadata",
-    "reconstructedCommits": 80,
-    "currentMainCommits": 81
+    "reconstructedCommits": 80
+  },
+  "readmeRefresh": {
+    "version": "0.1.7",
+    "readmeBytes": 2303,
+    "previousReadmeBytes": 4414,
+    "diagrams": 2,
+    "desktopAndMobilePreviews": "passed",
+    "npmReadmeMatchesSource": true,
+    "report": "evidence/readme-refresh.json"
   }
 }
