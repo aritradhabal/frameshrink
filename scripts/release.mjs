@@ -153,7 +153,7 @@ SHA256SUMS covers the current npm tarball, source ZIP and Git bundle.
 Earlier release files are retained under archive/<version>/.
 `,
   );
-  console.log(`Prepared unpublished release ${version} at ${out}`);
+  console.log(`Prepared local release artifacts ${version} at ${out}`);
 }
 try {
   await release();

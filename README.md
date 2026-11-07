@@ -1,63 +1,37 @@
 # FrameShrink
 
-A terminal debugger that shrinks failing Ethereum frame transactions into reproducible test cases while preserving their failure evidence.
+Shrink failing Ethereum frame transactions into reproducible tests.
 
-The CLI package is **`frameshrink`** (unscoped). Source is public at [aritradhabal/frameshrink](https://github.com/aritradhabal/frameshrink).
+[![npm](https://img.shields.io/npm/v/frameshrink?color=0f766e)](https://www.npmjs.com/package/frameshrink) [![MIT license](https://img.shields.io/badge/license-MIT-475569)](https://github.com/aritradhabal/frameshrink/blob/main/LICENSE)
 
-## Try without installing globally
+<img src="https://raw.githubusercontent.com/aritradhabal/frameshrink/main/docs/images/workflow.png" alt="Workflow: capture the failing case, reproduce its failure, shrink it, then replay and check the correction." width="600">
 
-Requires Node.js 22.13+ (22.x) or 24+. Run:
+## Quick start
 
 ```sh
-npx frameshrink --help
 npx frameshrink demo
 ```
 
-A specific release can be selected with `npx frameshrink@0.1.6 demo`. Downloaded tarballs also work with `npm exec --yes --package=./frameshrink-0.1.6.tgz -- frameshrink demo`.
+**Node.js 22.13+ (22.x) or 24+ · Docker required.** The demo replays a captured case locally, including five failures and a passing correction. No wallet or funds needed.
 
-`npm exec` uses npm's cache without a global installation. The local demo verifies each of five failure stages, shows the captured reduction, and checks the corrected control. `frameshrink demo` is shorthand for this local replay. It needs Docker, but no wallet, faucet funds, Git, Bun, or public submission. Docker may download the pinned execution image on first use. On Apple Silicon, enable Docker Desktop Rosetta support for that amd64 image.
+## Use it
 
-![Captured local CLI replay](evidence/cli-demo.png)
+| Command | Purpose |
+|---|---|
+| `npx frameshrink start transaction` | Create a test wallet/case, debug locally, then confirm devnet submissions. |
+| `npx frameshrink debug <explorer-url>` | Inspect an existing public rejection. |
+| `npx frameshrink replay <case>` | Verify a saved reproduction. |
 
-## Install
+Prefer a global install? `npm install -g frameshrink`
 
-```sh
-npm install --global frameshrink
-frameshrink --version
-frameshrink start transaction
-```
+## How shrinking works
 
-The interactive workflow selects or creates a CLI wallet, obtains faucet funds, chooses combined or separate failures, confirms the original submission, reduces locally, shows changes, and confirms the correction. Previews open with O + Enter in `VISUAL`, `EDITOR`, or the system default; C + Enter continues. Candidate checks update one live row; stage summaries stay visible. Use `--verbose` to retain every check in terminal output. Activity indicators cover network, deployment and simulation waits; status labels distinguish confirmed execution, pending receipts and unconfirmed outcomes. Successful output ends with the corrected hash/link and opens it once in your default browser. Use `--no-open` or `FRAMESHRINK_NO_OPEN=1` to keep links in the terminal.
+<img src="https://raw.githubusercontent.com/aritradhabal/frameshrink/main/docs/images/reduction-loop.png" alt="Reduction loop: try a smaller candidate; keep it only if it is smaller and preserves the same failure, otherwise discard it." width="600">
 
-Supported controlled cases:
+**Recorded result:** 4 → 2 frames · 767 → 282 bytes. [View the evidence](https://github.com/aritradhabal/frameshrink/tree/main/evidence/expanded-all-five).
 
-- Application-defined test revert.
-- State write during read-only validation.
-- Forbidden TIMESTAMP and NUMBER reads.
-- Code access to an undeployed account.
+**Supported fixtures:** test revert, validation state write, TIMESTAMP, NUMBER and undeployed-account code access. Corrections target these controlled fixtures. An arbitrary explorer link may lack the state needed for replay.
 
-These are owned fixtures, not arbitrary-contract repair. Other failure categories stay disabled. New-category runs deploy a v3 validator only after confirmation; setup funds it with 0.01 devnet ETH plus deployment gas. Candidates stay local. Unknown outcomes and relayer cancellations are reported without blind resubmission.
+[Setup & troubleshooting](https://github.com/aritradhabal/frameshrink/blob/main/docs/PACKAGING.md) · [CLI guide](https://github.com/aritradhabal/frameshrink/blob/main/docs/CLI-WORKFLOW.md) · [Verification](https://github.com/aritradhabal/frameshrink/blob/main/docs/VERIFICATION.md)
 
-Installed/npm-exec copies keep wallet data and cases in `~/.frameshrink`. Use `FRAMESHRINK_HOME=/absolute/path` to choose another location. Source checkout commands preserve their `.runs` directory. Keys are excluded from packages, examples and Git history.
-
-Runtime ownership is shared across updated installations at `~/.frameshrink/runtime`, independently of wallet/case storage. Simulation, replay and runtime start/stop cannot replace another updated copy's active Docker runtime. Close older releases before running this version alongside other copies.
-
-## Source development
-
-```sh
-npm ci
-npm run bootstrap
-npm run build
-npm test
-npm run test:integration
-npm run test:package -- --runtime
-npm pack --pack-destination artifacts
-```
-
-Create `artifacts` before the final command. Bootstrap is a maintainer step that builds the pinned upstream dependency. Recipients of the tarball do not need it. Public npm publishing is enabled. The `prepublishOnly` check builds, typechecks, runs unit tests and checks formatting. Installation does not run build hooks.
-
-The source repository also contains a browser workbench (`npm run runtime:up`, then `npm start`), full verification evidence and design notes. [Installation and packaging details](docs/PACKAGING.md) explain source builds, recovery commands and distribution. [Attribution](docs/ATTRIBUTION.md) records upstream reuse, prior work and AI assistance. MIT licensed, with bundled dependency notices included.
-
-`frameshrink serve --json` prints one ready record or a structured startup error. Use `serve --port <number>` to select another port; `--port 0` chooses a free port. The [project overview](docs/PROJECT-OVERVIEW.md) describes the supported scope without duplicating this quick-start.
-
-The main-branch commit history is an explicitly [documented reconstruction](docs/HISTORY-RECONSTRUCTION.md); original provenance and release tags remain preserved.
+[Attribution & AI disclosure](https://github.com/aritradhabal/frameshrink/blob/main/docs/ATTRIBUTION.md) · [Reconstructed history](https://github.com/aritradhabal/frameshrink/blob/main/docs/HISTORY-RECONSTRUCTION.md)

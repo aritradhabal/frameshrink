@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "package": "frameshrink-0.1.6.tgz",
-  "compressedBytes": 2038968,
-  "unpackedBytes": 11591130,
+  "package": "frameshrink-0.1.7.tgz",
+  "compressedBytes": 2140431,
+  "unpackedBytes": 11698846,
   "installedWithScriptsDisabled": true,
   "noGitOrBunRequired": true,
   "execWithoutGlobalInstall": true,
@@ -24,6 +24,10 @@
     "dist/third-party-notices.txt",
     "docs/ATTRIBUTION.md",
     "docs/HISTORY-RECONSTRUCTION.md",
+    "docs/images/reduction-loop.png",
+    "docs/images/reduction-loop.svg",
+    "docs/images/workflow.png",
+    "docs/images/workflow.svg",
     "docs/PACKAGING.md",
     "docs/UPSTREAM-LICENSE.txt",
     "evidence/cli-demo.png",
@@ -50,8 +54,5 @@
     "scripts/runtime-lock.mjs",
     "scripts/runtime.mjs",
     "src/ui.html"
-  ],
-  "sha256": "8a1402a7ea7448c0a27adeea5116a126935851af5de39aba66c95acba232ba71",
-  "registryPublication": "confirmed",
-  "cleanCacheRegistryNpx": "passed including real five-stage replay"
+  ]
 }

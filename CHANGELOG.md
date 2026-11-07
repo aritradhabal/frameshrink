@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.7 — concise project overview
+
+- Replace the long README with a quick start, three primary commands, measured result and links to detailed guides.
+- Add accessible workflow and reduction-loop diagrams shared by GitHub and npm.
+- Shorten the package/repository description without changing CLI behavior.
+
 ## 0.1.6 — public npm release preparation
 
 - Enable public publication of the unscoped `frameshrink` CLI, with repository metadata and fixed registry/access configuration.

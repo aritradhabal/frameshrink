@@ -1,6 +1,6 @@
 {
   "name": "frameshrink",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "type": "module",
   "license": "MIT",
   "engines": {
@@ -49,7 +49,7 @@
   "bin": {
     "frameshrink": "bin/frameshrink.mjs"
   },
-  "description": "Reduce failing Ethereum frame transactions into reproducible test cases.",
+  "description": "Shrink failing Ethereum frame transactions into reproducible tests.",
   "keywords": [
     "ethereum",
     "eip-8141",
@@ -72,7 +72,8 @@
     "CHANGELOG.md",
     "evidence/cli-demo.png",
     "scripts/runtime-lock.mjs",
-    "docs/HISTORY-RECONSTRUCTION.md"
+    "docs/HISTORY-RECONSTRUCTION.md",
+    "docs/images/"
   ],
   "publishConfig": {
     "access": "public",

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="250" viewBox="0 0 600 250" role="img" aria-labelledby="title desc">
+<title id="title">From failing transaction to reproducible test</title><desc id="desc">1 Capture transaction and setup. 2 Reproduce the same failure. 3 Shrink calls and inputs. 4 Replay the smaller case and check the correction.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker><marker id="keep" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/></marker></defs>
+<rect x="1" y="1" width="598" height="248" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+<g font-family="Arial, Helvetica, sans-serif"><rect x="20" y="20" width="260" height="82" rx="12" fill="#fff7ed" stroke="#b45309" stroke-width="1.5"/>
+ <circle cx="47" cy="48" r="14" fill="#b45309"/>
+ <text x="47" y="54" text-anchor="middle" font-size="18" font-weight="700" fill="white">1</text>
+ <text x="70" y="56" font-size="25" font-weight="700" fill="#0f172a">Capture</text>
+ <text x="38" y="86" font-size="18" fill="#334155">Transaction + setup</text><rect x="320" y="20" width="260" height="82" rx="12" fill="#ecfeff" stroke="#0e7490" stroke-width="1.5"/>
+ <circle cx="347" cy="48" r="14" fill="#0e7490"/>
+ <text x="347" y="54" text-anchor="middle" font-size="18" font-weight="700" fill="white">2</text>
+ <text x="370" y="56" font-size="25" font-weight="700" fill="#0f172a">Reproduce</text>
+ <text x="338" y="86" font-size="18" fill="#334155">Confirm the same failure</text><rect x="320" y="148" width="260" height="82" rx="12" fill="#ecfeff" stroke="#0e7490" stroke-width="1.5"/>
+ <circle cx="347" cy="176" r="14" fill="#0e7490"/>
+ <text x="347" y="182" text-anchor="middle" font-size="18" font-weight="700" fill="white">3</text>
+ <text x="370" y="184" font-size="25" font-weight="700" fill="#0f172a">Shrink</text>
+ <text x="338" y="214" font-size="18" fill="#334155">Remove calls + inputs</text><rect x="20" y="148" width="260" height="82" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+ <circle cx="47" cy="176" r="14" fill="#0f766e"/>
+ <text x="47" y="182" text-anchor="middle" font-size="18" font-weight="700" fill="white">4</text>
+ <text x="70" y="184" font-size="25" font-weight="700" fill="#0f172a">Replay</text>
+ <text x="38" y="214" font-size="18" fill="#334155">Check case + correction</text><g fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"><path d="M 288 61 H 312"/><path d="M 450 110 V 140"/><path d="M 312 189 H 288"/></g></g></svg>

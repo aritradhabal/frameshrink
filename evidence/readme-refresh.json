@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.7",
+  "kind": "documentation-only refresh",
+  "description": "Shrink failing Ethereum frame transactions into reproducible tests.",
+  "readmeBytes": 2303,
+  "previousReadmeBytes": 4414,
+  "diagrams": [
+    "docs/images/workflow.png",
+    "docs/images/reduction-loop.png"
+  ],
+  "sourceDiagrams": [
+    "docs/images/workflow.svg",
+    "docs/images/reduction-loop.svg"
+  ],
+  "markdownRenderer": "GitHub Markdown API, GFM",
+  "previewChecks": {
+    "desktop": "all images loaded; no horizontal overflow",
+    "mobile390px": "all images loaded; no horizontal overflow"
+  },
+  "verification": {
+    "typecheck": "passed",
+    "unitTests": 62,
+    "isolatedPackageReplay": "passed; five failure stages + corrected control",
+    "format": "passed",
+    "packageImages": "present",
+    "secretScan": "passed"
+  },
+  "artifactSha256": "e218d2a3dba7a584962e12ae1ffc82fa4400a3a93096d980f8edd8d5958ec8c5",
+  "runtimeBehaviorChanges": false,
+  "npmReadmeUpdate": "requires new registry version"
+}
