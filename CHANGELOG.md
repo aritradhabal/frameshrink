@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.8 — text diagrams and portability fixes
+
+- Replace README diagram images with plain-text flowcharts for GitHub and npm.
+- Fix mobile workbench overflow and expand responsive browser checks.
+- Handle existing runtime lock directories correctly on Windows while retaining genuine filesystem errors.
+- Preserve browser failure screenshots, traces and server logs in CI; all seven verification jobs passed for the implementation.
+
 ## 0.1.7 — concise project overview
 
 - Replace the long README with a quick start, three primary commands, measured result and links to detailed guides.

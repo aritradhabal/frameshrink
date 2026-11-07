@@ -1,15 +1,15 @@
 # Download and run
 
-Downloadable artifacts are `frameshrink-0.1.7.tgz` (installable CLI), `frameshrink-source.zip` (source), and `frameshrink.git.bundle` (Git history). The unscoped npm package name is `frameshrink`. Registry publication is an explicit authenticated maintainer action. Use the actual tarball path when testing a downloaded artifact; use `npx frameshrink` for the registry release.
+Downloadable artifacts are `frameshrink-0.1.8.tgz` (installable CLI), `frameshrink-source.zip` (source), and `frameshrink.git.bundle` (Git history). The unscoped npm package name is `frameshrink`. Registry publication is an explicit authenticated maintainer action. Use the actual tarball path when testing a downloaded artifact; use `npx frameshrink` for the registry release.
 
 Requires Node.js 22.13+ (22.x) or Node.js 24+. Docker is required only for simulation and replay. On Apple Silicon, enable Docker Desktop Rosetta support for the pinned amd64 ethrex image.
 
 ## Try without a global installation
 
 ```sh
-npm exec --yes --package=./frameshrink-0.1.7.tgz -- frameshrink --help
-npm exec --yes --package=./frameshrink-0.1.7.tgz -- frameshrink demo local
-npm exec --yes --package=./frameshrink-0.1.7.tgz -- frameshrink start transaction
+npm exec --yes --package=./frameshrink-0.1.8.tgz -- frameshrink --help
+npm exec --yes --package=./frameshrink-0.1.8.tgz -- frameshrink demo local
+npm exec --yes --package=./frameshrink-0.1.8.tgz -- frameshrink start transaction
 ```
 
 `npm exec` downloads the package's runtime dependencies into npm's cache. It does not require a global install. `demo local` reconstructs the included five-failure case, verifies exact signed replay and its corrected control, and makes no public submissions. It needs no wallet, faucet funds, Git, Bun, or sidecar checkout. Docker can download the pinned execution image on first use.
