@@ -61,6 +61,8 @@
             "width": 1440,
             "height": 1100
           },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
           "launchOptions": {
             "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
           }
@@ -118,12 +120,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3806,
+                  "duration": 3782,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T00:49:22.800Z",
+                  "startTime": "2026-11-07T01:21:57.504Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -133,7 +135,7 @@
           ],
           "id": "d425444c687fa36b5882-96afc3a923c36503711f",
           "file": "ui.spec.ts",
-          "line": 4,
+          "line": 18,
           "column": 1
         }
       ]
@@ -141,8 +143,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-07T00:49:22.624Z",
-    "duration": 5222.218000000001,
+    "startTime": "2026-11-07T01:21:57.329Z",
+    "duration": 4341.693,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

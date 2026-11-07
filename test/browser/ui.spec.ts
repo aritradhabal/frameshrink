@@ -1,6 +1,20 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
 const workbench =
   process.env.FRAMESHRINK_WORKBENCH_URL ?? "http://127.0.0.1:4317";
+
+async function expectLayoutFits(page: Page) {
+  const layout = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    width: document.documentElement.scrollWidth,
+    overflowing: [...document.querySelectorAll("body *")]
+      .filter((element) => element.getBoundingClientRect().right > innerWidth)
+      .map((element) => element.id || element.tagName.toLowerCase()),
+  }));
+  expect(layout.width, JSON.stringify(layout)).toBeLessThanOrEqual(
+    layout.viewport,
+  );
+}
+
 test("local reducer, bundle export, clean replay and read-only import", async ({
   page,
   request,
@@ -22,6 +36,7 @@ test("local reducer, bundle export, clean replay and read-only import", async ({
   await expect(page.locator("#replayResult")).toContainText(
     "Clean replay passed",
   );
+  await expectLayoutFits(page);
   await page.screenshot({
     path: "evidence/workbench-desktop.png",
     fullPage: true,
@@ -34,10 +49,7 @@ test("local reducer, bundle export, clean replay and read-only import", async ({
   ).toBeVisible();
   await expect(page.locator("#bytes")).toHaveText("745 → 251");
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.screenshot({
-    path: "evidence/workbench-mobile.png",
-    fullPage: true,
-  });
+  await expectLayoutFits(page);
   await page
     .locator("summary")
     .filter({ hasText: "Inspect an imported" })
@@ -49,11 +61,17 @@ test("local reducer, bundle export, clean replay and read-only import", async ({
   await expect(page.getByRole("alert")).toContainText(
     "Invalid imported payload",
   );
-  expect(
-    await page.evaluate(
-      () => document.documentElement.scrollWidth <= window.innerWidth,
-    ),
-  ).toBe(true);
+  // The expanded import example and validation error must fit too; Linux
+  // system fonts exposed an intrinsic grid width that macOS fonts did not.
+  for (const width of [320, 390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 844 });
+    await expectLayoutFits(page);
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.screenshot({
+    path: "evidence/workbench-mobile.png",
+    fullPage: true,
+  });
   expect(errors).toEqual([]);
   const csrf = await request.post(workbench + "/api/reduce", {
     data: {},

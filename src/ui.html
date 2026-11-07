@@ -61,7 +61,7 @@
       .layout {
         min-height: 100vh;
         display: grid;
-        grid-template-columns: 248px 1fr;
+        grid-template-columns: 248px minmax(0, 1fr);
       }
       aside {
         background: var(--nav);
@@ -117,6 +117,7 @@
         padding-top: 20px;
       }
       main {
+        min-width: 0;
         padding: 0 44px 40px;
         max-width: 1560px;
         width: 100%;
@@ -184,6 +185,9 @@
         grid-template-columns: minmax(0, 1fr) 300px;
         gap: 20px;
       }
+      .grid > * {
+        min-width: 0;
+      }
       .card {
         background: #fff;
         border: 1px solid var(--line);
@@ -210,6 +214,9 @@
         display: flex;
         gap: 14px;
         align-items: center;
+      }
+      .fixture > div {
+        min-width: 0;
       }
       .fixture-icon {
         background: #f6ede5;
@@ -301,6 +308,7 @@
       }
       .legend {
         display: flex;
+        flex-wrap: wrap;
         gap: 20px;
         color: var(--muted);
         font: 11px monospace;
@@ -421,6 +429,7 @@
         border-radius: 6px;
         margin-bottom: 20px;
         white-space: pre-wrap;
+        overflow-wrap: anywhere;
       }
       #bundle {
         font: 11px monospace;
@@ -429,6 +438,7 @@
       }
       .importbox {
         margin-top: 20px;
+        overflow-wrap: anywhere;
       }
       textarea {
         width: 100%;
@@ -466,7 +476,7 @@
       }
       @media (max-width: 1100px) {
         .layout {
-          grid-template-columns: 190px 1fr;
+          grid-template-columns: 190px minmax(0, 1fr);
         }
         aside {
           padding: 25px 15px;
@@ -475,11 +485,11 @@
           padding: 0 24px 30px;
         }
         .grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: minmax(0, 1fr);
         }
         .right-stack {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
         .hero h1 {
           font-size: 32px;

@@ -33,6 +33,7 @@ jobs:
             if curl --fail -s http://127.0.0.1:4317/ > /dev/null; then break; fi
             sleep 1
           done
+          curl --fail -s http://127.0.0.1:4317/ > /dev/null
           npm run test:browser
       - uses: actions/upload-artifact@v4
         if: always()
@@ -41,6 +42,8 @@ jobs:
           path: |
             evidence/browser-results.json
             evidence/workbench-*.png
+            test-results/
+            /tmp/frameshrink-ui.log
       - run: npm run runtime:down
         if: always()
   portable-package:

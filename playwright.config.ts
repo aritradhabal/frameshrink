@@ -7,6 +7,8 @@ export default defineConfig({
     browserName: "chromium",
     headless: true,
     viewport: { width: 1440, height: 1100 },
+    screenshot: "only-on-failure",
+    trace: "retain-on-failure",
     launchOptions: {
       ...(process.env.PLAYWRIGHT_CHROME_PATH
         ? { executablePath: process.env.PLAYWRIGHT_CHROME_PATH }
